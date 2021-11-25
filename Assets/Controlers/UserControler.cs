@@ -81,7 +81,7 @@ namespace CanardEcarlate.Controlers
                 userId = GlobalVariable.CurrentUser.UserId,
                 pseudo = GlobalVariable.CurrentUser.Pseudo
             };
-            GlobalVariable.Emit("addPlayer", player);
+            //GlobalVariable.Emit("addPlayer", player);
         }
     }
 }

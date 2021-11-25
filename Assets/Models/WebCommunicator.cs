@@ -94,7 +94,7 @@ namespace CanardEcarlate.Models
             string retour = "";
             try
             {
-                //string json = JsonConvert.SerializeObject(postData);
+                string json = JsonConvert.SerializeObject(postData);
                 StringContent content = new StringContent(postData);
 
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -145,7 +145,7 @@ namespace CanardEcarlate.Models
             return retour;
         }
 
-        public string AppelWebPatch(string url, string postData, string TOKEN)
+        /*public string AppelWebPatch(string url, string postData, string TOKEN)
         {
             string retour = "";
             try
@@ -172,7 +172,7 @@ namespace CanardEcarlate.Models
                 retour = "{\"Status\":999,\"Errors\":[\"" + e.Message + "\"]}";
             }
             return retour;
-        }
+        }*/
 
         /// <summary>
         /// Appel API : utilisée pour l'authentification. Envoie des données en POST
