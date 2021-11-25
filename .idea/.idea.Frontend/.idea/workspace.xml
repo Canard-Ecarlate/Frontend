@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1240dc97-55b4-48f5-8145-7dbb9bca53de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Controlers/GameControler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Controlers/RoomControler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Controlers/UserControler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Controlers/WebCommunicatorControler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/ClasseParfaite.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/Game.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/JoinRoom.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/Player.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/Room.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/User.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/WebCommunicator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Utils/GlobalVariable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Utils/GlobalVariable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Utils/RegexUtilities.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Utils/RegexUtilities.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Controlers/UserControler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Controlers/UserControler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Controlers/WebCommunicatorControler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Controlers/WebCommunicatorControler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/WebCommunicator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/WebCommunicator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Utils/GlobalVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Utils/GlobalVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +23,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/alex/Unity_Projects/CanardEcarlate/Frontend/Assets/Scenes/LoginSignup.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/alex/Unity_Projects/CanardEcarlate/Frontend/Assets/Scenes/LoginSignup.unity" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21MROF2o9UxPxxLd7krHhEA7Gr1" />
   <component name="ProjectReloadState">
@@ -83,7 +72,7 @@
       <updated>1637748940139</updated>
       <workItem from="1637748947519" duration="2421000" />
       <workItem from="1637830537667" duration="488000" />
-      <workItem from="1637831034971" duration="475000" />
+      <workItem from="1637831034971" duration="2205000" />
     </task>
     <task id="LOCAL-00001" summary="#18 début de l'interface signup">
       <created>1637752545187</created>

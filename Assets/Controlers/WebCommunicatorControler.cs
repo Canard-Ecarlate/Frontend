@@ -48,7 +48,6 @@ namespace CanardEcarlate.Controlers
             }
 
             string json = "{\"room\":" + JsonConvert.SerializeObject(jj) + "}";
-
             return webCommunicator.AppelWeb(url, json, token);
         }
 
@@ -62,11 +61,11 @@ namespace CanardEcarlate.Controlers
             return webCommunicator.AppelWeb(url, token);
         }
 
-        //public string AppelWeb(string url, string postData)
-        //{
-        //    var _auth = Encoding.UTF8.GetBytes(GlobalVariable.CurrentUser.Pseudo + ":" + GlobalVariable.CurrentUser.Password);
-        //    return webCommunicator.AppelWeb(url, postData, Convert.ToBase64String(_auth));
-        //}
+        /*public string AppelWeb(string url, string postData)
+        {
+            var _auth = Encoding.UTF8.GetBytes(GlobalVariable.CurrentUser.Pseudo + ":" + GlobalVariable.CurrentUser.Password);
+            return webCommunicator.AppelWeb(url, postData, Convert.ToBase64String(_auth));
+        }*/
 
         //public string AppelWebPatch(string url, string postData)
         //{
