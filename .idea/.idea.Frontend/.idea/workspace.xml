@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1240dc97-55b4-48f5-8145-7dbb9bca53de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Controlers/UserControler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Controlers/UserControler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Controlers/WebCommunicatorControler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Controlers/WebCommunicatorControler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/WebCommunicator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/WebCommunicator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Utils/GlobalVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Utils/GlobalVariable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +16,14 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="ff240c624d90171ef5532c9a173ab4362cf76294" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/alex/Unity_Projects/CanardEcarlate/Frontend/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/alex/Unity_Projects/CanardEcarlate/Frontend/Assets/Plugins/Microsoft.AspNetCore.Connections.Abstractions.dll.meta" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21MROF2o9UxPxxLd7krHhEA7Gr1" />
   <component name="ProjectReloadState">
