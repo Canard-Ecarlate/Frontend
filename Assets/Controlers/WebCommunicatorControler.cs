@@ -10,7 +10,6 @@ namespace CanardEcarlate.Controlers
 {
     public class WebCommunicatorControler
     {
-
         protected readonly WebCommunicator webCommunicator;
 
         public WebCommunicatorControler()
@@ -60,6 +59,5 @@ namespace CanardEcarlate.Controlers
         {
             return webCommunicator.AppelWeb(url, token);
         }
-
     }
 }

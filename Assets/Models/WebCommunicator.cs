@@ -44,7 +44,6 @@ namespace CanardEcarlate.Models
 
                 //Parse du XML reçu
                 retour = response.Content.ReadAsStringAsync().Result;
-
             }
             catch (Exception e)
             {
@@ -76,7 +75,6 @@ namespace CanardEcarlate.Models
 
                 //Parse du XML reçu
                 retour = response.Content.ReadAsStringAsync().Result;
-
             }
             catch (Exception e)
             {
@@ -106,7 +104,6 @@ namespace CanardEcarlate.Models
 
                 //Parse du XML reçu
                 retour = response.Content.ReadAsStringAsync().Result;
-
             }
             catch (Exception e)
             {
@@ -132,7 +129,6 @@ namespace CanardEcarlate.Models
 
                 //Parse du XML reçu
                 retour = response.Content.ReadAsStringAsync().Result;
-
             }
             catch (Exception e)
             {
@@ -174,8 +170,6 @@ namespace CanardEcarlate.Models
 
                 //Parse du XML reçu
                 retour = response.Content.ReadAsStringAsync().Result;
-
-
             }
             catch (Exception e)
             {
