@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 public class Test : MonoBehaviour
 {
     private int _x;
-    private static HubConnection _connection;
+    private HubConnection _connection;
     void Start()
     {
         SetPosition(5);
@@ -15,7 +15,8 @@ public class Test : MonoBehaviour
             .Build();
         _connection.Closed += async (error) =>
         {
-            await Task.Delay(Random.Range(0, 5) * 1000);
+            Debug.Log(error);
+            await Task.Delay(Random.Range(0, 5) * 1000).ConfigureAwait(false);
             await _connection.StartAsync();
         };
 
@@ -29,7 +30,7 @@ public class Test : MonoBehaviour
         Send("Bastien");
     }
 
-    private async void Connect()
+    private async Task Connect()
     {
         _connection.On<string>("AfterSendMessageAsync", (data) =>
         {
@@ -47,7 +48,7 @@ public class Test : MonoBehaviour
         }
     }
 
-    private async void Send(string msg)
+    private async Task Send(string msg)
     {
         try
         {

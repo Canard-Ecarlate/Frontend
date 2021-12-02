@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CanardEcarlate.Models
 {
-    public class User : ClasseParfaite
+    public class User
     {
         public string UserId { get; set; }
         public string Pseudo { get; set; }
