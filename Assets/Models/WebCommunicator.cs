@@ -92,7 +92,6 @@ namespace CanardEcarlate.Models
             string retour = "";
             try
             {
-                string json = JsonConvert.SerializeObject(postData);
                 StringContent content = new StringContent(postData);
 
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -143,6 +142,42 @@ namespace CanardEcarlate.Models
         /// <summary>
         /// Appel API : utilisée pour l'authentification. Envoie des données en POST
         /// </summary>
+        public string AppelWeb(string url)
+        {
+            string retour = "";
+            try
+            {
+                //Construction des entetes POST
+                var postData = new List<KeyValuePair<string, string>>();
+
+                Dictionary<string, string> jj = new Dictionary<string, string>();
+                foreach (var item in postData)
+                {
+                    jj.Add(item.Key, item.Value);
+                }
+
+                string json = JsonConvert.SerializeObject(jj);
+
+                var content = new StringContent(json);
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                //Récupération du XML
+                var response = HttpClient.PostAsync(url, content).Result;
+
+                //Parse du XML reçu
+                retour = response.Content.ReadAsStringAsync().Result;
+            }
+            catch (Exception e)
+            {
+                Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
+                Debug.Log(url);
+                Debug.Log(e.Message + Environment.NewLine + e.InnerException);
+                Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
+                GlobalVariable.CurrentUser.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
+            }
+            return retour;
+        }
+        
         public string AppelWeb(string url, List<KeyValuePair<string, string>> postData = null)
         {
             string retour = "";

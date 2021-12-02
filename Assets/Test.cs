@@ -20,14 +20,16 @@ public class Test : MonoBehaviour
             await _connection.StartAsync();
         };
 
-        Connect();
+        var t = Connect();
 
-        Send("Evi");
+        t = Send("Evi");
         Send("Sebastian");
         Send("Theo");
         Send("Dylan");
         Send("Alex");
         Send("Bastien");
+
+        Debug.Log(t);
     }
 
     private async Task Connect()
