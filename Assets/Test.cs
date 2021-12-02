@@ -21,7 +21,7 @@ public class Test : MonoBehaviour
         };
 
         var t = Connect();
-
+        Debug.Log(t);
         t = Send("Evi");
         Send("Sebastian");
         Send("Theo");

@@ -178,17 +178,12 @@ namespace CanardEcarlate.Models
             return retour;
         }
         
-        public string AppelWeb(string url, List<KeyValuePair<string, string>> postData = null)
+        public string AppelWeb(string url, List<KeyValuePair<string, string>> postData)
         {
             string retour = "";
             try
             {
                 //Construction des entetes POST
-                if (postData == null)
-                {
-                    postData = new List<KeyValuePair<string, string>>();
-                }
-
                 Dictionary<string, string> jj = new Dictionary<string, string>();
                 foreach (var item in postData)
                 {

@@ -9,8 +9,8 @@ namespace CanardEcarlate.Utils
 {
     static class GlobalVariable
     {
-        public static User CurrentUser = new User();
-        public static string url = "http://canardecarlate.fr:3100/api/";
-        public static HttpClient HttpClient = new HttpClient();
+        public readonly static User CurrentUser = new User();
+        public readonly static string url = "http://canardecarlate.fr:3100/api/";
+        public readonly static HttpClient HttpClient = new HttpClient();
     }
 }
