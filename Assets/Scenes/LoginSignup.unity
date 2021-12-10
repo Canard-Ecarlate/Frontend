@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 139763784}
   - component: {fileID: 139763783}
   m_Layer: 8
-  m_Name: InputField_Pseudo
+  m_Name: InputField_PseudoSignup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,6 +544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a23f17d68ff0347a79652daebdfd04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonLogin: {fileID: 220521981}
+  inputPseudo: {fileID: 526115286}
+  inputPassword: {fileID: 896123683}
 --- !u!1 &218885922
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +982,7 @@ GameObject:
   - component: {fileID: 266622141}
   - component: {fileID: 266622140}
   m_Layer: 8
-  m_Name: InputField_Password
+  m_Name: InputField_PasswordSignup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1188,7 +1191,7 @@ GameObject:
   - component: {fileID: 526115287}
   - component: {fileID: 526115286}
   m_Layer: 7
-  m_Name: InputField_Pseudo
+  m_Name: InputField_PseudoLogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1561,8 +1564,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762267109}
   m_TextComponent: {fileID: 1220753904}
   m_Placeholder: {fileID: 533538257}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -1717,7 +1720,7 @@ GameObject:
   - component: {fileID: 896123684}
   - component: {fileID: 896123683}
   m_Layer: 7
-  m_Name: InputField_Password
+  m_Name: InputField_PasswordLogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2507,7 +2510,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1327564908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,6 +2805,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1aaea3220ced548a9e68b11c3c3f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonSignup: {fileID: 1793199255}
+  inputPseudo: {fileID: 139763783}
+  inputEmail: {fileID: 251797318}
+  inputPassword: {fileID: 266622140}
+  inputConfirm: {fileID: 762267108}
 --- !u!1 &1413998442
 GameObject:
   m_ObjectHideFlags: 0
