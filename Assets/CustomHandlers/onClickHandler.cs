@@ -10,7 +10,6 @@ namespace CanardEcarlate.CustomHandlers
 
         public void OnPointerClick(PointerEventData pointerEventData)
         {
-            Debug.Log(name + " Game Object Clicked!", this);
             onClick.Invoke();
         }
     }
