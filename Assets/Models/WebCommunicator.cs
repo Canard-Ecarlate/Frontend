@@ -173,7 +173,7 @@ namespace CanardEcarlate.Models
                 Debug.Log(url);
                 Debug.Log(e.Message + Environment.NewLine + e.InnerException);
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
-                GlobalVariable.CurrentUser.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
+                GlobalVariable.CurrentUser.error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
             }
             return retour;
         }
@@ -207,7 +207,7 @@ namespace CanardEcarlate.Models
                 Debug.Log(url);
                 Debug.Log(e.Message + Environment.NewLine + e.InnerException);
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
-                GlobalVariable.CurrentUser.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
+                GlobalVariable.CurrentUser.error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
             }
             return retour;
         }

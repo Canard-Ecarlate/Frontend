@@ -6,9 +6,10 @@ namespace CanardEcarlate.Models
 {
     public class User
     {
-        public string UserId { get; set; }
-        public string Pseudo { get; set; }
-        public string Token { get; set; }
-        public string Error { get; set; }
+        public string id { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string token { get; set; }
+        public string error { get; set; }
     }
 }
