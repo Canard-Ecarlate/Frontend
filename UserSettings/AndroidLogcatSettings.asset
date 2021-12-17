@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "ff1fa6ff",
+    "m_SelectedDeviceId": "CNXNU20924217436",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "CNXNU20924217436",
+        "name": "com.DefaultCompany.com.unity.template.mobile2D",
+        "processId": 20233,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,18 +12,60 @@
             "deviceId": "CNXNU20924217436",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 23179,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "CNXNU20924217436",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 23729,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "CNXNU20924217436",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 24120,
+            "exited": true
+        },
+        {
+            "deviceId": "CNXNU20924217436",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 5540,
+            "exited": true
+        },
+        {
+            "deviceId": "CNXNU20924217436",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 6743,
+            "exited": true
+        },
+        {
+            "deviceId": "CNXNU20924217436",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 13899,
+            "exited": false
+        },
+        {
+            "deviceId": "CNXNU20924217436",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 14406,
+            "exited": false
+        },
+        {
+            "deviceId": "CNXNU20924217436",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 14779,
+            "exited": false
+        },
+        {
+            "deviceId": "CNXNU20924217436",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 17099,
+            "exited": false
+        },
+        {
+            "deviceId": "CNXNU20924217436",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20233,
             "exited": false
         },
         {
