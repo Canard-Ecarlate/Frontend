@@ -19,12 +19,7 @@ public class Script_Login : MonoBehaviour
     void Start()
     {
         canvasSignup.enabled=false;
-        /*string token = DataSave.LoadDataString("token");
-        if (token.Length!=0)
-        {
-            GoToMain();
-            return;
-        }*/
+
         inputPseudo.text = DataSave.LoadDataString("name");
     }
 
