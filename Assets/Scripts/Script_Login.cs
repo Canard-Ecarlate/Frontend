@@ -25,9 +25,7 @@ public class Script_Login : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-    }
+    {}
 
     public void Login()
     {
