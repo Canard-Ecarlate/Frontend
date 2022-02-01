@@ -8,26 +8,24 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using CanardEcarlate.Utils;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 public class Script_Login : MonoBehaviour
 {
     public Button buttonLogin;
-
     public InputField inputPseudo, inputPassword;
-
-    public Text textGoToSignup;
-    
     public Canvas canvasLogin,canvasSignup;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start login");
-
-        inputPseudo.text = DataSave.LoadDataString("name");
-        
         canvasSignup.enabled=false;
-
-        buttonLogin.onClick.AddListener(Login);
+        /*string token = DataSave.LoadDataString("token");
+        if (token.Length!=0)
+        {
+            GoToMain();
+            return;
+        }*/
+        inputPseudo.text = DataSave.LoadDataString("name");
     }
 
     // Update is called once per frame
@@ -36,7 +34,7 @@ public class Script_Login : MonoBehaviour
         
     }
 
-    void Login()
+    public void Login()
     {
         var pseudo = inputPseudo.text;
         var password = inputPassword.text;
@@ -46,10 +44,18 @@ public class Script_Login : MonoBehaviour
         GlobalVariable.CurrentUser = JsonConvert.DeserializeObject<User>(response);
         DataSave.SaveData("name", GlobalVariable.CurrentUser.name);
         DataSave.SaveData("token", GlobalVariable.CurrentUser.token);
+        GoToMain();
+    }
+
+    private void GoToMain()
+    {
+        SceneManager.LoadScene("Scenes/Home");
     }
 
     public void GoToSignup()
     {
+        canvasLogin.gameObject.SetActive(false);
+        canvasSignup.gameObject.SetActive(true);
         canvasLogin.enabled = false;
         canvasSignup.enabled = true;
     }
