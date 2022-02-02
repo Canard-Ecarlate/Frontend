@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GameSceneScript : MonoBehaviour
 {
-    public Button defaultCardOverlay;
-    public Button myCardOverlay;
+    [SerializeField] private Button defaultCardOverlay;
+    [SerializeField] private Button myCardOverlay;
     
     public void hideCard(Button b)
     {
