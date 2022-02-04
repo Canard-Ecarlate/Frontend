@@ -12,9 +12,9 @@ using UnityEngine.SceneManagement;
 
 public class Script_Login : MonoBehaviour
 {
-    public Button buttonLogin;
-    public InputField inputPseudo, inputPassword;
-    public Canvas canvasLogin,canvasSignup;
+    [SerializeField] public Button buttonLogin;
+    [SerializeField] public InputField inputPseudo, inputPassword;
+    [SerializeField] public Canvas canvasLogin,canvasSignup;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,9 @@ public class Script_Login : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {}
+    {
+        //nothing to do here
+    }
 
     public void Login()
     {

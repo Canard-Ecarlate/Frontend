@@ -11,17 +11,21 @@ using UnityEngine.UI;
 
 public class Script_Signup : MonoBehaviour
 {
-    public Button buttonSignup;
-    public Toggle toggleTOS;
-    public InputField inputPseudo, inputEmail, inputPassword, inputConfirm;
-    public Canvas canvasLogin,canvasSignup;
+    [SerializeField] public Button buttonSignup;
+    [SerializeField] public Toggle toggleTOS;
+    [SerializeField] public InputField inputPseudo, inputEmail, inputPassword, inputConfirm;
+    [SerializeField] public Canvas canvasLogin,canvasSignup;
     // Start is called before the first frame update
     void Start()
-    {}
+    {
+        //nothing to do here
+    }
 
     // Update is called once per frame
     void Update()
-    {}
+    {
+        //nothing to do here
+    }
     
     public void tryEnableButton()
     {
@@ -30,11 +34,26 @@ public class Script_Signup : MonoBehaviour
 
     private bool checkButton()
     {
-        if (!toggleTOS.isOn) return false;
-        if (inputConfirm.text=="") return false;
-        if (inputPassword.text=="") return false;
-        if (inputEmail.text=="" || !inputEmail.text.Contains("@")) return false;
-        if (inputPseudo.text=="") return false;
+        if (!toggleTOS.isOn)
+        {
+            return false;
+        }
+        if (inputConfirm.text=="")
+        {
+            return false;
+        }
+        if (inputPassword.text=="")
+        {
+            return false;
+        }
+        if (inputEmail.text=="" || !inputEmail.text.Contains("@"))
+        {
+            return false;
+        }
+        if (inputPseudo.text=="")
+        {
+            return false;
+        }
 
         return true;
     }

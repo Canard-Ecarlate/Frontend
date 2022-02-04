@@ -6,7 +6,7 @@ namespace CanardEcarlate.CustomHandlers
 {
     public class onClickHandler : MonoBehaviour, IPointerClickHandler
     {
-        public UnityEvent onClick;
+        [SerializeField] public UnityEvent onClick;
 
         public void OnPointerClick(PointerEventData pointerEventData)
         {
