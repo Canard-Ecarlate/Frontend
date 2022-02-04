@@ -12,9 +12,9 @@ using UnityEngine.SceneManagement;
 
 public class Script_Login : MonoBehaviour
 {
-    [SerializeField] public Button buttonLogin;
-    [SerializeField] public InputField inputPseudo, inputPassword;
-    [SerializeField] public Canvas canvasLogin,canvasSignup;
+    [SerializeField] private Button buttonLogin;
+    [SerializeField] private InputField inputPseudo, inputPassword;
+    [SerializeField] private Canvas canvasLogin,canvasSignup;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,7 @@ public class Script_Login : MonoBehaviour
         
         var response=GlobalVariable.webCommunicatorControler.AppelWebAuthentification("https://localhost:5001/api/Authentication/Login", pseudo, password);
         Debug.Log(response);
-        GlobalVariable.CurrentUser = JsonConvert.DeserializeObject<User>(response);
+        GlobalVariable.CurrentUser.changeUser(JsonConvert.DeserializeObject<User>(response));
         DataSave.SaveData("name", GlobalVariable.CurrentUser.name);
         DataSave.SaveData("token", GlobalVariable.CurrentUser.token);
         GoToMain();

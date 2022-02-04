@@ -11,10 +11,10 @@ using UnityEngine.UI;
 
 public class Script_Signup : MonoBehaviour
 {
-    [SerializeField] public Button buttonSignup;
-    [SerializeField] public Toggle toggleTOS;
-    [SerializeField] public InputField inputPseudo, inputEmail, inputPassword, inputConfirm;
-    [SerializeField] public Canvas canvasLogin,canvasSignup;
+    [SerializeField] private Button buttonSignup;
+    [SerializeField] private Toggle toggleTOS;
+    [SerializeField] private InputField inputPseudo, inputEmail, inputPassword, inputConfirm;
+    [SerializeField] private Canvas canvasLogin,canvasSignup;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +69,7 @@ public class Script_Signup : MonoBehaviour
         
         Debug.Log(response);
         
-        GlobalVariable.CurrentUser = JsonConvert.DeserializeObject<User>(response);
+        GlobalVariable.CurrentUser.changeUser(JsonConvert.DeserializeObject<User>(response));
         DataSave.SaveData("name", GlobalVariable.CurrentUser.name);
         DataSave.SaveData("token", GlobalVariable.CurrentUser.token);
         GoToMain();

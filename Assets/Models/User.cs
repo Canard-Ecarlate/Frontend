@@ -11,5 +11,14 @@ namespace CanardEcarlate.Models
         public string email { get; set; }
         public string token { get; set; }
         public string error { get; set; }
+
+        public void changeUser(User user)
+        {
+            this.id = user.id;
+            this.name = user.name;
+            this.email = user.email;
+            this.token = user.token;
+            this.error = user.error;
+        }
     }
 }
