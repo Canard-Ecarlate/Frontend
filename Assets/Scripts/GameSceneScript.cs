@@ -7,6 +7,7 @@ public class GameSceneScript : MonoBehaviour
 {
     [SerializeField] private Button defaultCardOverlay;
     [SerializeField] private Button myCardOverlay;
+    [SerializeField] private Text effectText;
     
     public void hideCard(Button b)
     {
@@ -23,5 +24,10 @@ public class GameSceneScript : MonoBehaviour
     {
         defaultCardOverlay.gameObject.GetComponent<Image>().sprite = i.sprite;
         defaultCardOverlay.gameObject.SetActive(true);
+    }
+
+    public void announceEffect(string s)
+    {
+        effectText.text = s;
     }
 }
