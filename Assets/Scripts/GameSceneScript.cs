@@ -15,6 +15,11 @@ public class GameSceneScript : MonoBehaviour
     [SerializeField] private Image previousCardTwo;
     [SerializeField] private Image previousCardThree;
     [SerializeField] private Text pullsEnd;
+    
+    void Start()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
+    }
 
     public void stopShowingCard(Button b)
     {
