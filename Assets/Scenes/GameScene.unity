@@ -4810,3 +4810,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCardOverlay: {fileID: 286845379}
   myCardOverlay: {fileID: 2060981901}
+  effectText: {fileID: 871624226}
+  tempBoomerang: {fileID: 1693010145}
+  turnPointer: {fileID: 1720810528}
+  pullsShuffle: {fileID: 1862304033}
+  previousCardOne: {fileID: 73297406}
+  previousCardTwo: {fileID: 282065880}
+  previousCardThree: {fileID: 803610638}
+  pullsEnd: {fileID: 1188602826}
