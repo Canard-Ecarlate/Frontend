@@ -536,7 +536,7 @@ RectTransform:
   - {fileID: 896123682}
   - {fileID: 2068895126}
   m_Father: {fileID: 388062465}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   inputPassword: {fileID: 266622140}
   inputConfirm: {fileID: 762267108}
   canvasLogin: {fileID: 207255758}
-  canvasSignup: {fileID: 207255758}
+  canvasSignup: {fileID: 1385422012}
 --- !u!114 &388062462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3011,7 +3011,7 @@ RectTransform:
   - {fileID: 1087427164}
   - {fileID: 1939862330}
   m_Father: {fileID: 388062465}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
