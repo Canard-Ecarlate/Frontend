@@ -722,7 +722,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2135730982}
         m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: hideCard
+        m_MethodName: stopShowingCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 286845379}
@@ -1703,14 +1703,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2135730982}
         m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: announceEffect
-        m_Mode: 5
+        m_MethodName: drawCardFromSeb
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: This is a test. Seb could draw one of his own cards!
+          m_StringArgument: Seb could draw one of his own cards!
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &824962688
@@ -2470,7 +2470,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 17
+  m_Text: 15
 --- !u!222 &1188602827
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 95b393d6c8f4b544994ba1ea66103f08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a7234e0de8abcc746adffcac1c394067, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3761,13 +3761,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720810526}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3420201, w: 0.9396927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 259160762}
   m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 514}
@@ -4107,13 +4107,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862304031}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 259160762}
   m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -150, y: 273}
@@ -4485,7 +4485,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2135730982}
         m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: hideCard
+        m_MethodName: stopShowingCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2060981901}
@@ -4811,3 +4811,10 @@ MonoBehaviour:
   defaultCardOverlay: {fileID: 286845379}
   myCardOverlay: {fileID: 2060981901}
   effectText: {fileID: 871624226}
+  tempBoomerang: {fileID: 1693010145}
+  turnPointer: {fileID: 1720810528}
+  pullsShuffle: {fileID: 1862304033}
+  previousCardOne: {fileID: 73297406}
+  previousCardTwo: {fileID: 282065880}
+  previousCardThree: {fileID: 803610638}
+  pullsEnd: {fileID: 1188602826}
