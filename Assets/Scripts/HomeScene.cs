@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CanardEcarlate.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +22,8 @@ public class HomeScene : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         
-        inputFieldUsername.text = "MONEY MONEY MONEY";
-        inputFieldCash.text = "ALWAYS SUNNY";
+        inputFieldUsername.text = GlobalVariable.CurrentUser.name;
+        setCash();
     }
 
     // Update is called once per frame
@@ -31,6 +32,11 @@ public class HomeScene : MonoBehaviour
         //nothing to do here
     }
 
+    public void setCash()
+    {
+        inputFieldCash.text = "TODO";
+    }
+    
     public void goToAnnouncements()
     {
         Debug.Log("Annonces");
@@ -43,7 +49,7 @@ public class HomeScene : MonoBehaviour
     
     public void goToProfile()
     {
-        Debug.Log("Viens me voir de profil, si t'es un homme !");
+        Debug.Log("Profil");
     }
 
     public void goToRoomList()
@@ -63,7 +69,7 @@ public class HomeScene : MonoBehaviour
 
     public void goToShop()
     {
-        Debug.Log("IN A RICH MEN'S WORLD!");
+        Debug.Log("Shop");
     }
 
     public void goToSkins()
