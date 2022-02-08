@@ -1267,7 +1267,7 @@ MonoBehaviour:
   inputPassword: {fileID: 266622140}
   inputConfirm: {fileID: 762267108}
   canvasLogin: {fileID: 207255758}
-  canvasSignup: {fileID: 207255758}
+  canvasSignup: {fileID: 1385422012}
 --- !u!114 &388062462
 MonoBehaviour:
   m_ObjectHideFlags: 0
