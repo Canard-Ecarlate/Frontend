@@ -18,7 +18,7 @@ public class Script_Signup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //nothing to do here
+        Screen.orientation = ScreenOrientation.Portrait;
     }
 
     // Update is called once per frame

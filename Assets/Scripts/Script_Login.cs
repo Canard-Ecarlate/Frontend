@@ -18,6 +18,8 @@ public class Script_Login : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
+        
         canvasSignup.enabled=false;
 
         inputPseudo.text = DataSave.LoadDataString("name");
