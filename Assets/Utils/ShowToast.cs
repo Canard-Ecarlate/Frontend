@@ -13,11 +13,10 @@ namespace CanardEcarlate.Utils
         {
             ShowToastBehaviour st = element.gameObject.AddComponent<ShowToastBehaviour>();
             st.showToast(toastCanvas,text,duration);
-            //GameObject.Destroy(st);
         }
     }
     
-    class ShowToastBehaviour : MonoBehaviour
+    partial class ShowToastBehaviour : MonoBehaviour
     {
         public void showToast(Canvas toastCanvas, string text, int duration)
         {
@@ -72,7 +71,7 @@ namespace CanardEcarlate.Utils
             }
 
             Color[] currentColors = new Color[targets.Length];
-            for (int i=0;i<targets.Length;i++)
+            for (int i=0; i<targets.Length; i++)
             {
                 currentColors[i]=targets[i].color;
             }
@@ -82,7 +81,7 @@ namespace CanardEcarlate.Utils
             {
                 counter += Time.deltaTime;
                 float alpha = Mathf.Lerp(a, b, counter / duration);
-                for (int i=0;i<targets.Length;i++)
+                for (int i=0; i<targets.Length; i++)
                 {
                     Color c = currentColors[i];
                     targets[i].color = new Color(c.r, c.g, c.b, alpha);
