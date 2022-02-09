@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,29 +9,34 @@ namespace CanardEcarlate.Utils
 {
     static class ShowToast
     {
-        public static void toast(MonoBehaviour scene, Text toastText, string text, int duration=3)
+        public static void toast(MonoBehaviour element, Canvas toastCanvas, string text, int duration=3)
         {
-            ShowToastBehaviour st = scene.gameObject.AddComponent(typeof(ShowToastBehaviour)) as ShowToastBehaviour;
-            st.showToast(toastText,text,duration);
+            ShowToastBehaviour st = element.gameObject.AddComponent<ShowToastBehaviour>();
+            st.showToast(toastCanvas,text,duration);
+            //GameObject.Destroy(st);
         }
     }
     
     class ShowToastBehaviour : MonoBehaviour
     {
-        public void showToast(Text toastText, string text, int duration)
+        public void showToast(Canvas toastCanvas, string text, int duration)
         {
-            StartCoroutine(showToastCOR(toastText, text, duration));
+            StartCoroutine(showToastCOR(toastCanvas, text, duration));
         }
 
-        private IEnumerator showToastCOR(Text toastText, string text, int duration)
+        private IEnumerator showToastCOR(Canvas toastCanvas, string text, int duration)
         {
-            Color orginalColor = toastText.color;
+            Image toastPanel = toastCanvas.GetComponent<Image>();
+            Color originalPanelColor = toastPanel.color;
+            Text toastText = toastCanvas.GetComponent<Transform>().Find("Text").GetComponent<Text>();
+            Color originalTextColor = toastText.color;
 
+            toastPanel.enabled = true;
             toastText.text = text;
             toastText.enabled = true;
 
             //Fade in
-            yield return fadeInAndOut(toastText, true, 0.5f);
+            yield return fadeInAndOut(true, 0.5f, toastPanel, toastText);
 
             //Wait for the duration
             float counter = 0;
@@ -40,13 +47,16 @@ namespace CanardEcarlate.Utils
             }
 
             //Fade out
-            yield return fadeInAndOut(toastText, false, 0.5f);
+            yield return fadeInAndOut(false, 0.5f, toastText, toastPanel);
 
             toastText.enabled = false;
-            toastText.color = orginalColor;
+            toastText.color = originalTextColor;
+            toastPanel.enabled = false;
+            toastPanel.color = originalPanelColor;
+            Debug.Log(toastPanel.enabled);
         }
 
-        private IEnumerator fadeInAndOut(Text targetText, bool fadeIn, float duration)
+        private IEnumerator fadeInAndOut(bool fadeIn, float duration, params MaskableGraphic[] targets)
         {
             //Set Values depending on if fadeIn or fadeOut
             float a, b;
@@ -61,15 +71,22 @@ namespace CanardEcarlate.Utils
                 b = 0f;
             }
 
-            Color currentColor = Color.clear;
+            Color[] currentColors = new Color[targets.Length];
+            for (int i=0;i<targets.Length;i++)
+            {
+                currentColors[i]=targets[i].color;
+            }
             float counter = 0f;
 
             while (counter < duration)
             {
                 counter += Time.deltaTime;
                 float alpha = Mathf.Lerp(a, b, counter / duration);
-
-                targetText.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+                for (int i=0;i<targets.Length;i++)
+                {
+                    Color c = currentColors[i];
+                    targets[i].color = new Color(c.r, c.g, c.b, alpha);
+                }
                 yield return null;
             }
         }
