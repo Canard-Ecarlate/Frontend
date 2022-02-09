@@ -17,7 +17,7 @@ public class Script_Login : MonoBehaviour
     [SerializeField] private InputField inputPseudo, inputPassword;
     [SerializeField] private Canvas canvasLogin,canvasSignup;
     
-    [SerializeField] private Canvas toastCanvas;
+    [SerializeField] private Canvas canvasToast;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,17 +50,17 @@ public class Script_Login : MonoBehaviour
         catch (Newtonsoft.Json.JsonReaderException e)
         {
             Debug.Log(e.ToString());
-            ShowToast.toast(this, toastCanvas, "Erreur : Pseudo ou mot de passe incorrect");
+            ShowToast.toast(this, canvasToast, "Erreur : Pseudo ou mot de passe incorrect");
         }
         catch (System.NullReferenceException e)
         {
             Debug.Log(e.ToString());
-            ShowToast.toast(this, toastCanvas, "Erreur : Connexion au serveur impossible");
+            ShowToast.toast(this, canvasToast, "Erreur : Connexion au serveur impossible");
         }
         catch (Exception e)
         {
             Debug.Log(e.ToString());
-            ShowToast.toast(this, toastCanvas, "Erreur");
+            ShowToast.toast(this, canvasToast, "Erreur inconnue");
         }
     }
 
