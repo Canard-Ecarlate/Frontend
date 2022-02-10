@@ -319,8 +319,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showACard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 73297406}
@@ -627,8 +627,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showACard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 282065880}
@@ -721,8 +721,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: stopShowingCard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: StopShowingCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 286845379}
@@ -1319,8 +1319,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showMyCard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowMyCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 794734168}
@@ -1451,8 +1451,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showACard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 803610638}
@@ -1622,8 +1622,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: drawCardFromSeb
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: DrawCardFromSeb
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1993,8 +1993,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showMyCard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowMyCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 878326778}
@@ -2903,8 +2903,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showMyCard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowMyCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1545817424}
@@ -3279,8 +3279,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showMyCard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowMyCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1600855098}
@@ -3486,8 +3486,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: showMyCard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: ShowMyCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1693010145}
@@ -4244,8 +4244,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: GameSceneScript, Assembly-CSharp
-        m_MethodName: stopShowingCard
+        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
+        m_MethodName: StopShowingCard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2060981901}
@@ -4570,11 +4570,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCardOverlay: {fileID: 286845379}
   myCardOverlay: {fileID: 2060981901}
-  effectText: {fileID: 871624226}
-  tempBoomerang: {fileID: 1693010145}
   turnPointer: {fileID: 1720810528}
   pullsShuffle: {fileID: 1862304033}
   previousCardOne: {fileID: 73297406}
   previousCardTwo: {fileID: 282065880}
   previousCardThree: {fileID: 803610638}
   pullsEnd: {fileID: 1188602826}
+  effectText: {fileID: 871624226}
+  tempBoomerang: {fileID: 1693010145}

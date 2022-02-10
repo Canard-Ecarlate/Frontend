@@ -3,55 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSceneScript : MonoBehaviour
+public class Script_Game : MonoBehaviour
 {
-    [SerializeField] private Button defaultCardOverlay;
-    [SerializeField] private Button myCardOverlay;
-    [SerializeField] private Text effectText;
+    [SerializeField] private Button defaultCardOverlay, myCardOverlay;
+    [SerializeField] private Image turnPointer, pullsShuffle;
+    [SerializeField] private Image previousCardOne, previousCardTwo, previousCardThree;
+    [SerializeField] private Text pullsEnd, effectText;
     [SerializeField] private Image tempBoomerang;
-    [SerializeField] private Image turnPointer;
-    [SerializeField] private Image pullsShuffle;
-    [SerializeField] private Image previousCardOne;
-    [SerializeField] private Image previousCardTwo;
-    [SerializeField] private Image previousCardThree;
-    [SerializeField] private Text pullsEnd;
     
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
     }
 
-    public void stopShowingCard(Button b)
+    public void StopShowingCard(Button b)
     {
         b.gameObject.SetActive(false);
     }
 
-    public void showMyCard(Image i)
+    public void ShowMyCard(Image i)
     {
         myCardOverlay.gameObject.GetComponent<Image>().sprite = i.sprite;
         myCardOverlay.gameObject.SetActive(true);
     }
     
-    public void showACard(Image i)
+    public void ShowACard(Image i)
     {
         defaultCardOverlay.gameObject.GetComponent<Image>().sprite = i.sprite;
         defaultCardOverlay.gameObject.SetActive(true);
         //TODO? Add a sleep then call stopShowingCard()
     }
 
-    public void announceEffect(string s)
+    public void AnnounceEffect(string s)
     {
         effectText.text = s;
     }
 
-    public void updatePreviousCards(Image i)
+    public void UpdatePreviousCards(Image i)
     {
         previousCardOne.gameObject.GetComponent<Image>().sprite = previousCardTwo.gameObject.GetComponent<Image>().sprite;
         previousCardTwo.gameObject.GetComponent<Image>().sprite = previousCardThree.gameObject.GetComponent<Image>().sprite;
         previousCardThree.gameObject.GetComponent<Image>().sprite = i.sprite;
     }
 
-    public void countdown()
+    public void Countdown()
     {
         int count = int.Parse(pullsEnd.gameObject.GetComponent<Text>().text);
         count--;
@@ -59,13 +54,13 @@ public class GameSceneScript : MonoBehaviour
     }
 
     //Simulate drawing a boomerang from Seb.
-    public void drawCardFromSeb()
+    public void DrawCardFromSeb()
     {
-        showACard(tempBoomerang);
-        announceEffect("Seb could draw one of his own cards!");
+        ShowACard(tempBoomerang);
+        AnnounceEffect("Seb could draw one of his own cards!");
         turnPointer.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,110);
         pullsShuffle.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,160);
-        updatePreviousCards(tempBoomerang);
-        countdown();
+        UpdatePreviousCards(tempBoomerang);
+        Countdown();
     }
 }
