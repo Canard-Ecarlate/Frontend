@@ -9,10 +9,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Script_Signup : MonoBehaviour
+public class ScriptSignup : MonoBehaviour
 {
     [SerializeField] private Button buttonSignup;
-    [SerializeField] private Toggle toggleTOS;
+    [SerializeField] private Toggle toggleTos;
     [SerializeField] private InputField inputPseudo, inputEmail, inputPassword, inputConfirm;
     [SerializeField] private Canvas canvasLogin,canvasSignup;
     
@@ -36,7 +36,7 @@ public class Script_Signup : MonoBehaviour
 
     private bool checkButton()
     {
-        if (!toggleTOS.isOn)
+        if (!toggleTos.isOn)
         {
             return false;
         }
@@ -95,7 +95,7 @@ public class Script_Signup : MonoBehaviour
 
     private void GoToMain()
     {
-        SceneManager.LoadScene("Scenes/Home");
+        SceneManager.LoadScene("Scenes/HomeScene");
     }
     
     public void GoToLogin()
@@ -106,7 +106,7 @@ public class Script_Signup : MonoBehaviour
         canvasSignup.enabled = false;
     }
 
-    public void GoToTOS()
+    public void goToTos()
     {
         Application.OpenURL("https://canardecarlate.fr/termsofservice");
     }

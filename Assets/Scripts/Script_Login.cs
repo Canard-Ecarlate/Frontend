@@ -26,6 +26,8 @@ public class Script_Login : MonoBehaviour
         canvasSignup.enabled=false;
 
         inputPseudo.text = DataSave.LoadDataString("name");
+        var token = DataSave.LoadDataString("token");
+        Debug.Log(token);
     }
 
     // Update is called once per frame
@@ -66,7 +68,7 @@ public class Script_Login : MonoBehaviour
 
     private void GoToMain()
     {
-        SceneManager.LoadScene("Scenes/Home");
+        SceneManager.LoadScene("Scenes/HomeScene");
     }
 
     public void GoToSignup()
