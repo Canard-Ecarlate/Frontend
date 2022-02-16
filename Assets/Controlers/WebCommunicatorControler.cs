@@ -34,6 +34,13 @@ namespace CanardEcarlate.Controlers
             postData.Add(new KeyValuePair<string, string>("passwordConfirmation", passwordConfirm));
             return webCommunicator.AppelWeb(url, postData);
         }
+        
+        public string AppelWebAuthentification(string url, string token)
+        {
+            List<KeyValuePair<string, string>> postData = new List<KeyValuePair<string, string>>();
+            postData.Add(new KeyValuePair<string, string>("token", token));
+            return webCommunicator.AppelWeb(url, postData);
+        }
 
         public string AppelWebCreateRoom(string url, string name, string nbOfPlayers, string userId, string token)
         {
