@@ -4568,8 +4568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fbb10f57303ee499a224d6ae534e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCardOverlay: {fileID: 286845379}
-  myCardOverlay: {fileID: 2060981901}
+  defaultCardOverlay: {fileID: 286845380}
+  myCardOverlay: {fileID: 2060981902}
   turnPointer: {fileID: 1720810528}
   pullsShuffle: {fileID: 1862304033}
   previousCardOne: {fileID: 73297406}

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Script_Game : MonoBehaviour
 {
-    [SerializeField] private Button defaultCardOverlay, myCardOverlay;
+    [SerializeField] private Image defaultCardOverlay, myCardOverlay;
     [SerializeField] private Image turnPointer, pullsShuffle;
     [SerializeField] private Image previousCardOne, previousCardTwo, previousCardThree;
     [SerializeField] private Text pullsEnd, effectText;
@@ -23,13 +23,13 @@ public class Script_Game : MonoBehaviour
 
     public void ShowMyCard(Image i)
     {
-        myCardOverlay.gameObject.GetComponent<Image>().sprite = i.sprite;
+        myCardOverlay.sprite = i.sprite;
         myCardOverlay.gameObject.SetActive(true);
     }
     
     public void ShowACard(Image i)
     {
-        defaultCardOverlay.gameObject.GetComponent<Image>().sprite = i.sprite;
+        defaultCardOverlay.sprite = i.sprite;
         defaultCardOverlay.gameObject.SetActive(true);
         //TODO? Add a sleep then call stopShowingCard()
     }
@@ -41,16 +41,16 @@ public class Script_Game : MonoBehaviour
 
     public void UpdatePreviousCards(Image i)
     {
-        previousCardOne.gameObject.GetComponent<Image>().sprite = previousCardTwo.gameObject.GetComponent<Image>().sprite;
-        previousCardTwo.gameObject.GetComponent<Image>().sprite = previousCardThree.gameObject.GetComponent<Image>().sprite;
-        previousCardThree.gameObject.GetComponent<Image>().sprite = i.sprite;
+        previousCardOne.sprite = previousCardTwo.sprite;
+        previousCardTwo.sprite = previousCardThree.sprite;
+        previousCardThree.sprite = i.sprite;
     }
 
     public void Countdown()
     {
-        int count = int.Parse(pullsEnd.gameObject.GetComponent<Text>().text);
+        int count = int.Parse(pullsEnd.text);
         count--;
-        pullsEnd.gameObject.GetComponent<Text>().text = count.ToString();
+        pullsEnd.text = count.ToString();
     }
 
     //Simulate drawing a boomerang from Seb.
