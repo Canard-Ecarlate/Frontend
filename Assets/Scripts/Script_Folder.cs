@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class Script_Folder : MonoBehaviour
 {
-    [SerializeField] public Image createBg, privateBg, publicBg;
+    [SerializeField] public Image createBg, privateBg;
+    [SerializeField] public Text nbPlayers;
+
+    [SerializeField] public InputField roomName;
     
     // Start is called before the first frame update
     void Start()
@@ -19,23 +22,36 @@ public class Script_Folder : MonoBehaviour
         // does nothing for now
     }
     
-    //Transitions
+    // Transitions
     public void ToCreate()
     {
         createBg.gameObject.SetActive(true);
         privateBg.gameObject.SetActive(false);
-        publicBg.gameObject.SetActive(false);
     }
     public void ToPrivate()
     {
         createBg.gameObject.SetActive(false);
-        privateBg.gameObject.SetActive(true);
-        publicBg.gameObject.SetActive(false);
+		privateBg.gameObject.SetActive(true);
     }
-    public void ToPublic()
+    
+    // Beginning of Create section
+	public void lessPlayers()
+	{
+        int players = int.Parse(nbPlayers.text);
+        if (players > 3)
+        {
+            players--;
+            nbPlayers.text = players.ToString();
+        }
+	}
+    public void morePlayers()
     {
-        createBg.gameObject.SetActive(false);
-        privateBg.gameObject.SetActive(false);
-        publicBg.gameObject.SetActive(true);
+        int players = int.Parse(nbPlayers.text);
+        if (players < 8)
+        {
+            players++;
+            nbPlayers.text = players.ToString();
+        }
     }
+	// End of Create section
 }
