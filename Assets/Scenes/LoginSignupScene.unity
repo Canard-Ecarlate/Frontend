@@ -301,9 +301,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
-        m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
-        m_MethodName: tryEnableButton
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: tryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -706,8 +706,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 388062460}
-        m_TargetAssemblyTypeName: Script_Login, Assembly-CSharp
-        m_MethodName: Login
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: login
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -931,9 +931,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
-        m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
-        m_MethodName: tryEnableButton
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: tryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1086,9 +1086,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
-        m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
-        m_MethodName: tryEnableButton
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: tryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1222,7 +1222,6 @@ GameObject:
   - component: {fileID: 388062464}
   - component: {fileID: 388062463}
   - component: {fileID: 388062462}
-  - component: {fileID: 388062461}
   - component: {fileID: 388062460}
   m_Layer: 5
   m_Name: Canvas_Main
@@ -1240,33 +1239,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 388062459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a23f17d68ff0347a79652daebdfd04, type: 3}
+  m_Script: {fileID: 11500000, guid: 7366ede141eb4036b547f9ac14d2d182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonLogin: {fileID: 220521981}
-  inputPseudo: {fileID: 526115286}
-  inputPassword: {fileID: 896123683}
-  canvasLogin: {fileID: 207255758}
-  canvasSignup: {fileID: 1385422012}
-  canvasToast: {fileID: 1767733055}
---- !u!114 &388062461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388062459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de1aaea3220ced548a9e68b11c3c3f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   buttonSignup: {fileID: 1793199255}
-  toggleTOS: {fileID: 1248115939}
-  inputPseudo: {fileID: 139763783}
+  inputPseudoLogin: {fileID: 526115286}
+  inputPseudoSignup: {fileID: 139763783}
+  inputPasswordLogin: {fileID: 896123683}
+  inputPasswordSignup: {fileID: 266622140}
   inputEmail: {fileID: 251797318}
-  inputPassword: {fileID: 266622140}
   inputConfirm: {fileID: 762267108}
+  toggleTos: {fileID: 1248115939}
   canvasLogin: {fileID: 207255758}
   canvasSignup: {fileID: 1385422012}
   canvasToast: {fileID: 1767733055}
@@ -1450,7 +1434,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: tryEnableButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -1673,9 +1669,9 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
-        m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
-        m_MethodName: GoToTOS
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: goToTos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1782,9 +1778,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
-        m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
-        m_MethodName: tryEnableButton
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: tryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2019,7 +2015,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: tryEnableButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -2315,6 +2323,7 @@ GameObject:
   - component: {fileID: 1087427167}
   - component: {fileID: 1087427166}
   - component: {fileID: 1087427165}
+  - component: {fileID: 1087427168}
   m_Layer: 8
   m_Name: Canvas_TermsOfService
   m_TagString: Untagged
@@ -2404,6 +2413,33 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1087427168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087427163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a750e408e6ef4c2eac6c5daec37ac1b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1106756510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,7 +2762,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
         m_MethodName: tryEnableButton
         m_Mode: 1
@@ -3635,9 +3671,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
-        m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
-        m_MethodName: Signup
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: signup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4035,9 +4071,9 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388062461}
-        m_TargetAssemblyTypeName: Script_Signup, Assembly-CSharp
-        m_MethodName: GoToLogin
+      - m_Target: {fileID: 388062460}
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: goToLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4402,8 +4438,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 388062460}
-        m_TargetAssemblyTypeName: Script_Login, Assembly-CSharp
-        m_MethodName: GoToSignup
+        m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
+        m_MethodName: goToSignup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
