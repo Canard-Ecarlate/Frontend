@@ -15,6 +15,8 @@ public class Script_Signup : MonoBehaviour
     [SerializeField] private Toggle toggleTOS;
     [SerializeField] private InputField inputPseudo, inputEmail, inputPassword, inputConfirm;
     [SerializeField] private Canvas canvasLogin,canvasSignup;
+    
+    [SerializeField] private Canvas canvasToast;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,14 +67,30 @@ public class Script_Signup : MonoBehaviour
         var password = inputPassword.text;
         var confirm = inputConfirm.text;
 
-        var response=GlobalVariable.webCommunicatorControler.AppelWebRegistration("https://localhost:5001/api/Authentication/Signup", pseudo, email, password, confirm);
+        var response=GlobalVariable.webCommunicatorControler.AppelWebRegistration("https://localhost:7223/api/Authentication/Signup", pseudo, email, password, confirm);
         
-        Debug.Log(response);
-        
-        GlobalVariable.CurrentUser.changeUser(JsonConvert.DeserializeObject<User>(response));
-        DataSave.SaveData("name", GlobalVariable.CurrentUser.name);
-        DataSave.SaveData("token", GlobalVariable.CurrentUser.token);
-        GoToMain();
+        try
+        {
+            GlobalVariable.CurrentUser.changeUser(JsonConvert.DeserializeObject<User>(response));
+            DataSave.SaveData("name", GlobalVariable.CurrentUser.name);
+            DataSave.SaveData("token", GlobalVariable.CurrentUser.token);
+            GoToMain();
+        }
+        catch (Newtonsoft.Json.JsonReaderException e)
+        {
+            Debug.Log(e.ToString());
+            ShowToast.toast(this, canvasToast, "Erreur : Informations incorrectes");
+        }
+        catch (System.NullReferenceException e)
+        {
+            Debug.Log(e.ToString());
+            ShowToast.toast(this, canvasToast, "Erreur : Connexion au serveur impossible");
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.ToString());
+            ShowToast.toast(this, canvasToast, "Erreur inconnue");
+        }
     }
 
     private void GoToMain()
