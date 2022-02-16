@@ -9,12 +9,15 @@ using UnityEngine.UI;
 using CanardEcarlate.Utils;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using UnityEngine.WSA;
 
 public class Script_Login : MonoBehaviour
 {
     [SerializeField] private Button buttonLogin;
     [SerializeField] private InputField inputPseudo, inputPassword;
     [SerializeField] private Canvas canvasLogin,canvasSignup;
+    
+    [SerializeField] private Canvas canvasToast;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +39,29 @@ public class Script_Login : MonoBehaviour
         var pseudo = inputPseudo.text;
         var password = inputPassword.text;
         
-        var response=GlobalVariable.webCommunicatorControler.AppelWebAuthentification("https://localhost:5001/api/Authentication/Login", pseudo, password);
-        Debug.Log(response);
-        GlobalVariable.CurrentUser.changeUser(JsonConvert.DeserializeObject<User>(response));
-        DataSave.SaveData("name", GlobalVariable.CurrentUser.name);
-        DataSave.SaveData("token", GlobalVariable.CurrentUser.token);
-        GoToMain();
+        var response=GlobalVariable.webCommunicatorControler.AppelWebAuthentification("https://localhost:7223/api/Authentication/Login", pseudo, password);
+        try
+        {
+            GlobalVariable.CurrentUser.changeUser(JsonConvert.DeserializeObject<User>(response));
+            DataSave.SaveData("name", GlobalVariable.CurrentUser.name);
+            DataSave.SaveData("token", GlobalVariable.CurrentUser.token);
+            GoToMain();
+        }
+        catch (Newtonsoft.Json.JsonReaderException e)
+        {
+            Debug.Log(e.ToString());
+            ShowToast.toast(this, canvasToast, "Erreur : Pseudo ou mot de passe incorrect");
+        }
+        catch (System.NullReferenceException e)
+        {
+            Debug.Log(e.ToString());
+            ShowToast.toast(this, canvasToast, "Erreur : Connexion au serveur impossible");
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.ToString());
+            ShowToast.toast(this, canvasToast, "Erreur inconnue");
+        }
     }
 
     private void GoToMain()
