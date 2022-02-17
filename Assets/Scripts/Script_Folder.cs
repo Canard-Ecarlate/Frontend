@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Script_Folder : MonoBehaviour
 {
-    [SerializeField] public Image createBg, privateBg;
-    [SerializeField] public Text nbPlayers;
+    [SerializeField] private Image createBg, privateBg;
+    [SerializeField] private Text nbPlayers;
 
-    [SerializeField] public InputField roomName;
+    [SerializeField] private InputField roomName;
     
     // Start is called before the first frame update
     void Start()
