@@ -43,7 +43,6 @@ namespace CanardEcarlate.Utils
             toastText.color = originalTextColor;
             toastPanel.enabled = false;
             toastPanel.color = originalPanelColor;
-            Debug.Log(toastPanel.enabled);
         }
 
         private IEnumerator fadeInAndOut(bool fadeIn, float duration, params MaskableGraphic[] targets)

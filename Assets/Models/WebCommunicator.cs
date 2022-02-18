@@ -87,7 +87,7 @@ namespace CanardEcarlate.Models
             return retour;
         }
 
-        public string AppelWeb(string url, string postData, string TOKEN)
+        public string AppelWeb(string url, string postData, string token)
         {
             string retour = "";
             try
@@ -96,8 +96,8 @@ namespace CanardEcarlate.Models
 
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 
-                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TOKEN);
-
+                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                
                 //Récupération du XML
                 var response = HttpClient.PostAsync(url, content).Result;
 
