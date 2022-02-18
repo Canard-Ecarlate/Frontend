@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CanardEcarlate.Utils;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class HomeScene : MonoBehaviour
 {
@@ -31,12 +32,13 @@ public class HomeScene : MonoBehaviour
     {
         //nothing to do here
     }
-
-    public void setCash()
-    {
-        inputFieldCash.text = "TODO";
-    }
     
+    // Start of Transitions functions
+    public void goToFolder()
+    {
+        SceneManager.LoadScene("FolderScene");
+    }
+
     public void goToAnnouncements()
     {
         Debug.Log("Annonces");
@@ -50,11 +52,6 @@ public class HomeScene : MonoBehaviour
     public void goToProfile()
     {
         Debug.Log("Profil");
-    }
-
-    public void goToRoomList()
-    {
-        Debug.Log("Liste des salles");
     }
 
     public void goToRules()
@@ -75,5 +72,11 @@ public class HomeScene : MonoBehaviour
     public void goToSkins()
     {
         Debug.Log("Skins");
+    }
+    // End of Transitions functions
+    
+    public void setCash()
+    {
+        inputFieldCash.text = "TODO";
     }
 }

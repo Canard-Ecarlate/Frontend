@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
-public class Script_Folder : MonoBehaviour
+public class FolderScene : MonoBehaviour
 {
     [SerializeField] private Image createBg, privateBg;
     [SerializeField] private Text nbPlayers;
@@ -22,7 +23,7 @@ public class Script_Folder : MonoBehaviour
         // does nothing for now
     }
     
-    // Transitions
+    // Beginning of Transitions section
     public void ToCreate()
     {
         createBg.gameObject.SetActive(true);
@@ -32,6 +33,11 @@ public class Script_Folder : MonoBehaviour
     {
         createBg.gameObject.SetActive(false);
 		privateBg.gameObject.SetActive(true);
+    }
+
+    public void ToHome()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
     
     // Beginning of Create section
