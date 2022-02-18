@@ -2492,7 +2492,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToRoomList
+        m_MethodName: goToFolder
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

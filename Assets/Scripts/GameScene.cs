@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Script_Game : MonoBehaviour
+public class GameScene : MonoBehaviour
 {
     [SerializeField] private Image defaultCardOverlay, myCardOverlay;
     [SerializeField] private Image turnPointer, pullsShuffle;
