@@ -30,7 +30,6 @@ public class LoginSignupScene : MonoBehaviour
 
         inputPseudoLogin.text = DataSave.LoadDataString("name");
         var token = DataSave.LoadDataString("token");
-        Debug.Log(token);
     }
 
     // Update is called once per frame
