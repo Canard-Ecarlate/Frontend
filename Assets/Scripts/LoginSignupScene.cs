@@ -25,11 +25,21 @@ public class LoginSignupScene : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
+        var token = DataSave.LoadDataString("token");
+        if (token != "")
+        {
+            var response = GlobalVariable.webCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
+            Debug.Log(response.ToString());
+            if (response == "success")
+            {
+                goToMain();
+            } 
+        }
+
         goToLogin();
         tryEnableButtons();
 
         inputPseudoLogin.text = DataSave.LoadDataString("name");
-        var token = DataSave.LoadDataString("token");
     }
 
     // Update is called once per frame

@@ -35,6 +35,12 @@ namespace CanardEcarlate.Controlers
             return webCommunicator.AppelWeb(url, postData);
         }
         
+        public string AppelWebCheckToken(string url, string token)
+        {
+            string postData = "";
+            return webCommunicator.AppelWeb(url, postData, token);
+        }
+        
         public string AppelWebAuthentification(string url, string token)
         {
             List<KeyValuePair<string, string>> postData = new List<KeyValuePair<string, string>>();
