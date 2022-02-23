@@ -16,7 +16,6 @@ public class FolderScene : MonoBehaviour
     {
         roomNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
         Screen.orientation = ScreenOrientation.Portrait;
-        
     }
 
     // Update is called once per frame
