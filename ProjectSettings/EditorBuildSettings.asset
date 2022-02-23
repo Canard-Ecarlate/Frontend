@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FolderScene.unity
     guid: a586e523187a87d458cdab7dec32ac89
   - enabled: 1
+    path: Assets/Scenes/BarScene.unity
+    guid: 095976ddf1ea099439e47e6c6a962842
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 6146800211e72704297e345d4afd2a57
   - enabled: 1
