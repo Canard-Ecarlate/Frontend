@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using CanardEcarlate.Utils;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using UnityEngine.WSA;
 
 public class Script_Login : MonoBehaviour
 {
