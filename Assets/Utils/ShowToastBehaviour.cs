@@ -17,7 +17,7 @@ namespace Utils
             Color originalPanelColor = toastPanel.color;
             Text toastText = toastCanvas.GetComponent<Transform>().Find("Text").GetComponent<Text>();
             Color originalTextColor = toastText.color;
-
+            toastCanvas.enabled = true;
             toastPanel.enabled = true;
             toastText.text = text;
             toastText.enabled = true;
@@ -36,6 +36,7 @@ namespace Utils
             //Fade out
             yield return FadeInAndOut(false, 0.5f, toastText, toastPanel);
 
+            toastCanvas.enabled = false;
             toastText.enabled = false;
             toastText.color = originalTextColor;
             toastPanel.enabled = false;
