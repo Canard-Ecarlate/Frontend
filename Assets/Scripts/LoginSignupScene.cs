@@ -91,7 +91,19 @@ public class LoginSignupScene : MonoBehaviour
         catch (Newtonsoft.Json.JsonReaderException e)
         {
             Debug.Log(e.ToString());
-            ShowToast.Toast(this, CanvasToast, "Erreur : Informations incorrectes");
+            var except = response.Split(':')[0];
+            if (except == "DuckCity.Domain.Exceptions.UsernameAlreadyExistException")
+            {
+                ShowToast.Toast(this, CanvasToast,"Erreur : Ce pseudo est déjà utilisé");
+            }
+            else if(except == "DuckCity.Domain.Exceptions.MailAlreadyExistException")
+            {
+                ShowToast.Toast(this, CanvasToast,"Erreur : Cet email est déjà utilisé");
+            }
+            else
+            {
+                ShowToast.Toast(this, CanvasToast, "Erreur : Informations incorrectes");
+            }
         }
         catch (System.NullReferenceException e)
         {
