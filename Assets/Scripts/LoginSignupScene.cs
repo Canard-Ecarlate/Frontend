@@ -24,7 +24,6 @@ public class LoginSignupScene : MonoBehaviour
         if (token != "")
         {
             var response = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
-            Debug.Log(response.ToString());
             if (response == "success")
             {
                 GoToMain();

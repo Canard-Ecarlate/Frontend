@@ -1080,12 +1080,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b6075f358855948b657d009f5a805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createBg: {fileID: 659603591}
-  privateBg: {fileID: 1149602390}
-  nbPlayers: {fileID: 1418799838}
-  roomNameText: {fileID: 975690434}
-  roomName: {fileID: 1542574755}
-  roomCode: {fileID: 758644493}
+  CreateBg: {fileID: 659603591}
+  PrivateBg: {fileID: 1149602390}
+  NbPlayers: {fileID: 1418799838}
+  RoomNameText: {fileID: 975690434}
+  RoomName: {fileID: 1542574755}
+  RoomCode: {fileID: 758644493}
 --- !u!1 &913109288
 GameObject:
   m_ObjectHideFlags: 0

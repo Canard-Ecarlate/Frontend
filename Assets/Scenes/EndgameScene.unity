@@ -1051,11 +1051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3ab0da263119e43aa1c9572b545eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonReturnLobby: {fileID: 308855848}
-  buttonLeave: {fileID: 122251004}
-  imageCIAT: {fileID: 1091489025}
-  imageCE: {fileID: 291212478}
-  textVictoryDefeat: {fileID: 331943546}
+  ButtonReturnLobby: {fileID: 308855848}
+  ButtonLeave: {fileID: 122251004}
+  ImageCiat: {fileID: 1091489025}
+  ImageCe: {fileID: 291212478}
+  TextVictoryDefeat: {fileID: 331943546}
 --- !u!1 &1091489023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f9f50f1b32cb34446ba6590cfceb3ce2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3611940a4c05d3844addfc95f73fe972, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
