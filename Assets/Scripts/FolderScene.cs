@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Utils;
+using Newtonsoft.Json;
 
 public class FolderScene : MonoBehaviour
 {
@@ -66,7 +67,9 @@ public class FolderScene : MonoBehaviour
 
     public async void CreateRoom()
     {
-        // Appel pour gameContainer
+        string containerId = GlobalVariable.WebCommunicatorControler.AppelWebCreateRoom(
+            "https://localhost:7223/api/GameContainer/ContainerAccessToCreateRoom", GlobalVariable.User.Token,
+            roomName.text, GlobalVariable.User.Id);;
         DuckCityHub.StartHub();
         try
         {
@@ -85,7 +88,19 @@ public class FolderScene : MonoBehaviour
             throw;
         }
     }
+    
+    public string CreateContainerId()
+    {
+        var userId = "621668c9503c142958ae88f6"; //TODO : Récupérer le userID du joueur
 
+        var response = GlobalVariable.webCommunicatorControler.AppelWebCreateRoom(
+            "https://localhost:7223/api/GameContainer/ContainerAccessToCreateRoom", DataSave.LoadDataString("token"),
+            roomName.text, userId);
+        return JsonConvert.DeserializeObject<GameContainer>(response).Id;
+    }
+    
+    
+    // Beginning of Private section
     public async void JoinRoom()
     {
         // Appel pour gameContainer

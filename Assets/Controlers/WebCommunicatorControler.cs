@@ -44,20 +44,12 @@ namespace Controlers
             return WebCommunicator.AppelWeb(url, postData);
         }
 
-        public string AppelWebCreateRoom(string url, string name, string nbOfPlayers, string userId, string token)
-        {
-            List<KeyValuePair<string, string>> room = new List<KeyValuePair<string, string>>();
-            room.Add(new KeyValuePair<string, string>("name", name));
-            room.Add(new KeyValuePair<string, string>("nbOfPlayers", nbOfPlayers));
-            room.Add(new KeyValuePair<string, string>("userId", userId));
-            Dictionary<string, string> jj = new Dictionary<string, string>();
-            foreach (var item in room)
-            {
-                jj.Add(item.Key, item.Value);
-            }
-
-            string json = "{\"room\":" + JsonConvert.SerializeObject(jj) + "}";
-            return WebCommunicator.AppelWeb(url, json, token);
+        public string FindContainerIdForCreateRoom(string url, string token, string name, string hostId) 
+        { 
+            List<KeyValuePair<string, string>> postData = new List<KeyValuePair<string, string>>(); 
+            postData.Add(new KeyValuePair<string, string>("name", name)); 
+            postData.Add(new KeyValuePair<string, string>("hostId", hostId)); 
+            return JsonConvert.DeserializeObject<GameContainer>(WebCommunicator.AppelWeb(url, postData, token)).Id; 
         }
 
         public string AppelWebDelete(string url, string token)

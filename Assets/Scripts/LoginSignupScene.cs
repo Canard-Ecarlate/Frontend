@@ -28,19 +28,20 @@ public class LoginSignupScene : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         string token = DataSave.LoadDataString("token");
-        if (token != "")
-        {
-            string containerId = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
-            Debug.Log(containerId);
-            if (containerId == "")
-            {
-                GoToMain();
-            }
-            else
-            {
-                SceneManager.LoadScene("GameScene");
-            }
-        }
+        // if (token != "")
+        // {
+        //     string containerId = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
+        //     Debug.Log(containerId);
+        //     if (containerId == "")
+        //     {
+        //         GoToMain();
+        //     }
+        //     else
+        //     {
+        //         DuckCityHub.StartHub();
+        //         SceneManager.LoadScene("BarScene");
+        //     }
+        // }
 
         GoToLogin();
         TryEnableButtons();
