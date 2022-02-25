@@ -303,7 +303,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: tryEnableButtons
+        m_MethodName: TryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -782,7 +782,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: login
+        m_MethodName: Login
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1008,7 +1008,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: tryEnableButtons
+        m_MethodName: TryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1238,7 +1238,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: tryEnableButtons
+        m_MethodName: TryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1587,7 +1587,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: tryEnableButtons
+        m_MethodName: TryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1821,7 +1821,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: goToTos
+        m_MethodName: GoToTos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1930,7 +1930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: tryEnableButtons
+        m_MethodName: TryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2168,7 +2168,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: tryEnableButtons
+        m_MethodName: TryEnableButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3823,7 +3823,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: signup
+        m_MethodName: Signup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4224,7 +4224,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: goToLogin
+        m_MethodName: GoToLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4591,7 +4591,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388062460}
         m_TargetAssemblyTypeName: LoginSignupScene, Assembly-CSharp
-        m_MethodName: goToSignup
+        m_MethodName: GoToSignup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Text;
-using CanardEcarlate.Controlers;
-using CanardEcarlate.Models;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace CanardEcarlate.Utils
+namespace Utils
 {
     static class DataSave
     {

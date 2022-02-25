@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,17 +6,17 @@ public class EndgameScene : MonoBehaviour
 {
     private const bool VICTORY = true;
     private const bool CIAT = false;
-    [SerializeField] private Button buttonReturnLobby, buttonLeave;
-    [SerializeField] private Image imageCIAT, imageCE;
-    [SerializeField] private Text textVictoryDefeat;
+    [SerializeField] private Button ButtonReturnLobby, ButtonLeave;
+    [SerializeField] private Image ImageCiat, ImageCe;
+    [SerializeField] private Text TextVictoryDefeat;
     // Start is called before the first frame update
     void Start()
     {
-        textVictoryDefeat.text = VICTORY ? "Victory!" : "Defeat...";
-        textVictoryDefeat.color = CIAT ? Color.cyan : Color.red;
+        TextVictoryDefeat.text = VICTORY ? "Victory!" : "Defeat...";
+        TextVictoryDefeat.color = CIAT ? Color.cyan : Color.red;
 
-        imageCIAT.enabled = CIAT;    
-        imageCE.enabled = !CIAT;
+        ImageCiat.enabled = CIAT;    
+        ImageCe.enabled = !CIAT;
     }
 
     // Update is called once per frame
@@ -27,12 +25,12 @@ public class EndgameScene : MonoBehaviour
         //nothing to do here
     }
 
-    public void goToLobby()
+    public void GoToLobby()
     {
         //nothing to do here
     }
 
-    public void goToHome()
+    public void GoToHome()
     {
         SceneManager.LoadScene("Scenes/HomeScene");
     }
