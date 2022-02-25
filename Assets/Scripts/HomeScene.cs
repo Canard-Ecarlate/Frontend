@@ -1,30 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using CanardEcarlate.Utils;
+using Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
 
 public class HomeScene : MonoBehaviour
 {
-    [SerializeField] private Button buttonAnnouncement,
-        buttonCards,
-        buttonPlay,
-        buttonProfile,
-        buttonRules,
-        buttonSettings,
-        buttonShop,
-        buttonSkins;
+    [SerializeField] private Button ButtonAnnouncement,
+        ButtonCards,
+        ButtonPlay,
+        ButtonProfile,
+        ButtonRules,
+        ButtonSettings,
+        ButtonShop,
+        ButtonSkins;
 
-    [SerializeField] private InputField inputFieldUsername, inputFieldCash;
+    [SerializeField] private InputField InputFieldUsername, InputFieldCash;
     
     // Start is called before the first frame update
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
         
-        inputFieldUsername.text = GlobalVariable.CurrentUser.name;
-        setCash();
+        InputFieldUsername.text = GlobalVariable.CurrentUser.Name;
+        SetCash();
     }
 
     // Update is called once per frame
@@ -34,49 +32,49 @@ public class HomeScene : MonoBehaviour
     }
     
     // Start of Transitions functions
-    public void goToFolder()
+    public void GoToFolder()
     {
         SceneManager.LoadScene("FolderScene");
     }
 
-    public void goToAnnouncements()
+    public void GoToAnnouncements()
     {
         Debug.Log("Annonces");
     }
     
-    public void goToCards()
+    public void GoToCards()
     {
         Debug.Log("Cartes");
     }
     
-    public void goToProfile()
+    public void GoToProfile()
     {
         Debug.Log("Profil");
     }
 
-    public void goToRules()
+    public void GoToRules()
     {
         Debug.Log("Règles");
     }
 
-    public void goToSettings()
+    public void GoToSettings()
     {
         Debug.Log("Paramètres");
     }
 
-    public void goToShop()
+    public void GoToShop()
     {
         Debug.Log("Shop");
     }
 
-    public void goToSkins()
+    public void GoToSkins()
     {
         Debug.Log("Skins");
     }
     // End of Transitions functions
     
-    public void setCash()
+    public void SetCash()
     {
-        inputFieldCash.text = "TODO";
+        InputFieldCash.text = "TODO";
     }
 }

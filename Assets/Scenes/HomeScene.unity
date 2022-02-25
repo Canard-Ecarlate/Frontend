@@ -287,7 +287,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToProfile
+        m_MethodName: GoToProfile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1315,7 +1315,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToSettings
+        m_MethodName: GoToSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1669,7 +1669,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToSkins
+        m_MethodName: GoToSkins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1802,7 +1802,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToAnnouncements
+        m_MethodName: GoToAnnouncements
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1935,7 +1935,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToShop
+        m_MethodName: GoToShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2068,7 +2068,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToCards
+        m_MethodName: GoToCards
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2201,7 +2201,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToRules
+        m_MethodName: GoToRules
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2492,7 +2492,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839551811}
         m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
-        m_MethodName: goToFolder
+        m_MethodName: GoToFolder
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

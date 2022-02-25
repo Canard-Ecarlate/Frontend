@@ -2,15 +2,15 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace CanardEcarlate.CustomHandlers
+namespace CustomHandlers
 {
-    public class onClickHandler : MonoBehaviour, IPointerClickHandler
+    public class OnClickHandler : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private UnityEvent onClick;
+        [SerializeField] private UnityEvent OnClick;
 
         public void OnPointerClick(PointerEventData pointerEventData)
         {
-            onClick.Invoke();
+            OnClick.Invoke();
         }
     }
 }

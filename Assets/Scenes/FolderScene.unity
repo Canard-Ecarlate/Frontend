@@ -1170,7 +1170,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 858878662}
         m_TargetAssemblyTypeName: Script_Folder, Assembly-CSharp
-        m_MethodName: lessPlayers
+        m_MethodName: LessPlayers
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1944,7 +1944,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 858878662}
         m_TargetAssemblyTypeName: Script_Folder, Assembly-CSharp
-        m_MethodName: morePlayers
+        m_MethodName: MorePlayers
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

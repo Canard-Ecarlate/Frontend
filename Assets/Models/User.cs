@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CanardEcarlate.Models
+﻿namespace Models
 {
     public class User
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string token { get; set; }
-        public string error { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Token { get; set; }
+        public string Error { get; set; }
 
-        public void changeUser(User user)
+        public void ChangeUser(User user)
         {
-            this.id = user.id;
-            this.name = user.name;
-            this.email = user.email;
-            this.token = user.token;
-            this.error = user.error;
+            this.Id = user.Id;
+            this.Name = user.Name;
+            this.Email = user.Email;
+            this.Token = user.Token;
+            this.Error = user.Error;
         }
     }
 }

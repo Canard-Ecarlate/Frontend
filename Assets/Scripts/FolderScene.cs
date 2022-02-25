@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
 
 public class FolderScene : MonoBehaviour
 {
-    [SerializeField] private Image createBg, privateBg;
-    [SerializeField] private Text nbPlayers, roomNameText;
+    [SerializeField] private Image CreateBg, PrivateBg;
+    [SerializeField] private Text NbPlayers, RoomNameText;
 
-    [SerializeField] private InputField roomName, roomCode;
+    [SerializeField] private InputField RoomName, RoomCode;
     
     // Start is called before the first frame update
     void Start()
     {
-        roomNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
+        RoomNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
         Screen.orientation = ScreenOrientation.Portrait;
     }
 
@@ -27,13 +25,13 @@ public class FolderScene : MonoBehaviour
     // Beginning of Transitions section
     public void ToCreate()
     {
-        createBg.gameObject.SetActive(true);
-        privateBg.gameObject.SetActive(false);
+        CreateBg.gameObject.SetActive(true);
+        PrivateBg.gameObject.SetActive(false);
     }
     public void ToPrivate()
     {
-        createBg.gameObject.SetActive(false);
-		privateBg.gameObject.SetActive(true);
+        CreateBg.gameObject.SetActive(false);
+		PrivateBg.gameObject.SetActive(true);
     }
 
     public void ToHome()
@@ -42,22 +40,22 @@ public class FolderScene : MonoBehaviour
     }
     
     // Beginning of Create section
-	public void lessPlayers()
+	public void LessPlayers()
 	{
-        int players = int.Parse(nbPlayers.text);
+        int players = int.Parse(NbPlayers.text);
         if (players > 3)
         {
             players--;
-            nbPlayers.text = players.ToString();
+            NbPlayers.text = players.ToString();
         }
 	}
-    public void morePlayers()
+    public void MorePlayers()
     {
-        int players = int.Parse(nbPlayers.text);
+        int players = int.Parse(NbPlayers.text);
         if (players < 8)
         {
             players++;
-            nbPlayers.text = players.ToString();
+            NbPlayers.text = players.ToString();
         }
     }
 	// End of Create section

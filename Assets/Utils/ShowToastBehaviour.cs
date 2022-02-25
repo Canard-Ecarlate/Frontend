@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CanardEcarlate.Utils
+namespace Utils
 {
     class ShowToastBehaviour : MonoBehaviour
     {
-        public void showToast(Canvas toastCanvas, string text, int duration)
+        public void ShowToast(Canvas toastCanvas, string text, int duration)
         {
-            StartCoroutine(showToastCOR(toastCanvas, text, duration));
+            StartCoroutine(ShowToastCor(toastCanvas, text, duration));
         }
 
-        private IEnumerator showToastCOR(Canvas toastCanvas, string text, int duration)
+        private IEnumerator ShowToastCor(Canvas toastCanvas, string text, int duration)
         {
             Image toastPanel = toastCanvas.GetComponent<Image>();
             Color originalPanelColor = toastPanel.color;
@@ -26,7 +23,7 @@ namespace CanardEcarlate.Utils
             toastText.enabled = true;
 
             //Fade in
-            yield return fadeInAndOut(true, 0.5f, toastPanel, toastText);
+            yield return FadeInAndOut(true, 0.5f, toastPanel, toastText);
 
             //Wait for the duration
             float counter = 0;
@@ -37,7 +34,7 @@ namespace CanardEcarlate.Utils
             }
 
             //Fade out
-            yield return fadeInAndOut(false, 0.5f, toastText, toastPanel);
+            yield return FadeInAndOut(false, 0.5f, toastText, toastPanel);
 
             toastText.enabled = false;
             toastText.color = originalTextColor;
@@ -45,7 +42,7 @@ namespace CanardEcarlate.Utils
             toastPanel.color = originalPanelColor;
         }
 
-        private IEnumerator fadeInAndOut(bool fadeIn, float duration, params MaskableGraphic[] targets)
+        private IEnumerator FadeInAndOut(bool fadeIn, float duration, params MaskableGraphic[] targets)
         {
             //Set Values depending on if fadeIn or fadeOut
             float a, b;

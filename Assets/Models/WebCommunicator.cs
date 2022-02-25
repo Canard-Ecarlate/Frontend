@@ -1,13 +1,13 @@
-﻿using CanardEcarlate.Utils;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Xml.Linq;
+using Utils;
+using Newtonsoft.Json;
 using UnityEngine;
 
-namespace CanardEcarlate.Models
+namespace Models
 {
     public class WebCommunicator
     {
@@ -28,16 +28,16 @@ namespace CanardEcarlate.Models
         /// <summary>
         /// Appel API : Utilisé pour récupérer les données du site. Envoie des données en GET
         /// </summary>
-        public string AppelWeb(string url, string TOKEN)
+        public string AppelWeb(string url, string token)
         {
             Debug.Log(url);
-            Debug.Log(TOKEN);
+            Debug.Log(token);
             string retour = "";
             try
             {
                 StringContent content = new StringContent("");
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TOKEN);
+                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 //Récupération du XML
                 var response = HttpClient.GetAsync(url).Result;
@@ -49,7 +49,7 @@ namespace CanardEcarlate.Models
             {
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, string TOKEN) >>>>>>>>>>>>>>>>>");
                 Debug.Log(url);
-                Debug.Log(TOKEN);
+                Debug.Log(token);
                 Debug.Log(e.Message + Environment.NewLine + e.InnerException);
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, string TOKEN) >>>>>>>>>>>>>>>>>");
             }
@@ -59,7 +59,7 @@ namespace CanardEcarlate.Models
         /// <summary>
         /// Appel API : Envoie des données en POST
         /// </summary>
-        public string AppelWeb(string url, XDocument postData, string TOKEN)
+        public string AppelWeb(string url, XDocument postData, string token)
         {
             string retour = "";
             try
@@ -68,7 +68,7 @@ namespace CanardEcarlate.Models
                 StringContent content = new StringContent(json);
 
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TOKEN);
+                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 //Récupération du XML
                 var response = HttpClient.PostAsync(url, content).Result;
@@ -116,12 +116,12 @@ namespace CanardEcarlate.Models
         }
 
         //Delete
-        public string AppelWebDelete(string url, string TOKEN)
+        public string AppelWebDelete(string url, string token)
         {
             string retour = "";
             try
             {                
-                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TOKEN);
+                HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 //Récupération du XML
                 var response = HttpClient.DeleteAsync(url).Result;
@@ -173,7 +173,7 @@ namespace CanardEcarlate.Models
                 Debug.Log(url);
                 Debug.Log(e.Message + Environment.NewLine + e.InnerException);
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
-                GlobalVariable.CurrentUser.error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
+                GlobalVariable.CurrentUser.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
             }
             return retour;
         }
@@ -207,7 +207,7 @@ namespace CanardEcarlate.Models
                 Debug.Log(url);
                 Debug.Log(e.Message + Environment.NewLine + e.InnerException);
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
-                GlobalVariable.CurrentUser.error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
+                GlobalVariable.CurrentUser.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
             }
             return retour;
         }

@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameScene : MonoBehaviour
 {
-    [SerializeField] private Image defaultCardOverlay, myCardOverlay;
-    [SerializeField] private Image turnPointer, pullsShuffle;
-    [SerializeField] private Image previousCardOne, previousCardTwo, previousCardThree;
-    [SerializeField] private Text pullsEnd, effectText;
-    [SerializeField] private Image tempBoomerang;
+    [SerializeField] private Image DefaultCardOverlay, MyCardOverlay;
+    [SerializeField] private Image TurnPointer, PullsShuffle;
+    [SerializeField] private Image PreviousCardOne, PreviousCardTwo, PreviousCardThree;
+    [SerializeField] private Text PullsEnd, EffectText;
+    [SerializeField] private Image TempBoomerang;
     
     void Start()
     {
@@ -23,44 +21,44 @@ public class GameScene : MonoBehaviour
 
     public void ShowMyCard(Image i)
     {
-        myCardOverlay.sprite = i.sprite;
-        myCardOverlay.gameObject.SetActive(true);
+        MyCardOverlay.sprite = i.sprite;
+        MyCardOverlay.gameObject.SetActive(true);
     }
     
     public void ShowACard(Image i)
     {
-        defaultCardOverlay.sprite = i.sprite;
-        defaultCardOverlay.gameObject.SetActive(true);
+        DefaultCardOverlay.sprite = i.sprite;
+        DefaultCardOverlay.gameObject.SetActive(true);
         //TODO? Add a sleep then call stopShowingCard()
     }
 
     public void AnnounceEffect(string s)
     {
-        effectText.text = s;
+        EffectText.text = s;
     }
 
     public void UpdatePreviousCards(Image i)
     {
-        previousCardOne.sprite = previousCardTwo.sprite;
-        previousCardTwo.sprite = previousCardThree.sprite;
-        previousCardThree.sprite = i.sprite;
+        PreviousCardOne.sprite = PreviousCardTwo.sprite;
+        PreviousCardTwo.sprite = PreviousCardThree.sprite;
+        PreviousCardThree.sprite = i.sprite;
     }
 
     public void Countdown()
     {
-        int count = int.Parse(pullsEnd.text);
+        int count = int.Parse(PullsEnd.text);
         count--;
-        pullsEnd.text = count.ToString();
+        PullsEnd.text = count.ToString();
     }
 
     //Simulate drawing a boomerang from Seb.
     public void DrawCardFromSeb()
     {
-        ShowACard(tempBoomerang);
+        ShowACard(TempBoomerang);
         AnnounceEffect("Seb could draw one of his own cards!");
-        turnPointer.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,110);
-        pullsShuffle.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,160);
-        UpdatePreviousCards(tempBoomerang);
+        TurnPointer.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,110);
+        PullsShuffle.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0,0,160);
+        UpdatePreviousCards(TempBoomerang);
         Countdown();
     }
 }
