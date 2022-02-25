@@ -9,7 +9,6 @@ using UnityEngine.UI;
 using CanardEcarlate.Utils;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
-using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
 public class LoginSignupScene : MonoBehaviour

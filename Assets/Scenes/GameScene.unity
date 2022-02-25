@@ -905,8 +905,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1447432423}
-  m_RootOrder: 3
+  m_Father: {fileID: 2135730981}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6166,8 +6166,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1447432423}
-  m_RootOrder: 4
+  m_Father: {fileID: 2135730981}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6648,7 +6648,8 @@ RectTransform:
   - {fileID: 1930548363}
   - {fileID: 213899122}
   - {fileID: 1607062829}
-  - {fileID: 1447432423}
+  - {fileID: 286845378}
+  - {fileID: 2060981900}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6671,8 +6672,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCardOverlay: {fileID: 286845380}
   myCardOverlay: {fileID: 2060981902}
-  turnPointer: {fileID: 0}
-  pullsShuffle: {fileID: 0}
+  turnPointer: {fileID: 250656406}
+  pullsShuffle: {fileID: 2042436048}
   previousCardOne: {fileID: 73297406}
   previousCardTwo: {fileID: 282065880}
   previousCardThree: {fileID: 803610638}

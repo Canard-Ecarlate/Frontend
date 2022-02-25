@@ -7,13 +7,14 @@ using UnityEngine.SceneManagement;
 public class FolderScene : MonoBehaviour
 {
     [SerializeField] private Image createBg, privateBg;
-    [SerializeField] private Text nbPlayers;
+    [SerializeField] private Text nbPlayers, roomNameText;
 
-    [SerializeField] private InputField roomName;
+    [SerializeField] private InputField roomName, roomCode;
     
     // Start is called before the first frame update
     void Start()
     {
+        roomNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
         Screen.orientation = ScreenOrientation.Portrait;
     }
 
