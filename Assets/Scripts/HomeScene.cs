@@ -1,7 +1,8 @@
 using Utils;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using Utils;
 
 public class HomeScene : MonoBehaviour
 {

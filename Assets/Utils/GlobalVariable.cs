@@ -5,8 +5,9 @@ namespace Utils
 {
     static class GlobalVariable
     {
-        public readonly static User CurrentUser = new User();
-        public readonly static string URL = "http://canardecarlate.fr:3100/api/";
-        public readonly static WebCommunicatorControler WebCommunicatorControler = new WebCommunicatorControler();
+        public static readonly User CurrentUser = new User();
+        public static readonly RoomDto CurrentRoom = new RoomDto();
+        public static readonly string URL = "http://canardecarlate.fr:3100/api/";
+        public static readonly WebCommunicatorControler WebCommunicatorControler = new WebCommunicatorControler();
     }
 }

@@ -20,15 +20,19 @@ public class LoginSignupScene : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-        var token = DataSave.LoadDataString("token");
+        string token = DataSave.LoadDataString("token");
         if (token != "")
         {
-            var response = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
-            Debug.Log(response.ToString());
-            if (response == "success")
+            string containerId = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
+            Debug.Log(containerId);
+            if (containerId == "")
             {
                 GoToMain();
-            } 
+            }
+            else
+            {
+                SceneManager.LoadScene("GameScene");
+            }
         }
 
         GoToLogin();
@@ -45,23 +49,29 @@ public class LoginSignupScene : MonoBehaviour
 
     public void Login()
     {
-        var pseudo = InputPseudoLogin.text;
-        var password = InputPasswordLogin.text;
+        string pseudo = InputPseudoLogin.text;
+        string password = InputPasswordLogin.text;
         
-        var response=GlobalVariable.WebCommunicatorControler.AppelWebAuthentification("https://localhost:7223/api/Authentication/Login", pseudo, password);
+        string response=GlobalVariable.WebCommunicatorControler.AppelWebAuthentification("https://localhost:7223/api/Authentication/Login", pseudo, password);
         try
         {
             GlobalVariable.CurrentUser.ChangeUser(JsonConvert.DeserializeObject<User>(response));
-            DataSave.SaveData("name", GlobalVariable.CurrentUser.Name);
             DataSave.SaveData("token", GlobalVariable.CurrentUser.Token);
-            GoToMain();
+            if (GlobalVariable.CurrentUser.ContainerId == null)
+            {
+                GoToMain();
+            }
+            else
+            {
+                SceneManager.LoadScene("GameScene");
+            }
         }
-        catch (Newtonsoft.Json.JsonReaderException e)
+        catch (JsonReaderException e)
         {
             Debug.Log(e.ToString());
             ShowToast.Toast(this, CanvasToast, "Erreur : Pseudo ou mot de passe incorrect");
         }
-        catch (System.NullReferenceException e)
+        catch (NullReferenceException e)
         {
             Debug.Log(e.ToString());
             ShowToast.Toast(this, CanvasToast, "Erreur : Connexion au serveur impossible");

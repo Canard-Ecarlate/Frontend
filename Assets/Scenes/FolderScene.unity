@@ -336,7 +336,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 538913332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 858878662}
+        m_TargetAssemblyTypeName: FolderScene, Assembly-CSharp
+        m_MethodName: CreateRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &538913332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +549,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 661937311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 858878662}
+        m_TargetAssemblyTypeName: FolderScene, Assembly-CSharp
+        m_MethodName: JoinRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &661937311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +810,7 @@ GameObject:
   - component: {fileID: 735255247}
   - component: {fileID: 735255246}
   m_Layer: 5
-  m_Name: Text
+  m_Name: code
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

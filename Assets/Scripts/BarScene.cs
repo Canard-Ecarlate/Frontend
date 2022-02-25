@@ -1,5 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Utils;
 
 public class BarScene : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class BarScene : MonoBehaviour
     // Beginning of Transitions section
     public void ToFolder()
     {
+        DuckCityHub.LeaveRoom(GlobalVariable.CurrentRoom.Code);
         SceneManager.LoadScene("FolderScene");
     }
 	public void ToGame()
