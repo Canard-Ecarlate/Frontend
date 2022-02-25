@@ -4159,10 +4159,8 @@ RectTransform:
   - {fileID: 803610637}
   - {fileID: 282065879}
   - {fileID: 73297405}
-  - {fileID: 286845378}
-  - {fileID: 2060981900}
   m_Father: {fileID: 2135730981}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5379,7 +5377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 569ae1a13acb04c409caf1dd4c840cf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6105694e58cef4e4084f56baaa48e4f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6650,6 +6648,7 @@ RectTransform:
   - {fileID: 1607062829}
   - {fileID: 286845378}
   - {fileID: 2060981900}
+  - {fileID: 1447432423}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6670,13 +6669,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fbb10f57303ee499a224d6ae534e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCardOverlay: {fileID: 286845380}
-  myCardOverlay: {fileID: 2060981902}
-  turnPointer: {fileID: 250656406}
-  pullsShuffle: {fileID: 2042436048}
-  previousCardOne: {fileID: 73297406}
-  previousCardTwo: {fileID: 282065880}
-  previousCardThree: {fileID: 803610638}
-  pullsEnd: {fileID: 1188602826}
-  effectText: {fileID: 871624226}
-  tempBoomerang: {fileID: 1693010145}
+  DefaultCardOverlay: {fileID: 286845380}
+  MyCardOverlay: {fileID: 2060981902}
+  TurnPointer: {fileID: 250656406}
+  PullsShuffle: {fileID: 2042436048}
+  PreviousCardOne: {fileID: 803610638}
+  PreviousCardTwo: {fileID: 282065880}
+  PreviousCardThree: {fileID: 803610638}
+  PullsEnd: {fileID: 1188602826}
+  EffectText: {fileID: 871624226}
+  TempBoomerang: {fileID: 73297406}
