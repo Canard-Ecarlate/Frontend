@@ -2654,16 +2654,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68676eb29b388064090ba7955297ea05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonAnnouncement: {fileID: 1297981913}
-  buttonCards: {fileID: 1391937031}
-  buttonPlay: {fileID: 1784942303}
-  buttonProfile: {fileID: 91790976}
-  buttonRules: {fileID: 1394377020}
-  buttonSettings: {fileID: 1105751949}
-  buttonShop: {fileID: 1326159885}
-  buttonSkins: {fileID: 1131681372}
-  inputFieldUsername: {fileID: 936627244}
-  inputFieldCash: {fileID: 1113638420}
+  ButtonAnnouncement: {fileID: 1297981913}
+  ButtonCards: {fileID: 1391937031}
+  ButtonPlay: {fileID: 1784942303}
+  ButtonProfile: {fileID: 91790976}
+  ButtonRules: {fileID: 1394377020}
+  ButtonSettings: {fileID: 1105751949}
+  ButtonShop: {fileID: 1326159885}
+  ButtonSkins: {fileID: 1131681372}
+  InputFieldUsername: {fileID: 936627244}
+  InputFieldCash: {fileID: 1113638420}
 --- !u!1 &1982865894
 GameObject:
   m_ObjectHideFlags: 0
