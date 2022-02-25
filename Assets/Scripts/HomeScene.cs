@@ -1,7 +1,8 @@
 using Utils;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using Utils;
 
 public class HomeScene : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class HomeScene : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         
-        InputFieldUsername.text = GlobalVariable.CurrentUser.Name;
+        InputFieldUsername.text = GlobalVariable.User.Name;
         SetCash();
     }
 

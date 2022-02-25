@@ -7,14 +7,16 @@
         public string Email { get; set; }
         public string Token { get; set; }
         public string Error { get; set; }
+        public string ContainerId { get; set; }
 
         public void ChangeUser(User user)
         {
-            this.Id = user.Id;
-            this.Name = user.Name;
-            this.Email = user.Email;
-            this.Token = user.Token;
-            this.Error = user.Error;
+            Id = user.Id;
+            Name = user.Name;
+            Email = user.Email;
+            Token = user.Token;
+            Error = user.Error;
+            ContainerId = user.ContainerId;
         }
     }
 }

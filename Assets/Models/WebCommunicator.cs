@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using Utils;
 using Newtonsoft.Json;
 using UnityEngine;
+using Utils;
 
 namespace Models
 {
@@ -173,7 +174,7 @@ namespace Models
                 Debug.Log(url);
                 Debug.Log(e.Message + Environment.NewLine + e.InnerException);
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
-                GlobalVariable.CurrentUser.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
+                GlobalVariable.User.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
             }
             return retour;
         }
@@ -207,7 +208,7 @@ namespace Models
                 Debug.Log(url);
                 Debug.Log(e.Message + Environment.NewLine + e.InnerException);
                 Debug.Log("<<<<<<<<<<<<<<<<< AppelWeb(string url, List<KeyValuePair<string, string>> postData = null) >>>>>>>>>>>>>>>>>");
-                GlobalVariable.CurrentUser.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
+                GlobalVariable.User.Error = "Erreur Réseau, veuillez vérifier votre connexion internet et relancer l'application";
             }
             return retour;
         }
