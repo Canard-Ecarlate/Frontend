@@ -1,5 +1,9 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Utils;
 
 public class BarScene : MonoBehaviour
 {
@@ -16,12 +20,30 @@ public class BarScene : MonoBehaviour
     }
 
     // Beginning of Transitions section
-    public void ToFolder()
+    public async void ToFolder()
     {
-        SceneManager.LoadScene("FolderScene");
+        try
+        {
+            await DuckCityHub.LeaveRoom();
+            SceneManager.LoadScene("FolderScene");
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error when leaving room : "+ e.Message);
+            throw;
+        }
     }
-	public void ToGame()
+	public async void ToGame()
     {
-        SceneManager.LoadScene("GameScene");
+        try
+        {
+            await DuckCityHub.StartGame();
+            SceneManager.LoadScene("GameScene");
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error when leaving room : "+ e.Message);
+            throw;
+        }
     }
 }

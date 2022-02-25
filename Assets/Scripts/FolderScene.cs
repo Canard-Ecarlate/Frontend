@@ -1,6 +1,9 @@
+using System;
+using Models;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using Utils;
 
 public class FolderScene : MonoBehaviour
 {
@@ -8,7 +11,7 @@ public class FolderScene : MonoBehaviour
     [SerializeField] private Text NbPlayers, RoomNameText;
 
     [SerializeField] private InputField RoomName, RoomCode;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,34 +24,36 @@ public class FolderScene : MonoBehaviour
     {
         // does nothing for now
     }
-    
+
     // Beginning of Transitions section
     public void ToCreate()
     {
         CreateBg.gameObject.SetActive(true);
         PrivateBg.gameObject.SetActive(false);
     }
+
     public void ToPrivate()
     {
         CreateBg.gameObject.SetActive(false);
-		PrivateBg.gameObject.SetActive(true);
+        PrivateBg.gameObject.SetActive(true);
     }
 
     public void ToHome()
     {
         SceneManager.LoadScene("HomeScene");
     }
-    
+
     // Beginning of Create section
-	public void LessPlayers()
-	{
+    public void LessPlayers()
+    {
         int players = int.Parse(NbPlayers.text);
         if (players > 3)
         {
             players--;
             NbPlayers.text = players.ToString();
         }
-	}
+    }
+
     public void MorePlayers()
     {
         int players = int.Parse(NbPlayers.text);
@@ -58,5 +63,42 @@ public class FolderScene : MonoBehaviour
             NbPlayers.text = players.ToString();
         }
     }
-	// End of Create section
+
+    public async void CreateRoom()
+    {
+        // Appel pour gameContainer
+        DuckCityHub.StartHub();
+        try
+        {
+            await DuckCityHub.CreateRoom(new RoomCreationDto
+            {
+                ContainerId = "containerId",
+                IsPrivate = true,
+                NbPlayers = int.Parse(NbPlayers.text),
+                RoomName = RoomName.text
+            });
+            SceneManager.LoadScene("BarScene");
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error when creating room : "+ e.Message);
+            throw;
+        }
+    }
+
+    public async void JoinRoom()
+    {
+        // Appel pour gameContainer
+        DuckCityHub.StartHub();
+        try
+        {
+            await DuckCityHub.JoinRoom(RoomCode.text);
+            SceneManager.LoadScene("BarScene");
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error when joining room : "+ e.Message);
+            throw;
+        }
+    }
 }
