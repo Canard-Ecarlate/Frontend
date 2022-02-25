@@ -4138,6 +4138,7 @@ GameObject:
   - component: {fileID: 1447432426}
   - component: {fileID: 1447432425}
   - component: {fileID: 1447432424}
+  - component: {fileID: 1447432427}
   m_Layer: 5
   m_Name: Canvas_onTop
   m_TagString: Untagged
@@ -4230,6 +4231,45 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1447432427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447432422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a750e408e6ef4c2eac6c5daec37ac1b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2135730982}
+        m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
+        m_MethodName: StopShowingCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2060981901}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2135730982}
+        m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
+        m_MethodName: StopShowingCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 286845379}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1504357169
 GameObject:
   m_ObjectHideFlags: 0
@@ -5379,7 +5419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 569ae1a13acb04c409caf1dd4c840cf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6105694e58cef4e4084f56baaa48e4f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
