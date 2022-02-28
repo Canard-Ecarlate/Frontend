@@ -44,14 +44,6 @@ namespace Controlers
             return WebCommunicator.AppelWeb(url, postData);
         }
 
-        public string FindContainerIdForCreateRoom(string url, string token, string name, string hostId) 
-        { 
-            List<KeyValuePair<string, string>> postData = new List<KeyValuePair<string, string>>(); 
-            postData.Add(new KeyValuePair<string, string>("name", name)); 
-            postData.Add(new KeyValuePair<string, string>("hostId", hostId)); 
-            return JsonConvert.DeserializeObject<GameContainer>(WebCommunicator.AppelWeb(url, postData, token)).Id; 
-        }
-
         public string AppelWebDelete(string url, string token)
         {
             return WebCommunicator.AppelWebDelete(url, token);
