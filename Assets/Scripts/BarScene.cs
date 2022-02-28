@@ -49,8 +49,6 @@ public class BarScene : MonoBehaviour
         if (NbPlayers == GlobalVariable.Players.Count) return;
         NbPlayers = GlobalVariable.Players.Count;
         SetPlayerDucks(NbPlayers);
-        
-        Task.Delay(1000); // TODO: Remove this
     }
 
     private void SetPlayerDucks(int nbPlayers)
