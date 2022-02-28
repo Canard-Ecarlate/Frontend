@@ -1,4 +1,8 @@
 using System;
+using System.Linq;
+using System.Threading.Tasks;
+using JetBrains.Annotations;
+using Models;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -6,7 +10,8 @@ using Utils;
 
 public class BarScene : MonoBehaviour
 {
-    [SerializeField] private Text RoomName;
+    [SerializeField] private Text RoomName,
+        RoomCode;
     [SerializeField] private Image Player1, 
         Player2, 
         Player3, 
@@ -17,6 +22,7 @@ public class BarScene : MonoBehaviour
         Player8;
     [SerializeField] private Button PlayButton,
         ReadyToggle;
+
     private int NbPlayers;
 
     // Start is called before the first frame update
@@ -28,12 +34,17 @@ public class BarScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RoomCode.text = GlobalVariable.Room.Code;
         RoomName.text = GlobalVariable.Room.Name;
         if (GlobalVariable.Room.HostId == GlobalVariable.User.Id)
         {
             ReadyToggle.gameObject.SetActive(false);
             PlayButton.gameObject.SetActive(true);
         }
+
+        int nbReady = GlobalVariable.Players.Count(p => p.Ready);
+        ReadyToggle.interactable = nbReady == GlobalVariable.Players.Count-1;
+        
         if (NbPlayers == GlobalVariable.Players.Count) return;
         NbPlayers = GlobalVariable.Players.Count;
         SetPlayerDucks(NbPlayers);
@@ -124,6 +135,11 @@ public class BarScene : MonoBehaviour
                 Player8.gameObject.SetActive(true);
                 break;
         }
+    }
+
+    public async void SetUnsetReady()
+    {
+        await DuckCityHub.PlayerReady();
     }
 
     // Beginning of Transitions section
