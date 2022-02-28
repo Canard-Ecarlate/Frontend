@@ -16,7 +16,7 @@ public class LoginSignupScene : MonoBehaviour
         InputPasswordLogin,
         InputPasswordSignup,
         InputEmail,
-        inputConfirm;
+        InputConfirm;
 
     [SerializeField] private Toggle ToggleTos;
     [SerializeField] private Canvas CanvasLogin, CanvasSignup;
@@ -101,7 +101,7 @@ public class LoginSignupScene : MonoBehaviour
         var pseudo = InputPseudoSignup.text;
         var email = InputEmail.text;
         var password = InputPasswordSignup.text;
-        var confirm = inputConfirm.text;
+        var confirm = InputConfirm.text;
 
         var response = GlobalVariable.WebCommunicatorControler.AppelWebRegistration(
             "https://localhost:7223/api/Authentication/Signup", pseudo, email, password, confirm);
@@ -196,7 +196,7 @@ public class LoginSignupScene : MonoBehaviour
             return false;
         }
 
-        if (inputConfirm.text == "")
+        if (InputConfirm.text == "")
         {
             return false;
         }

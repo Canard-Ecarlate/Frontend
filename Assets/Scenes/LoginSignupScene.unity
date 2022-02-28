@@ -1399,7 +1399,7 @@ MonoBehaviour:
   InputPasswordLogin: {fileID: 896123683}
   InputPasswordSignup: {fileID: 266622140}
   InputEmail: {fileID: 251797318}
-  inputConfirm: {fileID: 762267108}
+  InputConfirm: {fileID: 762267108}
   ToggleTos: {fileID: 1248115939}
   CanvasLogin: {fileID: 207255758}
   CanvasSignup: {fileID: 1385422012}
