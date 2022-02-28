@@ -68,13 +68,17 @@ public class FolderScene : MonoBehaviour
 
     public async void CreateRoom()
     {
-        // string containerId = ApiRestController.FindContainerIdForCreateRoom();;
+        GameContainer container = ApiRestController.FindContainerIdForCreateRoom(new RoomCreationApiDto
+        {
+            RoomName = RoomName.text
+        });
+        if (container.Id == null) return;
         DuckCityHub.StartHub();
         try
         {
             await DuckCityHub.CreateRoom(new RoomCreationDto
             {
-                ContainerId = "containerId",
+                ContainerId = container.Id,
                 IsPrivate = true,
                 NbPlayers = int.Parse(NbPlayers.text),
                 RoomName = RoomName.text
@@ -91,7 +95,11 @@ public class FolderScene : MonoBehaviour
     // Beginning of Private section
     public async void JoinRoom()
     {
-        // Appel pour gameContainer
+        GameContainer container = ApiRestController.FindContainerIdForJoinRoom(new RoomCodeDto
+        {
+            RoomCode = RoomCode.text
+        });
+        if (container.Id == null) return;
         DuckCityHub.StartHub();
         try
         {

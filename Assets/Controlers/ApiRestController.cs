@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
+using System.Text;
 using Models;
 using Newtonsoft.Json;
+using Utils;
 
 namespace Controlers
 {
@@ -12,14 +13,21 @@ namespace Controlers
         private static readonly HttpClient HttpClient = new HttpClient();
         private static readonly string UrlApi = "https://localhost:7223/api";
 
-        private static Task<HttpResponseMessage> PostAsync(string endUrl, string jsonContent)
+        private static HttpResponseMessage PostAsync(string endUrl, string jsonContent)
+        {
+            StringContent content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            HttpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", GlobalVariable.User.Token);
+            return HttpClient.PostAsync(UrlApi + endUrl, content).Result;
+        }
+
+        public static GameContainer FindContainerIdForCreateRoom(RoomCreationApiDto dto)
         {
             try
             {
-                HttpContent content = new StringContent(jsonContent);
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json"); 
-
-                return HttpClient.PostAsync(UrlApi + endUrl, new StringContent(jsonContent));
+                string json = JsonConvert.SerializeObject(dto);
+                HttpResponseMessage response = PostAsync("/GameContainer/FindContainerIdForCreateRoom", json);
+                return JsonConvert.DeserializeObject<GameContainer>(response.Content.ReadAsStringAsync().Result);
             }
             catch (Exception e)
             {
@@ -28,19 +36,22 @@ namespace Controlers
             }
         }
 
-        public static TokenAndCurrentContainerIdDto FindContainerIdForCreateRoom(string roomName)
+        public static GameContainer FindContainerIdForJoinRoom(RoomCodeDto dto)
         {
-            RoomCreationDto roomCreationDto = new RoomCreationDto
+            string json = JsonConvert.SerializeObject(dto);
+            try
             {
-                RoomName = roomName
-            };
-            string json = JsonConvert.SerializeObject(roomCreationDto);
-            HttpResponseMessage response = PostAsync("/GameContainer/FindContainerIdForCreateRoom", json).Result;
-            return JsonConvert.DeserializeObject<TokenAndCurrentContainerIdDto>(response.Content.ReadAsStringAsync().Result);
+                HttpResponseMessage response = PostAsync("/GameContainer/FindContainerIdForJoinRoom", json);
+                return JsonConvert.DeserializeObject<GameContainer>(response.Content.ReadAsStringAsync().Result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
-
-        public static TokenAndCurrentContainerIdDto Login(string name, string password)
+        /*public static TokenAndCurrentContainerIdDto Login(string name, string password)
         {
             IdentifierDto identifierDto = new IdentifierDto()
             {
@@ -49,10 +60,12 @@ namespace Controlers
             };
             string json = JsonConvert.SerializeObject(identifierDto);
             HttpResponseMessage response = PostAsync("/Authentication/Login", json).Result;
-            return JsonConvert.DeserializeObject<TokenAndCurrentContainerIdDto>(response.Content.ReadAsStringAsync().Result);
+            return JsonConvert.DeserializeObject<TokenAndCurrentContainerIdDto>(response.Content.ReadAsStringAsync()
+                .Result);
         }
 
-        public static TokenAndCurrentContainerIdDto SignUp(string name, string email, string password, string passwordConfirm)
+        public static TokenAndCurrentContainerIdDto SignUp(string name, string email, string password,
+            string passwordConfirm)
         {
             RegisterDto registerDto = new RegisterDto
             {
@@ -63,7 +76,8 @@ namespace Controlers
             };
             string json = JsonConvert.SerializeObject(registerDto);
             Task<HttpResponseMessage> response = PostAsync("/Authentication/SignUp", json);
-            return JsonConvert.DeserializeObject<TokenAndCurrentContainerIdDto>(response.Result.Content.ReadAsStringAsync().Result);
-        }
+            return JsonConvert.DeserializeObject<TokenAndCurrentContainerIdDto>(response.Result.Content
+                .ReadAsStringAsync().Result);
+        }*/
     }
 }
