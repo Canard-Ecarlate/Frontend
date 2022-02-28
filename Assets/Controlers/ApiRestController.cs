@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Models;
@@ -23,32 +22,16 @@ namespace Controlers
 
         public static GameContainer FindContainerIdForCreateRoom(RoomCreationApiDto dto)
         {
-            try
-            {
-                string json = JsonConvert.SerializeObject(dto);
-                HttpResponseMessage response = PostAsync("/GameContainer/FindContainerIdForCreateRoom", json);
-                return JsonConvert.DeserializeObject<GameContainer>(response.Content.ReadAsStringAsync().Result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            string json = JsonConvert.SerializeObject(dto);
+            string response = PostAsync("/GameContainer/FindContainerIdForCreateRoom", json).Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<GameContainer>(response);
         }
 
-        public static GameContainer FindContainerIdForJoinRoom(RoomCodeDto dto)
-        {
-            string json = JsonConvert.SerializeObject(dto);
-            try
-            {
-                HttpResponseMessage response = PostAsync("/GameContainer/FindContainerIdForJoinRoom", json);
-                return JsonConvert.DeserializeObject<GameContainer>(response.Content.ReadAsStringAsync().Result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+        public static GameContainer FindContainerIdForJoinRoom(UserAndRoomDto dto)
+        { 
+            string json = JsonConvert.SerializeObject(dto); 
+            string response = PostAsync("/GameContainer/FindContainerIdForJoinRoom", json).Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<GameContainer>(response);
         }
 
         /*public static TokenAndCurrentContainerIdDto Login(string name, string password)

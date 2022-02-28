@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -18,22 +17,19 @@ public class BarScene : MonoBehaviour
         Player8;
     [SerializeField] private Button PlayButton,
         ReadyToggle;
-    private int NbPlayers = 0;
-    private string HostId, UserId;
+    private int NbPlayers;
 
     // Start is called before the first frame update
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-        HostId = GlobalVariable.Room.HostId;
-        UserId = GlobalVariable.User.Id;
-        RoomName.text = GlobalVariable.Room.Name;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HostId == UserId)
+        RoomName.text = GlobalVariable.Room.Name;
+        if (GlobalVariable.Room.HostId == GlobalVariable.User.Id)
         {
             ReadyToggle.gameObject.SetActive(false);
             PlayButton.gameObject.SetActive(true);

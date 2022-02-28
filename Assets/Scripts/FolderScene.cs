@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Utils;
 using Newtonsoft.Json;
+using UnityEngine.WSA;
 
 public class FolderScene : MonoBehaviour
 {
@@ -68,11 +69,7 @@ public class FolderScene : MonoBehaviour
 
     public async void CreateRoom()
     {
-        GameContainer container = ApiRestController.FindContainerIdForCreateRoom(new RoomCreationApiDto
-        {
-            RoomName = RoomName.text
-        });
-        if (container.Id == null) return;
+        GameContainer container = ApiRestController.FindContainerIdForCreateRoom(new RoomCreationApiDto(RoomName.text));
         DuckCityHub.StartHub();
         try
         {
@@ -95,11 +92,12 @@ public class FolderScene : MonoBehaviour
     // Beginning of Private section
     public async void JoinRoom()
     {
-        GameContainer container = ApiRestController.FindContainerIdForJoinRoom(new RoomCodeDto
+        GameContainer container = ApiRestController.FindContainerIdForJoinRoom(new UserAndRoomDto(RoomCode.text));
+        if (container == null)
         {
-            RoomCode = RoomCode.text
-        });
-        if (container.Id == null) return;
+            Debug.Log("Room not found");
+            return;
+        }
         DuckCityHub.StartHub();
         try
         {
