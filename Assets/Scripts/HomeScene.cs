@@ -62,9 +62,10 @@ public class HomeScene : MonoBehaviour
         Debug.Log("Paramètres");
     }
 
-    public void GoToShop()
+    public void Disconnect()
     {
-        Debug.Log("Shop");
+        DataSave.SaveData("token", "");
+        SceneManager.LoadScene("LoginSignupScene");
     }
 
     public void GoToSkins()
