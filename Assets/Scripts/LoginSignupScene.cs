@@ -28,20 +28,22 @@ public class LoginSignupScene : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         string token = DataSave.LoadDataString("token");
-        // if (token != "")
-        // {
-        //     string containerId = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
-        //     Debug.Log(containerId);
-        //     if (containerId == "")
-        //     {
-        //         GoToMain();
-        //     }
-        //     else
-        //     {
-        //         DuckCityHub.StartHub();
-        //         SceneManager.LoadScene("BarScene");
-        //     }
-        // }
+        if (token != "")
+        {
+            string response = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
+            Debug.Log("Auto connect : " + response);
+            GlobalVariable.User.ChangeUser(JsonConvert.DeserializeObject<User>(response));
+            GlobalVariable.User.Token = token;
+            if (GlobalVariable.User.ContainerId == null)
+            {
+                GoToMain();
+            }
+            else
+            {
+                DuckCityHub.StartHub();
+                SceneManager.LoadScene("BarScene");
+            }
+        }
 
         GoToLogin();
         TryEnableButtons();

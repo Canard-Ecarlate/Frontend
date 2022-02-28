@@ -1363,7 +1363,7 @@ MonoBehaviour:
   Player7: {fileID: 394256100}
   Player8: {fileID: 621620472}
   PlayButton: {fileID: 53850211}
-  ReadyToggle: {fileID: 0}
+  ReadyToggle: {fileID: 1991583396}
 --- !u!1 &1739112431
 GameObject:
   m_ObjectHideFlags: 0

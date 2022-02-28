@@ -20,8 +20,9 @@ public class BarScene : MonoBehaviour
         Player6, 
         Player7, 
         Player8;
-    [SerializeField] private Button PlayButton,
-        ReadyToggle;
+
+    [SerializeField] private Button PlayButton;
+    [SerializeField] private Toggle ReadyToggle;
 
     private int NbPlayers;
 
@@ -42,8 +43,8 @@ public class BarScene : MonoBehaviour
             PlayButton.gameObject.SetActive(true);
         }
 
-        int nbReady = GlobalVariable.Players.Count(p => p.Ready);
-        ReadyToggle.interactable = nbReady == GlobalVariable.Players.Count-1;
+        int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
+        ReadyToggle.interactable = nbReady == GlobalVariable.Players.Count;
         
         if (NbPlayers == GlobalVariable.Players.Count) return;
         NbPlayers = GlobalVariable.Players.Count;
