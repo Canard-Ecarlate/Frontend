@@ -40,8 +40,7 @@ public class LoginSignupScene : MonoBehaviour
             }
             else
             {
-                DuckCityHub.StartHub();
-                SceneManager.LoadScene("BarScene");
+                DuckCityHub.StartHub(GlobalVariable.User.ContainerId);
             }
         }
 
@@ -69,8 +68,7 @@ public class LoginSignupScene : MonoBehaviour
             }
             else
             {
-                DuckCityHub.StartHub();
-                SceneManager.LoadScene("BarScene");
+                DuckCityHub.StartHub(GlobalVariable.User.ContainerId);
             }
         }
         catch (JsonReaderException e)

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
 using Models;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Utils
@@ -12,12 +13,11 @@ namespace Utils
     public static class DuckCityHub
     {
         private static HubConnection _hubConnection;
-        public delegate void OnPlayersUpdateDelegate();
-        public static event OnPlayersUpdateDelegate OnPlayersPush;
-        public delegate void OnRoomUpdateDelegate();
-        public static event OnRoomUpdateDelegate OnRoomPush;
+        public static bool OnRoomPush;
+        public static bool OnPlayersPush;
+        public static bool OnGamePush;
 
-        public static void StartHub()
+        public static void StartHub(string containerId)
         {
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl("https://localhost:7143/",
@@ -31,38 +31,44 @@ namespace Utils
             _hubConnection.Reconnecting += error =>
             {
                 Debug.Assert(_hubConnection.State == HubConnectionState.Reconnecting);
-                // Notify users the connection was lost and the client is reconnecting.
-                // Start queuing or dropping messages.
                 return Task.CompletedTask;
             };
             _hubConnection.Closed += async _ =>
             {
                 await Task.Delay(Random.Range(0, 5) * 1000).ConfigureAwait(false);
-                await _hubConnection.StartAsync();
+                await _hubConnection.StartAsync(); 
             };
 
             _hubConnection.On("PushRoom", (RoomDto roomDto) =>
             {
                 GlobalVariable.Room.SetRoom(roomDto);
-                OnRoomPush?.Invoke();
+                OnRoomPush = true;
+                if (!SceneManager.GetSceneByName("BarScene").isLoaded)
+                {
+                    SceneManager.LoadScene("BarScene");
+                }
             });
 
             _hubConnection.On("PushPlayers", (List<PlayerInWaitingRoomDto> players) =>
             {
                 GlobalVariable.Players.RemoveAll(_ => true);
                 GlobalVariable.Players.AddRange(players);
-                OnPlayersPush?.Invoke();
-            });
+                OnPlayersPush = true;
+            }); 
 
             _hubConnection.On("PushGame", (GameDto game) =>
             {
                 GlobalVariable.Game.SetGame(game);
-            });
+                OnGamePush = true;
+                if (!SceneManager.GetSceneByName("GameScene").isLoaded)
+                {
+                    SceneManager.LoadScene("GameScene");
+                }  });
 
             try
             {
                 _hubConnection.StartAsync();
-                Debug.Log("Hub connection started");
+                Debug.Log("Start hub connection in container (id : " + containerId + " fake)");
             }
             catch (Exception ex)
             {

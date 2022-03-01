@@ -26,36 +26,37 @@ public class BarScene : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-        //PushRoomInfos();
-        //PushPlayersInfos();
-        DuckCityHub.OnRoomPush += PushRoomInfos;
-        DuckCityHub.OnPlayersPush += PushPlayersInfos;
-    }
-    
-    private void PushRoomInfos()
-    {
-        // Set texts
-        RoomCode.text = GlobalVariable.Room.Code;
-        RoomName.text = GlobalVariable.Room.Name;
-        if (GlobalVariable.Room.HostId != GlobalVariable.User.Id)
-        {
-            NotReadyButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            PlayButton.gameObject.SetActive(true);
-        }
     }
 
-    private void PushPlayersInfos()
+    void Update()
     {
-        int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
+        if (DuckCityHub.OnRoomPush)
+        {
+            // Set texts
+            RoomCode.text = GlobalVariable.Room.Code; 
+            RoomName.text = GlobalVariable.Room.Name;
+            if (GlobalVariable.Room.HostId != GlobalVariable.User.Id)
+            {
+                NotReadyButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                PlayButton.gameObject.SetActive(true);
+            }
+            DuckCityHub.OnRoomPush = false; 
+        }
+
+        if (DuckCityHub.OnPlayersPush)
+        {
+            int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
         
-        // Display Play button if everybody is ready
-        PlayButton.interactable = nbReady == GlobalVariable.Room.RoomConfiguration.NbPlayers;
+            // Display Play button if everybody is ready
+            PlayButton.interactable = nbReady == GlobalVariable.Room.RoomConfiguration.NbPlayers;
         
-        // Display ducks
-        SetPlayerDucks(GlobalVariable.Players.Count);
+            // Display ducks
+            SetPlayerDucks(GlobalVariable.Players.Count);
+            DuckCityHub.OnPlayersPush = false;
+        }
     }
 
     private void SetPlayerDucks(int nbPlayers)
@@ -149,7 +150,7 @@ public class BarScene : MonoBehaviour
     {
         try
         {
-            //await DuckCityHub.PlayerReady();
+            await DuckCityHub.PlayerReady();
             ReadyButton.gameObject.SetActive(!ReadyButton.IsActive());
             NotReadyButton.gameObject.SetActive(!NotReadyButton.IsActive());
         }

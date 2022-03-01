@@ -62,9 +62,9 @@ public class FolderScene : MonoBehaviour
     public async void CreateRoom()
     {
         GameContainer container = ApiRestController.FindContainerIdForCreateRoom(new RoomCreationApiDto(RoomName.text));
-        DuckCityHub.StartHub();
         try
         {
+            DuckCityHub.StartHub(container.Id);
             await DuckCityHub.CreateRoom(new RoomCreationDto
             {
                 ContainerId = container.Id,
@@ -72,7 +72,6 @@ public class FolderScene : MonoBehaviour
                 NbPlayers = int.Parse(NbPlayers.text),
                 RoomName = RoomName.text
             });
-            SceneManager.LoadScene("BarScene");
         }
         catch (Exception e)
         {
@@ -90,11 +89,10 @@ public class FolderScene : MonoBehaviour
             Debug.Log("Room not found");
             return;
         }
-        DuckCityHub.StartHub();
+        DuckCityHub.StartHub(container.Id);
         try
         {
             await DuckCityHub.JoinRoom(RoomCode.text);
-            SceneManager.LoadScene("BarScene");
         }
         catch (Exception e)
         {
