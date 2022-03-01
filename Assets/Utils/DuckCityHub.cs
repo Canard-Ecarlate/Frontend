@@ -12,6 +12,10 @@ namespace Utils
     public static class DuckCityHub
     {
         private static HubConnection _hubConnection;
+        public delegate void OnPlayersUpdateDelegate();
+        public static event OnPlayersUpdateDelegate OnPlayersPush;
+        public delegate void OnRoomUpdateDelegate();
+        public static event OnRoomUpdateDelegate OnRoomPush;
 
         public static void StartHub()
         {
@@ -40,12 +44,14 @@ namespace Utils
             _hubConnection.On("PushRoom", (RoomDto roomDto) =>
             {
                 GlobalVariable.Room.SetRoom(roomDto);
+                OnRoomPush?.Invoke();
             });
 
             _hubConnection.On("PushPlayers", (List<PlayerInWaitingRoomDto> players) =>
             {
                 GlobalVariable.Players.RemoveAll(_ => true);
                 GlobalVariable.Players.AddRange(players);
+                OnPlayersPush?.Invoke();
             });
 
             _hubConnection.On("PushGame", (GameDto game) =>

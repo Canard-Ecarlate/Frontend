@@ -1,8 +1,5 @@
 using System;
 using System.Linq;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
-using Models;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -23,32 +20,41 @@ public class BarScene : MonoBehaviour
 
     [SerializeField] private Button PlayButton;
     [SerializeField] private Toggle ReadyToggle;
-
-    private int NbPlayers;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
+        //PushRoomInfos();
+        //PushPlayersInfos();
+        DuckCityHub.OnRoomPush += PushRoomInfos;
+        DuckCityHub.OnPlayersPush += PushPlayersInfos;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void PushRoomInfos()
     {
+        // Set texts
         RoomCode.text = GlobalVariable.Room.Code;
         RoomName.text = GlobalVariable.Room.Name;
-        if (GlobalVariable.Room.HostId == GlobalVariable.User.Id)
+        if (GlobalVariable.Room.HostId != GlobalVariable.User.Id)
         {
-            ReadyToggle.gameObject.SetActive(false);
+            ReadyToggle.gameObject.SetActive(true);
+        }
+        else
+        {
             PlayButton.gameObject.SetActive(true);
         }
+    }
 
+    private void PushPlayersInfos()
+    {
         int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
-        PlayButton.interactable = nbReady == GlobalVariable.Players.Capacity;
         
-        if (NbPlayers == GlobalVariable.Players.Count) return;
-        NbPlayers = GlobalVariable.Players.Count;
-        SetPlayerDucks(NbPlayers);
+        // Display Play button if everybody is ready
+        PlayButton.interactable = nbReady == GlobalVariable.Room.RoomConfiguration.NbPlayers;
+        
+        // Display ducks
+        SetPlayerDucks(GlobalVariable.Players.Count);
     }
 
     private void SetPlayerDucks(int nbPlayers)
@@ -138,9 +144,17 @@ public class BarScene : MonoBehaviour
         }
     }
 
-    public async void SetUnsetReady()
+    public async void PlayerReady()
     {
-        await DuckCityHub.PlayerReady();
+        try
+        {
+            await DuckCityHub.PlayerReady();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error when player ready : "+ e.Message);
+            throw;
+        }
     }
 
     // Beginning of Transitions section
