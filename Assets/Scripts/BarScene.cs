@@ -29,6 +29,7 @@ public class BarScene : MonoBehaviour
         Screen.orientation = ScreenOrientation.Portrait;
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (DuckCityHub.OnRoomPush)
