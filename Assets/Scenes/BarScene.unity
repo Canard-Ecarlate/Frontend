@@ -1668,7 +1668,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1616385385}
+        m_TargetAssemblyTypeName: BarScene, Assembly-CSharp
+        m_MethodName: SetUnsetReady
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &1991583397
 MonoBehaviour:
@@ -1690,7 +1702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9126f9ef4503ccd409d78e01c4592988, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ec851ddcd80f0f44b3aeb14b910b26b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
