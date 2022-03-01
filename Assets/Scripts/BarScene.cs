@@ -18,9 +18,10 @@ public class BarScene : MonoBehaviour
         Player7, 
         Player8;
 
-    [SerializeField] private Button PlayButton;
-    [SerializeField] private Toggle ReadyToggle;
-    
+    [SerializeField] private Button PlayButton,
+        ReadyButton,
+        NotReadyButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,7 @@ public class BarScene : MonoBehaviour
         RoomName.text = GlobalVariable.Room.Name;
         if (GlobalVariable.Room.HostId != GlobalVariable.User.Id)
         {
-            ReadyToggle.gameObject.SetActive(true);
+            NotReadyButton.gameObject.SetActive(true);
         }
         else
         {
@@ -148,7 +149,9 @@ public class BarScene : MonoBehaviour
     {
         try
         {
-            await DuckCityHub.PlayerReady();
+            //await DuckCityHub.PlayerReady();
+            ReadyButton.gameObject.SetActive(!ReadyButton.IsActive());
+            NotReadyButton.gameObject.SetActive(!NotReadyButton.IsActive());
         }
         catch (Exception e)
         {
