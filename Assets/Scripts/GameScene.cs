@@ -11,7 +11,7 @@ public class GameScene : MonoBehaviour
     
     void Start()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
+        Screen.orientation = ScreenOrientation.Portrait; 
     }
 
     public void StopShowingCard(Button b)

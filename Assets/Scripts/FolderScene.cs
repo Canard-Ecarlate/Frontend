@@ -1,4 +1,5 @@
 using System;
+using Controllers;
 using Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,12 +18,6 @@ public class FolderScene : MonoBehaviour
     {
         RoomNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
         Screen.orientation = ScreenOrientation.Portrait;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // does nothing for now
     }
 
     // Beginning of Transitions section
@@ -66,18 +61,17 @@ public class FolderScene : MonoBehaviour
 
     public async void CreateRoom()
     {
-        // Appel pour gameContainer
-        DuckCityHub.StartHub();
+        GameContainer container = ApiRestController.FindContainerIdForCreateRoom(new RoomCreationApiDto(RoomName.text));
         try
         {
+            DuckCityHub.StartHub(container.Id);
             await DuckCityHub.CreateRoom(new RoomCreationDto
             {
-                ContainerId = "containerId",
+                ContainerId = container.Id,
                 IsPrivate = true,
                 NbPlayers = int.Parse(NbPlayers.text),
                 RoomName = RoomName.text
             });
-            SceneManager.LoadScene("BarScene");
         }
         catch (Exception e)
         {
@@ -85,15 +79,20 @@ public class FolderScene : MonoBehaviour
             throw;
         }
     }
-
+    
+    // Beginning of Private section
     public async void JoinRoom()
     {
-        // Appel pour gameContainer
-        DuckCityHub.StartHub();
+        GameContainer container = ApiRestController.FindContainerIdForJoinRoom(new UserAndRoomDto(RoomCode.text));
+        if (container == null)
+        {
+            Debug.Log("Room not found");
+            return;
+        }
+        DuckCityHub.StartHub(container.Id);
         try
         {
             await DuckCityHub.JoinRoom(RoomCode.text);
-            SceneManager.LoadScene("BarScene");
         }
         catch (Exception e)
         {
