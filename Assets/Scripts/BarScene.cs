@@ -148,8 +148,6 @@ public class BarScene : MonoBehaviour
         try
         {
             await DuckCityHub.PlayerReady();
-            ReadyButton.gameObject.SetActive(!ReadyButton.IsActive());
-            NotReadyButton.gameObject.SetActive(!NotReadyButton.IsActive());
         }
         catch (Exception e)
         {
