@@ -6,8 +6,8 @@ namespace Models
     {
         public PlayerMeDto PlayerMe { get; set; }
         public Game Game { get; set; }
-        public HashSet<string> PlayerDrawable { get; set; }
-        public HashSet<OtherPlayerDto> OtherPlayers { get; set; }
+        public IEnumerable<string> PlayerDrawable { get; set; }
+        public IEnumerable<OtherPlayerDto> OtherPlayers { get; set; }
 
         public void SetGame(GameDto game)
         {

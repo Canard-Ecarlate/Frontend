@@ -2,10 +2,8 @@
 
 namespace Models
 {
-    public interface ICard
+    public class ICard
     {
-        string Name { get; }
-
-        void DrawAction(Player playerWhoDraw, Player playerWhereCardIsDrawing, Game game, HashSet<Player> players);
+        private string Name { get; set; }
     }
 }

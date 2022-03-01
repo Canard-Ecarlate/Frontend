@@ -1,7 +1,7 @@
 ﻿namespace Models
 {
-    public interface IRole
+    public class IRole
     {
-        string Name { get; }
+        private string Name { get; set; }
     }
 }

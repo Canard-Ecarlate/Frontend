@@ -63,7 +63,8 @@ namespace Utils
                 if (!SceneManager.GetSceneByName("GameScene").isLoaded)
                 {
                     SceneManager.LoadScene("GameScene");
-                }  });
+                }  
+            });
 
             try
             {
