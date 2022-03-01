@@ -60,7 +60,7 @@ public class BarScene : MonoBehaviour
     {
         switch (nbPlayers)
         {
-            case 1:
+            default:
                 Player1.gameObject.SetActive(true);
                 Player2.gameObject.SetActive(false);
                 Player3.gameObject.SetActive(false);

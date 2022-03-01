@@ -13,9 +13,10 @@ namespace Utils
     public static class DuckCityHub
     {
         private static HubConnection _hubConnection;
-        public static bool OnRoomPush;
-        public static bool OnPlayersPush;
-        public static bool OnGamePush;
+
+        public static bool OnRoomPush { get; set; }
+        public static bool OnPlayersPush { get; set; }
+        public static bool OnGamePush { get; set; }
 
         public static void StartHub(string containerId)
         {
