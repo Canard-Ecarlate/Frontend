@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Models;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -35,23 +36,19 @@ public class BarScene : MonoBehaviour
             // Set texts
             RoomCode.text = GlobalVariable.Room.Code; 
             RoomName.text = GlobalVariable.Room.Name;
-            if (GlobalVariable.Room.HostId != GlobalVariable.User.Id)
-            {
-                NotReadyButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                PlayButton.gameObject.SetActive(true);
-            }
             DuckCityHub.OnRoomPush = false; 
         }
 
         if (DuckCityHub.OnPlayersPush)
         {
+            PlayerInWaitingRoomDto me = GlobalVariable.Players.Single(p => p.Id == GlobalVariable.User.Id);
+            NotReadyButton.gameObject.SetActive(!me.Ready);
+            ReadyButton.gameObject.SetActive(me.Ready);
+
             int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
         
             // Display Play button if everybody is ready
-            PlayButton.interactable = nbReady == GlobalVariable.Room.RoomConfiguration.NbPlayers;
+            PlayButton.gameObject.SetActive(nbReady == GlobalVariable.Room.RoomConfiguration.NbPlayers);
         
             // Display ducks
             SetPlayerDucks(GlobalVariable.Players.Count);
