@@ -180,7 +180,6 @@ public class BarScene : MonoBehaviour
         try
         {
             await DuckCityHub.StartGame();
-            SceneManager.LoadScene("GameScene");
         }
         catch (Exception e)
         {
