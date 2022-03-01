@@ -1,12 +1,10 @@
 using System;
-using Controlers;
+using Controllers;
 using Models;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Utils;
-using Newtonsoft.Json;
-using UnityEngine.WSA;
 
 public class FolderScene : MonoBehaviour
 {
@@ -20,12 +18,6 @@ public class FolderScene : MonoBehaviour
     {
         RoomNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
         Screen.orientation = ScreenOrientation.Portrait;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // does nothing for now
     }
 
     // Beginning of Transitions section

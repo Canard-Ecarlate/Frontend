@@ -5,15 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class HomeScene : MonoBehaviour
 {
-    [SerializeField] private Button ButtonAnnouncement,
-        ButtonCards,
-        ButtonPlay,
-        ButtonProfile,
-        ButtonRules,
-        ButtonSettings,
-        ButtonShop,
-        ButtonSkins;
-
     [SerializeField] private InputField InputFieldUsername, InputFieldCash;
     
     // Start is called before the first frame update
@@ -25,12 +16,6 @@ public class HomeScene : MonoBehaviour
         SetCash();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //nothing to do here
-    }
-    
     // Start of Transitions functions
     public void GoToFolder()
     {

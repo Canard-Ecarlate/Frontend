@@ -51,12 +51,6 @@ public class LoginSignupScene : MonoBehaviour
         InputPseudoLogin.text = DataSave.LoadDataString("name");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //nothing to do here
-    }
-
     public void Login()
     {
         string pseudo = InputPseudoLogin.text;
@@ -98,12 +92,12 @@ public class LoginSignupScene : MonoBehaviour
 
     public void Signup()
     {
-        var pseudo = InputPseudoSignup.text;
-        var email = InputEmail.text;
-        var password = InputPasswordSignup.text;
-        var confirm = InputConfirm.text;
+        string pseudo = InputPseudoSignup.text;
+        string email = InputEmail.text;
+        string password = InputPasswordSignup.text;
+        string confirm = InputConfirm.text;
 
-        var response = GlobalVariable.WebCommunicatorControler.AppelWebRegistration(
+        string response = GlobalVariable.WebCommunicatorControler.AppelWebRegistration(
             "https://localhost:7223/api/Authentication/Signup", pseudo, email, password, confirm);
 
         try
@@ -113,24 +107,24 @@ public class LoginSignupScene : MonoBehaviour
             DataSave.SaveData("token", GlobalVariable.User.Token);
             GoToMain();
         }
-        catch (Newtonsoft.Json.JsonReaderException e)
+        catch (JsonReaderException e)
         {
             Debug.Log(e.ToString());
-            var except = response.Split(':')[0];
-            if (except == "DuckCity.Domain.Exceptions.UsernameAlreadyExistException")
+            string except = response.Split(':')[0];
+            switch (except)
             {
-                ShowToast.Toast(this, CanvasToast,"Erreur : Ce pseudo est déjà utilisé");
-            }
-            else if(except == "DuckCity.Domain.Exceptions.MailAlreadyExistException")
-            {
-                ShowToast.Toast(this, CanvasToast,"Erreur : Cet email est déjà utilisé");
-            }
-            else
-            {
-                ShowToast.Toast(this, CanvasToast, "Erreur : Informations incorrectes");
+                case "DuckCity.Domain.Exceptions.UsernameAlreadyExistException":
+                    ShowToast.Toast(this, CanvasToast,"Erreur : Ce pseudo est déjà utilisé");
+                    break;
+                case "DuckCity.Domain.Exceptions.MailAlreadyExistException":
+                    ShowToast.Toast(this, CanvasToast,"Erreur : Cet email est déjà utilisé");
+                    break;
+                default:
+                    ShowToast.Toast(this, CanvasToast, "Erreur : Informations incorrectes");
+                    break;
             }
         }
-        catch (System.NullReferenceException e)
+        catch (NullReferenceException e)
         {
             Debug.Log(e.ToString());
             ShowToast.Toast(this, CanvasToast, "Erreur : Connexion au serveur impossible");
