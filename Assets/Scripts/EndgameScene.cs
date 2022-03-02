@@ -16,6 +16,11 @@ public class EndgameScene : MonoBehaviour
     {
         IRole winners = GlobalVariable.GameDto.Game.Winners;
 
+        if (winners == null)
+        {
+            GoToBar();
+        }
+
         TextVictoryDefeat.text =
             winners.Name == GlobalVariable.GameDto.PlayerMe.Role.Name ? "Victoire !" : "Défaite...";
         TextVictoryDefeat.color = winners.Name == "Blue" ? Color.cyan : Color.red;
