@@ -20,7 +20,7 @@ namespace Utils
         public static bool OnPlayersPushInGame { get; set; }
         public static bool OnGamePushInGame { get; set; }
 
-        public static void StartHub(string containerId)
+        public static async void StartHub(string containerId)
         {
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl("https://game.canardecarlate.fr/",
@@ -28,7 +28,7 @@ namespace Utils
                     {
                         options.Headers.Add("Authorization",
                             new AuthenticationHeaderValue("Bearer", DataSave.LoadDataString("token")).ToString());
-                        options.Headers.Add("ContainerId", GlobalVariable.User.ContainerId);
+                        options.Headers.Add("ContainerId", containerId);
                     })
                 .WithAutomaticReconnect()
                 .Build();
@@ -74,7 +74,7 @@ namespace Utils
 
             try
             {
-                _hubConnection.StartAsync();
+                await _hubConnection.StartAsync();
                 Debug.Log("Start hub connection in container (id : " + containerId + " fake)");
             }
             catch (Exception ex)
