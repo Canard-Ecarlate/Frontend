@@ -6936,7 +6936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultCardOverlay: {fileID: 286845380}
   MyCardOverlay: {fileID: 2060981902}
-  TurnPointer: {fileID: 250656406}
+  Antenna: {fileID: 250656406}
   EyeBase: {fileID: 1171930081}
   Arrow: {fileID: 2042436048}
   PreviousCardOne: {fileID: 73297406}

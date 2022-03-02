@@ -225,11 +225,11 @@ public class GameScene : MonoBehaviour
         PullsEnd.text = count.ToString();
     }
 
-    public async void DrawACard(Image i)
+    public void DrawACard(Image i)
     {
         int playerPosition = PlayersPositions.FirstOrDefault(x => x.Value == i).Key;
         string id = PlayersId[playerPosition];
-        await DuckCityHub.DrawCard(id);
+        DuckCityHub.DrawCard(id);
     }
     
     public void LoadSprites()
@@ -462,9 +462,21 @@ public class GameScene : MonoBehaviour
 
         Biberon.sprite = Sprites["biberon_" + game.NbGreenDrawn];
 
-        int playerPosition = PlayersId.FirstOrDefault(x => x.Value == game.CurrentPlayerId).Key;
-        Antenna.sprite = Sprites[LaserPerPlayer[playerPosition]];
-        
-        
+        int nextPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == game.CurrentPlayerId).Key;
+        Antenna.sprite = Sprites[LaserPerPlayer[nextPlayerNumber]];
+        string nextPlayerName = GlobalVariable.Players.FirstOrDefault(x => x.Id == game.CurrentPlayerId).Name;
+        AnnounceEffect("C'est à "+nextPlayerName+" de piocher !");
+
+        foreach (OtherPlayerDto otherPlayer in GlobalVariable.GameDto.OtherPlayers)
+        {
+            int otherPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == otherPlayer.PlayerId).Key;
+            Image otherPlayerimg = PlayersPositions[otherPlayerNumber];
+
+            Image otherPlayerCards = (Image) otherPlayerimg.transform.Find("playerCards").gameObject.GetComponent(typeof(Image));
+            otherPlayerCards.gameObject.SetActive(otherPlayer.NbCardsInHand!=0);
+            Image otherPlayerPosition = PlayersPositions[otherPlayerNumber];
+            Button otherPlayerButton = (Button) otherPlayerPosition.gameObject.GetComponent(typeof(Button));
+            otherPlayerButton.interactable = (otherPlayer.NbCardsInHand != 0);
+        }
     }
 }
