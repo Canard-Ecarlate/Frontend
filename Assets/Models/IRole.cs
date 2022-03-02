@@ -2,6 +2,6 @@
 {
     public class IRole
     {
-        private string Name { get; set; }
+        public string Name { get; set; }
     }
 }

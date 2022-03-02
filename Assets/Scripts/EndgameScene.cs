@@ -1,6 +1,8 @@
+using Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utils;
 
 public class EndgameScene : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class EndgameScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TextVictoryDefeat.text = VICTORY ? "Victory!" : "Defeat...";
-        TextVictoryDefeat.color = CIAT ? Color.cyan : Color.red;
+        IRole winners = GlobalVariable.GameDto.Game.Winners;
 
-        ImageCiat.enabled = CIAT;    
-        ImageCe.enabled = !CIAT;
+        TextVictoryDefeat.text = winners.Name=="Blue" ? "Victoire CIAT !" : "Victoire Ecarlate !";
+        TextVictoryDefeat.color = winners.Name=="Blue" ? Color.cyan : Color.red;
+
+        ImageCiat.enabled = winners.Name=="Blue";    
+        ImageCe.enabled = winners.Name=="Red";
     }
 
     // Update is called once per frame
@@ -27,7 +31,7 @@ public class EndgameScene : MonoBehaviour
 
     public void GoToLobby()
     {
-        //nothing to do here
+        SceneManager.LoadScene("Scenes/BarScene");
     }
 
     public void GoToHome()

@@ -5,6 +5,7 @@ using Models;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utils;
 using Random = System.Random;
@@ -241,23 +242,16 @@ public class GameScene : MonoBehaviour
         EffectText.text = s;
     }
 
-    public void UpdatePreviousCards(Image i)
-    {
-        PreviousCardOne.sprite = i.sprite;
-    }
-
-    public void Countdown()
-    {
-        int count = int.Parse(PullsEnd.text);
-        count--;
-        PullsEnd.text = count.ToString();
-    }
-
     public async void DrawACard(Image i)
     {
         int playerPosition = PlayersPositions.FirstOrDefault(x => x.Value == i).Key;
         string id = PlayersId[playerPosition];
         await DuckCityHub.DrawCard(id);
+    }
+
+    private void goToEndgame()
+    {
+        SceneManager.LoadScene("Scenes/EndgameScene");
     }
 
     private void LoadSprites(int nbPlayers)
@@ -288,19 +282,6 @@ public class GameScene : MonoBehaviour
             LoadSprite(obj, key);
         };
 
-        for (int i = 0; i < nbPlayers; i++)
-        {
-            string arrowPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" + nbPlayers + "_0"+(i+1)+".png";
-            
-            AsyncOperationHandle<Sprite> arrowHandle = Addressables.LoadAssetAsync<Sprite>(arrowPath);
-            int i1 = i;
-            arrowHandle.Completed+= obj =>
-            {
-                string key = "arrow_"+(i1+1);
-                LoadSprite(obj,key);
-            };
-        }
-
         string biberon0Path=GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" + nbPlayers + "_00.png";
         AsyncOperationHandle<Sprite> biberon0Handle = Addressables.LoadAssetAsync<Sprite>(biberon0Path);
         biberon0Handle.Completed += obj =>
@@ -311,17 +292,17 @@ public class GameScene : MonoBehaviour
 
         for (int i = 1; i <= nbPlayers; i++)
         {
-            string antennaPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" +
+            string arrowPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" +
                                  nbPlayers + "_0" + i + ".png";
             string biberonPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" +
                                  nbPlayers + "_0" + i + ".png";
 
             int i1 = i;
 
-            AsyncOperationHandle<Sprite> antennaHandle = Addressables.LoadAssetAsync<Sprite>(antennaPath);
-            antennaHandle.Completed += obj =>
+            AsyncOperationHandle<Sprite> arrowHandle = Addressables.LoadAssetAsync<Sprite>(arrowPath);
+            arrowHandle.Completed += obj =>
             {
-                string key = "laser_" + i1;
+                string key = "arrow_" + i1;
                 LoadSprite(obj, key);
             };
             AsyncOperationHandle<Sprite> biberonHandle = Addressables.LoadAssetAsync<Sprite>(biberonPath);
@@ -479,6 +460,12 @@ public class GameScene : MonoBehaviour
     private void UpdateInterface()
     {
         Game game = GlobalVariable.GameDto.Game;
+
+        if (game.Winners!=null)
+        {
+            goToEndgame();
+        }
+        
         int nbDrawForFinish =
             (game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound +
             (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
