@@ -214,7 +214,11 @@ public class GameScene : MonoBehaviour
 
     private void SetCard(Image i, string key)
     {
-        if (key == "Yellow") key += new Random().Next(1, 5).ToString();
+        if (key == "Yellow")
+        {
+            key += new Random().Next(1, 5).ToString();
+        }
+
         i.sprite = Sprites["card" + key];
     }
 
