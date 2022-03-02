@@ -259,6 +259,18 @@ public class GameScene : MonoBehaviour
             LoadSprite(obj,key);
         };
 
+        for (int i = 0; i < nbPlayers; i++)
+        {
+            string arrowPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" + nbPlayers + "_0"+(i+1)+".png";
+            
+            AsyncOperationHandle<Sprite> arrowHandle = Addressables.LoadAssetAsync<Sprite>(eyePath);
+            arrowHandle.Completed+= obj =>
+            {
+                string key = "arrow_"+(i+1);
+                LoadSprite(obj,key);
+            };
+        }
+
         string biberon0Path=GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" + nbPlayers + "_00.png";
         AsyncOperationHandle<Sprite> biberon0Handle = Addressables.LoadAssetAsync<Sprite>(biberon0Path);
         biberon0Handle.Completed+= obj =>
@@ -454,7 +466,7 @@ public class GameScene : MonoBehaviour
         }
         else
         {
-            PreviousCardOne.sprite = Sprites["cardBack"];
+            PreviousCardOne.sprite = Sprites["cardDefault"];
         }
 
         int arrowInt = game.NbDrawnDuringRound + 1;
