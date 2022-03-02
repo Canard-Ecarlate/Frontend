@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using Random = System.Random;
 public class GameScene : MonoBehaviour
 {
     [SerializeField] private Image DefaultCardOverlay, MyCardOverlay;
-    [SerializeField] private Image TurnPointer;
+    [SerializeField] private Image Antenna;
     [SerializeField] private Image EyeBase, Arrow;
     [SerializeField] private Image PreviousCardOne;
     [SerializeField] private Text PullsEnd, EffectText;
@@ -43,13 +44,12 @@ public class GameScene : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-        GlobalVariable.GameDto.OnGameUpdate += UpdateInterface;
-        
+
         int nbPlayers = GlobalVariable.RoomDto.RoomConfiguration.NbPlayers;
         InitPlayersPosition(nbPlayers);
         PullsEnd.text = (nbPlayers * 4).ToString();
         int i = 0;
-        foreach (var player in GlobalVariable.PlayersInWaitingRoomDtos)
+        foreach (var player in GlobalVariable.Players)
         {
             PlayersId.Add(i,player.Id);
 
@@ -64,11 +64,20 @@ public class GameScene : MonoBehaviour
         LoadSprites();
     }
 
+    private void Update()
+    {
+        if (DuckCityHub.OnGamePush)
+        {
+            UpdateInterface();
+            DuckCityHub.OnGamePush = false;
+        }
+    }
+
     public void ShowMe()
     {
         int me = 2;
         GameRole.sprite = Sprites["role_" + me];
-        List<ICard> cards = GlobalVariable.GameDto.PlayerMe.CardsInHand;
+        List<ICard> cards = GlobalVariable.GameDto.PlayerMe.CardsInHand.ToList();
         if (cards.Count>0)
         {
             SetCard(Card1,cards[0].Name);
@@ -123,7 +132,7 @@ public class GameScene : MonoBehaviour
     {
         GameRole.sprite = Sprites["role_0"];
         
-        List<ICard> cards = GlobalVariable.GameDto.PlayerMe.CardsInHand;
+        List<ICard> cards = GlobalVariable.GameDto.PlayerMe.CardsInHand.ToList();
         if (cards.Count>0)
         {
             SetCard(Card1,"Default");
@@ -260,15 +269,15 @@ public class GameScene : MonoBehaviour
         
         for (int i = 1; i <= nbPlayers; i++)
         {
-            string pointerPath=GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" + nbPlayers + "_0"+i+".png";
+            string antennaPath=GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" + nbPlayers + "_0"+i+".png";
             string biberonPath=GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" + nbPlayers + "_0"+i+".png";
             
             int i1 = i;
             
-            AsyncOperationHandle<Sprite> pointerHandle = Addressables.LoadAssetAsync<Sprite>(pointerPath);
-            pointerHandle.Completed+= obj =>
+            AsyncOperationHandle<Sprite> antennaHandle = Addressables.LoadAssetAsync<Sprite>(antennaPath);
+            antennaHandle.Completed+= obj =>
             {
-                string key = "pointer_"+i1;
+                string key = "laser_"+i1;
                 LoadSprite(obj,key);
             };
             AsyncOperationHandle<Sprite> biberonHandle = Addressables.LoadAssetAsync<Sprite>(biberonPath);
@@ -450,5 +459,12 @@ public class GameScene : MonoBehaviour
 
         int arrowInt = game.NbDrawnDuringRound + 1;
         Arrow.sprite = Sprites["arrow_" + arrowInt];
+
+        Biberon.sprite = Sprites["biberon_" + game.NbGreenDrawn];
+
+        int playerPosition = PlayersId.FirstOrDefault(x => x.Value == game.CurrentPlayerId).Key;
+        Antenna.sprite = Sprites[LaserPerPlayer[playerPosition]];
+        
+        
     }
 }

@@ -35,8 +35,8 @@ public class BarScene : MonoBehaviour
         if (DuckCityHub.OnRoomPush)
         {
             // Set texts
-            RoomCode.text = GlobalVariable.Room.Code; 
-            RoomName.text = GlobalVariable.Room.Name;
+            RoomCode.text = GlobalVariable.RoomDto.Code; 
+            RoomName.text = GlobalVariable.RoomDto.Name;
             DuckCityHub.OnRoomPush = false; 
         }
 
@@ -49,7 +49,7 @@ public class BarScene : MonoBehaviour
             int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
         
             // Display Play button if everybody is ready
-            PlayButton.gameObject.SetActive(nbReady == GlobalVariable.Room.RoomConfiguration.NbPlayers);
+            PlayButton.gameObject.SetActive(nbReady == GlobalVariable.RoomDto.RoomConfiguration.NbPlayers);
         
             // Display ducks
             SetPlayerDucks(GlobalVariable.Players.Count);

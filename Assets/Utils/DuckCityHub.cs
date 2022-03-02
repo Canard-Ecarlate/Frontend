@@ -42,7 +42,7 @@ namespace Utils
 
             _hubConnection.On("PushRoom", (RoomDto roomDto) =>
             {
-                GlobalVariable.Room.SetRoom(roomDto);
+                GlobalVariable.RoomDto.SetRoom(roomDto);
                 OnRoomPush = true;
                 if (!SceneManager.GetSceneByName("BarScene").isLoaded)
                 {
@@ -59,7 +59,7 @@ namespace Utils
 
             _hubConnection.On("PushGame", (GameDto game) =>
             {
-                GlobalVariable.Game.SetGame(game);
+                GlobalVariable.GameDto.SetGame(game);
                 OnGamePush = true;
                 if (!SceneManager.GetSceneByName("GameScene").isLoaded)
                 {
