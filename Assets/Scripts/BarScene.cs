@@ -32,15 +32,15 @@ public class BarScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DuckCityHub.OnRoomPush)
+        if (DuckCityHub.OnRoomPushInBar)
         {
             // Set texts
             RoomCode.text = GlobalVariable.RoomDto.Code; 
             RoomName.text = GlobalVariable.RoomDto.Name;
-            DuckCityHub.OnRoomPush = false; 
+            DuckCityHub.OnRoomPushInBar = false; 
         }
 
-        if (DuckCityHub.OnPlayersPush)
+        if (DuckCityHub.OnPlayersPushInBar)
         {
             PlayerInWaitingRoomDto me = GlobalVariable.Players.Single(p => p.Id == GlobalVariable.User.Id);
             NotReadyButton.gameObject.SetActive(!me.Ready);
@@ -53,7 +53,7 @@ public class BarScene : MonoBehaviour
         
             // Display ducks
             SetPlayerDucks(GlobalVariable.Players.Count);
-            DuckCityHub.OnPlayersPush = false;
+            DuckCityHub.OnPlayersPushInBar = false;
         }
     }
 

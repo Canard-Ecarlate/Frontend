@@ -58,32 +58,38 @@ public class GameScene : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-
-        int nbPlayers = GlobalVariable.RoomDto.RoomConfiguration.NbPlayers;
-        InitPlayersPosition(nbPlayers);
-        PullsEnd.text = (nbPlayers * 4).ToString();
-        int i = 0;
-        foreach (PlayerInWaitingRoomDto player in GlobalVariable.Players)
-        {
-            PlayersId.Add(i, player.Id);
-
-            Image playerImg = PlayersPositions[i];
-
-            Text playerName = (Text) playerImg.transform.Find("playerName").gameObject.GetComponent(typeof(Text));
-
-            playerName.text = player.Name;
-            i++;
-        }
-
-        LoadSprites();
     }
 
     private void Update()
     {
-        if (DuckCityHub.OnGamePush)
+        if (DuckCityHub.OnRoomPushInGame)
         {
-            UpdateInterface();
-            DuckCityHub.OnGamePush = false;
+            int nbPlayers = GlobalVariable.RoomDto.RoomConfiguration.NbPlayers;
+            InitPlayersPosition(nbPlayers);
+            PullsEnd.text = (nbPlayers * 4).ToString();
+            LoadSprites(nbPlayers);
+            DuckCityHub.OnRoomPushInGame = false;
+        }
+        if (DuckCityHub.OnPlayersPushInGame)
+        {
+            int i = 0;
+            foreach (PlayerInWaitingRoomDto player in GlobalVariable.Players)
+            {
+                PlayersId.Add(i, player.Id);
+
+                Image playerImg = PlayersPositions[i];
+
+                Text playerName = (Text) playerImg.transform.Find("playerName").gameObject.GetComponent(typeof(Text));
+
+                playerName.text = player.Name;
+                i++;
+            }
+            DuckCityHub.OnPlayersPushInGame = false;
+        }
+        if (DuckCityHub.OnGamePushInGame && GlobalVariable.Players.Count != 0)
+        {
+            UpdateInterface(); 
+            DuckCityHub.OnGamePushInGame = false;
         }
     }
 
@@ -247,19 +253,16 @@ public class GameScene : MonoBehaviour
         PullsEnd.text = count.ToString();
     }
 
-    public void DrawACard(Image i)
+    public async void DrawACard(Image i)
     {
         int playerPosition = PlayersPositions.FirstOrDefault(x => x.Value == i).Key;
         string id = PlayersId[playerPosition];
-        DuckCityHub.DrawCard(id);
+        await DuckCityHub.DrawCard(id);
     }
 
-    private void LoadSprites()
+    private void LoadSprites(int nbPlayers)
     {
-        int nbPlayers = GlobalVariable.RoomDto.RoomConfiguration.NbPlayers;
-
-        string[] rolePaths = new[]
-        {
+        string[] rolePaths = {
             GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_role.png",
             GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_good.png",
             GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_bad.png"
@@ -289,10 +292,11 @@ public class GameScene : MonoBehaviour
         {
             string arrowPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" + nbPlayers + "_0"+(i+1)+".png";
             
-            AsyncOperationHandle<Sprite> arrowHandle = Addressables.LoadAssetAsync<Sprite>(eyePath);
+            AsyncOperationHandle<Sprite> arrowHandle = Addressables.LoadAssetAsync<Sprite>(arrowPath);
+            int i1 = i;
             arrowHandle.Completed+= obj =>
             {
-                string key = "arrow_"+(i+1);
+                string key = "arrow_"+(i1+1);
                 LoadSprite(obj,key);
             };
         }
@@ -486,7 +490,7 @@ public class GameScene : MonoBehaviour
         }
         else
         {
-            PreviousCardOne.sprite = Sprites["cardDefault"];
+            PreviousCardOne.sprite = Sprites["cardDefault"]; 
         }
 
         int arrowInt = game.NbDrawnDuringRound + 1;

@@ -14,9 +14,11 @@ namespace Utils
     {
         private static HubConnection _hubConnection;
 
-        public static bool OnRoomPush { get; set; }
-        public static bool OnPlayersPush { get; set; }
-        public static bool OnGamePush { get; set; }
+        public static bool OnRoomPushInBar { get; set; }
+        public static bool OnRoomPushInGame { get; set; }
+        public static bool OnPlayersPushInBar { get; set; }
+        public static bool OnPlayersPushInGame { get; set; }
+        public static bool OnGamePushInGame { get; set; }
 
         public static void StartHub(string containerId)
         {
@@ -43,7 +45,8 @@ namespace Utils
             _hubConnection.On("PushRoom", (RoomDto roomDto) =>
             {
                 GlobalVariable.RoomDto.SetRoom(roomDto);
-                OnRoomPush = true;
+                OnRoomPushInBar = true;
+                OnRoomPushInGame = true;
                 if (!SceneManager.GetSceneByName("BarScene").isLoaded)
                 {
                     SceneManager.LoadScene("BarScene");
@@ -54,13 +57,14 @@ namespace Utils
             {
                 GlobalVariable.Players.RemoveAll(_ => true);
                 GlobalVariable.Players.AddRange(players);
-                OnPlayersPush = true;
+                OnPlayersPushInBar = true;
+                OnPlayersPushInGame = true;
             }); 
 
             _hubConnection.On("PushGame", (GameDto game) =>
             {
                 GlobalVariable.GameDto.SetGame(game);
-                OnGamePush = true;
+                OnGamePushInGame = true;
                 if (!SceneManager.GetSceneByName("GameScene").isLoaded)
                 {
                     SceneManager.LoadScene("GameScene");
