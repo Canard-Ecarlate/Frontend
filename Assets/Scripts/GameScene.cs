@@ -12,8 +12,7 @@ using Random = System.Random;
 
 public class GameScene : MonoBehaviour
 {
-    [SerializeField] private Image DefaultCardOverlay,
-        MyCardOverlay;
+    [SerializeField] private Image DefaultCardOverlay;
 
     [SerializeField] private Image Antenna;
 
@@ -110,7 +109,8 @@ public class GameScene : MonoBehaviour
 
     public void ShowMe()
     {
-        int me = 2;
+        IRole role = GlobalVariable.GameDto.PlayerMe.Role;
+        int me = role.Name == "Blue" ? 1: 2;
         GameRole.sprite = Sprites["role_" + me];
         List<ICard> cards = GlobalVariable.GameDto.PlayerMe.CardsInHand.ToList();
         if (cards.Count > 0)
@@ -241,18 +241,10 @@ public class GameScene : MonoBehaviour
         i.gameObject.SetActive(false);
     }
 
-    public void ShowMyCard(Image i)
-    {
-        MyCardOverlay.sprite = i.sprite;
-        MyCardOverlay.gameObject.SetActive(true);
-    }
-
-    public async void ShowACard(Image i)
+    public void ShowACard(Image i)
     {
         DefaultCardOverlay.sprite = i.sprite;
         DefaultCardOverlay.gameObject.SetActive(true);
-        await Task.Delay(3000).ConfigureAwait(false);
-        StopShowingCard(DefaultCardOverlay);
     }
 
     private void AnnounceEffect(string s)

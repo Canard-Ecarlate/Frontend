@@ -902,8 +902,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2135730981}
-  m_RootOrder: 4
+  m_Father: {fileID: 1447432423}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2147,8 +2147,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
-        m_MethodName: ShowMyCard
+        m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 794734168}
@@ -2648,7 +2648,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Deux r\xF4les al\xE9atoires ont \xE9t\xE9 \xE9chang\xE9s !"
+  m_Text: 
 --- !u!222 &871624227
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2912,8 +2912,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
-        m_MethodName: ShowMyCard
+        m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 878326778}
@@ -4208,8 +4208,10 @@ RectTransform:
   - {fileID: 1232622486}
   - {fileID: 1810507319}
   - {fileID: 2039788025}
+  - {fileID: 286845378}
+  - {fileID: 2060981900}
   m_Father: {fileID: 2135730981}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4532,8 +4534,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
-        m_MethodName: ShowMyCard
+        m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1545817424}
@@ -4932,8 +4934,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
-        m_MethodName: ShowMyCard
+        m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1600855098}
@@ -5244,8 +5246,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2135730982}
-        m_TargetAssemblyTypeName: Script_Game, Assembly-CSharp
-        m_MethodName: ShowMyCard
+        m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
+        m_MethodName: ShowACard
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1693010145}
@@ -6417,8 +6419,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2135730981}
-  m_RootOrder: 5
+  m_Father: {fileID: 1447432423}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6911,8 +6913,6 @@ RectTransform:
   - {fileID: 1930548363}
   - {fileID: 213899122}
   - {fileID: 1607062829}
-  - {fileID: 286845378}
-  - {fileID: 2060981900}
   - {fileID: 1447432423}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -6935,7 +6935,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultCardOverlay: {fileID: 286845380}
-  MyCardOverlay: {fileID: 2060981902}
   Antenna: {fileID: 250656406}
   EyeBase: {fileID: 1171930081}
   Arrow: {fileID: 2042436048}
