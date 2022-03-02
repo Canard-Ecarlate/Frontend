@@ -15,6 +15,10 @@ namespace Models
             Game = game.Game;
             PlayerDrawable = game.PlayerDrawable;
             OtherPlayers = game.OtherPlayers;
+            if (OnGameUpdate != null)
+            {
+                OnGameUpdate();
+            }
         }
     }
 }

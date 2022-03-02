@@ -90,27 +90,27 @@ namespace Utils
 
         public static async Task LeaveRoom()
         {
-            await _hubConnection.InvokeAsync("LeaveRoom", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("LeaveRoom", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task PlayerReady()
         {
-            await _hubConnection.InvokeAsync("PlayerReady", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("PlayerReady", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task StartGame()
         {
-            await _hubConnection.InvokeAsync("StartGame", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("StartGame", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task DrawCard(string playerWhereCardIsDrawingId)
         {
-            await _hubConnection.InvokeAsync("DrawCard", GlobalVariable.Room.Code, playerWhereCardIsDrawingId);
+            await _hubConnection.InvokeAsync("DrawCard", GlobalVariable.RoomDto.Code, playerWhereCardIsDrawingId);
         }
 
         public static async Task QuitMidGame()
         {
-            await _hubConnection.InvokeAsync("QuitMidGame", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("QuitMidGame", GlobalVariable.RoomDto.Code);
         }
     }
 }

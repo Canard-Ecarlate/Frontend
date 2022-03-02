@@ -1,0 +1,465 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9a5a0b07c42424c4d957bc0f3d15fc62
+  m_SerializeEntries:
+  - m_GUID: 483d2995759cdbf4b95734ebb24db8ca
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Cadran_3J_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 417d676bedbe8774cb23065124c0b1a5
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Fleches_03_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8adda533523cdc6409b59465f7394e60
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Fleches_03_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cdaf0a6fd6718aa4ca4fbeb03de8673c
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Fleches_03_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6105694e58cef4e4084f56baaa48e4f0
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Biberon_03_00.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 253e9ad784fdcc744b997c9e86673f85
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Biberon_03_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 475fd918d56f4ef408a3b365f93f5fa9
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Biberon_03_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: febf4e05028eba143837b333df9b4378
+    m_Address: Assets/Textures/HUD/Bomb/3_joueurs/Biberon_03_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cd813713d0b50f04bae4460aa91335d7
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Biberon_04_00.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8cd4577493d882747933e472353aacae
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Biberon_04_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 135120a6a0b00524a9f79ed98b3ec021
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Biberon_04_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 89305ef12de609b4893fe78b576133ce
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Biberon_04_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 096d0d8386a38b5478b5ccdfb2869cae
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Biberon_04_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 924fdd9a5be5eac498b0c3d00ef18b42
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Cadran_4J_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d5307586f6484f942a0e0c9bd975d3f7
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Fleches_04_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 11fd7be9dbd5ebf4e98a872a8863fedf
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Fleches_04_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1670ddffb5ffb7e41aacefc340714250
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Fleches_04_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1462739500234214f9193a898db817b2
+    m_Address: Assets/Textures/HUD/Bomb/4_joueurs/Fleches_04_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4f86ee5ea873d954ca8e3c06bf5fc055
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Biberon_05_00.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b929da9385cbf14dbfc65cb9ae0ad95
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Biberon_05_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6be720426de1acd498496f0fe1c473d4
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Biberon_05_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a50f59d33fad51c4baf2b4885c225ea4
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Biberon_05_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f224b71bcdebc2241ab48fcb6ce25755
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Biberon_05_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8377090b4d4a7244988e6de7f4e55050
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Biberon_05_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7d35f2dbeb920ce4c98ec8e3de26e9cb
+    m_Address: /Bomb/5_joueurs/Cadran_5J_02.pngrs/Cadran_5J_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d805c757ffe30c24a8a508924ba8f409
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Fleches_05_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6492e72182c94c047b840e75cde191c7
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Fleches_05_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ae3eb91dbe260484aaaf0a4abe3899b9
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Fleches_05_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ee11838a820e564cab62a4939aa3ce9
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Fleches_05_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc2ec833cc75e39419f4efed8d4ea795
+    m_Address: Assets/Textures/HUD/Bomb/5_joueurs/Fleches_05_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1f31ff8552937ed4180bf379ffdfdb9f
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Biberon_06_00.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6391ffd46080c4a47906a96220b1f809
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Biberon_06_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bb81fa86724295b43a2ca2703979541f
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Biberon_06_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30675ef68953b0149a06ae8d0c0145a4
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Biberon_06_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c9c129b89debc4e48a1c190469b84d25
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Biberon_06_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 04ed9f76e5986d74b91561605ad443e8
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Biberon_06_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a722eff8067a6d14181457db437e0ab7
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Biberon_06_06.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ca01c88e2fff51468b08a94043c0905
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_00.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d539d4375bbbc8942b93756e1f92df46
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Cadran_6J_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6888274106419f745899a02021808dae
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Fleches_06_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9fd6aeb56d3e485499ce0a51cba68aeb
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Fleches_06_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0bc69364aaeb71347be80385b1605b72
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Fleches_06_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 525591fd9b2b2e4429208382e472f885
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Fleches_06_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33f297de6d385c247bcc16e47f358d8d
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Fleches_06_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d44a7466bcb292a4e9095de155c27374
+    m_Address: Assets/Textures/HUD/Bomb/6_joueurs/Fleches_06_06.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0d3deaa49212b4a41bb2c15057b58e96
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1dc992a244fb4b04a929265ce5b66fee
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 704483f96a63a234db7819c5161ab4f0
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 50d43866eee58464ab818c54f826c757
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e1a9a93cec6c444db0de10e43148ea7
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6cbb839e105fd334d9b20f96c5b444fb
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_06.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0d5d78b5dd19b304b91936c1dbe51c69
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Biberon_07_07.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d2bcee67bd41d7b4aa1d6bfb42bd1aab
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Cadran_7J_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0fa7a5863614f8c4983800d0bb961205
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Fleches_07_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 06068de0c77a01b4193f3e093969e7bf
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Fleches_07_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a77ec73c9e7227e4da000fbf1ebc8994
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Fleches_07_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cdea04380ff2d4a4dacf1b1ffc7fae91
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Fleches_07_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c5898632d9eaed846b902ef4089bd61a
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Fleches_07_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 376e9ac67caec574db40597f29f52511
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Fleches_07_06.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f0a4e9a413432cf4ab3fc8bf8fbfd506
+    m_Address: Assets/Textures/HUD/Bomb/7_joueurs/Fleches_07_07.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 18ff173b39c985043a1025c5e107b582
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_00.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4bf5a87b6c28d394cb190df5e39409fe
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 693cc7463923acf4c8023faca2e10e49
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc6df040afb8a2745b39d9b942f44c23
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e3842f69add344142b06b82271807606
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c28af03eb830cc478026c2d995f007c
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 60d5c32097f99e84286bd2ca8bca5ae8
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_06.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f05597004a03a674094e138e763a824b
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_07.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c3aea04cd27d7d54fb3ebc25b31b390a
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Biberon_08_08.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc0bbbe1cfd48c0489d4c0384d88b4eb
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Cadran_8J_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2899e9022cace5f4f826c0000856aa06
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 97491790962079641b8eec67f954b7a4
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6e4a7b9eef566440806099e5f13d5a2
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 050e36fc40f72c84b9c62d02ffa30111
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bb0c96b1c28314f42bdbcc01f50d851c
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5865c91e2e027d349b727c1baa1c57fe
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_06.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d4735e9304bc8b141a6ea8365e42317b
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_07.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 65afa511bf1331a4d88cff015901c937
+    m_Address: Assets/Textures/HUD/Bomb/8_joueurs/Fleches_08_08.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: be0cd673997337b42b4db58d67ef3c9b
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_6_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d2f3173afc5d83446a368d3ec593bc21
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_11_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 90559136a942bb346bd911bae000db02
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_7_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b22f8ab68daca3f45b6567216b7e01cb
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_12_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c12f16db6560c934eab8e0dbe5f04b05
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_8_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f9ba1b3b60b0fe14b9b88b3d35cdb1ce
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_2_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 60458d64ded8c0341a0a2f45ec32aafa
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_10_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ef2cfc4cafca32945bc414cad719dc70
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_13_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 09c1174307441c243b5fade71ed35ed7
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_5_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b4420dc412ef2e49832338beec97038
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_9_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0a0346ed255411e449c49b7d9aa7a0e4
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_3_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a4ea337350ff014d87d667369c4bd26
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_4_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6217fde52a3237b4b94e73c3c2184363
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_15_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 99e29c2b3cd61d34d863d740de96e04f
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_1_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 654c14db6c948fd4b8a0ef116610ac5e
+    m_Address: Assets/Textures/HUD/Bomb/Lasers/graphisme_bombe_laser_14_v1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e5606b968738354e99080a454e21ec1
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_role.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6efd2d0d552906e428a8fe0192752e3a
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_bad.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3a94846572bae654399daa5a8f26edd4
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_good.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ca5fb0b279d6124aa2c55320e64e2d3
+    m_Address: Assets/Textures/Cards/Back.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9fbe654602334fc48b7ebf040c94bade
+    m_Address: Assets/Textures/Cards/LIQUIDE.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c539b67eee569e44ea545e32a695a1eb
+    m_Address: Assets/Textures/Cards/NULL_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6869611ede5d2b748a768c32b97e39ad
+    m_Address: Assets/Textures/Cards/DETONNATEUR.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 15b511e32e8f76247b5753bd6735139a
+    m_Address: Assets/Textures/Cards/NULL_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7e74dc0aad57f7549adefe2ad513bf13
+    m_Address: Assets/Textures/Cards/NULL_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9fd83cb038d655348a2b41e566e747d1
+    m_Address: Assets/Textures/Cards/NULL_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 06f4a76940865c843b5ec80c22d20de7
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 003b6cb62e5b37246852932110075b27
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_07.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 945a2668d6d944643b266def0fd58dff
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_04.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f19484c0a9b0ec64e9b8852a9ed76c2b
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_06.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ccb25f047544c884884aea4f56fbe461
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_05.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 37b3a7ee6f5e74c40bf13330a7c5a9f9
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 70ba54b12765b0b4cb6907584ffa58c9
+    m_Address: Assets/Textures/Ducks/Base_Duck/Canard_03.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 965eca75836b737449aa32d92af774ec, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4e044fdbce08b384ca255a579b1cff5f, type: 2}
+    - {fileID: 11400000, guid: a7414cfd65a1f5d41a1b4141a18b5957, type: 2}
