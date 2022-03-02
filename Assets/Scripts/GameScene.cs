@@ -111,7 +111,7 @@ public class GameScene : MonoBehaviour
         
         LoadSprites(nbPlayers);
         
-        int nbDrawForFinish = (game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound + (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
+        int nbDrawForFinish = ((game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound) + (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
         PullsEnd.text = nbDrawForFinish.ToString();
 
         DisplayInfoText();
@@ -492,9 +492,8 @@ public class GameScene : MonoBehaviour
             HideMe();
         }
         
-        int nbDrawForFinish =
-            (game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound +
-            (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
+        int nbDrawForFinish = ((game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound) +
+                              (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
         PullsEnd.text = nbDrawForFinish.ToString();
 
         SetCard(PreviousCardOne, game.PreviousDrawnCard.Name); 
