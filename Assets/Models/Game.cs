@@ -6,7 +6,9 @@ namespace Models
     {
         public List<ICard> CardsInGame { get; set; }
         public string CurrentPlayerId { get; set; }
+        public string CurrentPlayerName { get; set; }
         public string PreviousPlayerId { get; set; }
+        public string PreviousPlayerName { get; set; }
         public ICard PreviousDrawnCard { get; set; }
         public int RoundNb { get; set; }
         public int NbGreenDrawn { get; set; }

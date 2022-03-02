@@ -65,11 +65,11 @@ public class GameScene : MonoBehaviour
     {
         if (DuckCityHub.OnRoomPushInGame)
         {
+            DuckCityHub.OnRoomPushInGame = false; 
             int nbPlayers = GlobalVariable.RoomDto.RoomConfiguration.NbPlayers;
             InitPlayersPosition(nbPlayers);
             PullsEnd.text = (nbPlayers * 4).ToString();
             LoadSprites(nbPlayers);
-            DuckCityHub.OnRoomPushInGame = false;
         }
         if (DuckCityHub.OnPlayersPushInGame)
         {
@@ -431,7 +431,7 @@ public class GameScene : MonoBehaviour
     {
         switch (key)
         {
-            default: // role_0
+            case "role_0":
                 GameRole.sprite = Sprites["role_0"];
                 break;
             case "eye":
@@ -452,11 +452,13 @@ public class GameScene : MonoBehaviour
                 Card5.sprite = Sprites["cardDefault"];
                 break;
             case "players":
-                foreach (var v in PlayersPositions.Values)
+                foreach (Image v in PlayersPositions.Values)
                 {
                     v.gameObject.SetActive(true);
                 }
-
+                break;
+            default:
+                // nothing to do here
                 break;
         }
     }
