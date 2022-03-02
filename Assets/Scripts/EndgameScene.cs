@@ -16,17 +16,11 @@ public class EndgameScene : MonoBehaviour
     {
         IRole winners = GlobalVariable.GameDto.Game.Winners;
 
-        TextVictoryDefeat.text = winners.Name=="Blue" ? "Victoire CIAT !" : "Victoire Ecarlate !";
+        TextVictoryDefeat.text = winners.Name==GlobalVariable.GameDto.PlayerMe.Role.Name ? "Victoire !" : "Défaite...";
         TextVictoryDefeat.color = winners.Name=="Blue" ? Color.cyan : Color.red;
 
         ImageCiat.enabled = winners.Name=="Blue";    
         ImageCe.enabled = winners.Name=="Red";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //nothing to do here
     }
 
     public void GoToLobby()
