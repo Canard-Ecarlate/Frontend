@@ -27,20 +27,13 @@ public class BarScene : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (DuckCityHub.OnRoomPush)
+        if (GlobalVariable.RoomDto.Id != "")
         {
-            // Set texts
-            RoomCode.text = GlobalVariable.Room.Code; 
-            RoomName.text = GlobalVariable.Room.Name;
-            DuckCityHub.OnRoomPush = false; 
+            RoomCode.text = GlobalVariable.RoomDto.Code; 
+            RoomName.text = GlobalVariable.RoomDto.Name;
         }
 
-        if (DuckCityHub.OnPlayersPush)
+        if (GlobalVariable.Players.Count != 0)
         {
             PlayerInWaitingRoomDto me = GlobalVariable.Players.Single(p => p.Id == GlobalVariable.User.Id);
             NotReadyButton.gameObject.SetActive(!me.Ready);
@@ -49,11 +42,38 @@ public class BarScene : MonoBehaviour
             int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
         
             // Display Play button if everybody is ready
-            PlayButton.gameObject.SetActive(nbReady == GlobalVariable.Room.RoomConfiguration.NbPlayers);
+            PlayButton.gameObject.SetActive(nbReady == GlobalVariable.RoomDto.RoomConfiguration.NbPlayers);
         
             // Display ducks
             SetPlayerDucks(GlobalVariable.Players.Count);
-            DuckCityHub.OnPlayersPush = false;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (DuckCityHub.OnRoomPushInBar)
+        {
+            // Set texts
+            RoomCode.text = GlobalVariable.RoomDto.Code; 
+            RoomName.text = GlobalVariable.RoomDto.Name;
+            DuckCityHub.OnRoomPushInBar = false; 
+        }
+
+        if (DuckCityHub.OnPlayersPushInBar)
+        {
+            PlayerInWaitingRoomDto me = GlobalVariable.Players.Single(p => p.Id == GlobalVariable.User.Id);
+            NotReadyButton.gameObject.SetActive(!me.Ready);
+            ReadyButton.gameObject.SetActive(me.Ready);
+
+            int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
+        
+            // Display Play button if everybody is ready
+            PlayButton.gameObject.SetActive(nbReady == GlobalVariable.RoomDto.RoomConfiguration.NbPlayers);
+        
+            // Display ducks
+            SetPlayerDucks(GlobalVariable.Players.Count);
+            DuckCityHub.OnPlayersPushInBar = false;
         }
     }
 

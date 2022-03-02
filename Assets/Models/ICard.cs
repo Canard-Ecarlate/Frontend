@@ -4,6 +4,6 @@ namespace Models
 {
     public class ICard
     {
-        private string Name { get; set; }
+        public string Name { get; set; }
     }
 }

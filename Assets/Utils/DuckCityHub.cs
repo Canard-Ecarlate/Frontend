@@ -14,9 +14,11 @@ namespace Utils
     {
         private static HubConnection _hubConnection;
 
-        public static bool OnRoomPush { get; set; }
-        public static bool OnPlayersPush { get; set; }
-        public static bool OnGamePush { get; set; }
+        public static bool OnRoomPushInBar { get; set; }
+        public static bool OnRoomPushInGame { get; set; }
+        public static bool OnPlayersPushInBar { get; set; }
+        public static bool OnPlayersPushInGame { get; set; }
+        public static bool OnGamePushInGame { get; set; }
 
         public static void StartHub(string containerId)
         {
@@ -42,8 +44,9 @@ namespace Utils
 
             _hubConnection.On("PushRoom", (RoomDto roomDto) =>
             {
-                GlobalVariable.Room.SetRoom(roomDto);
-                OnRoomPush = true;
+                GlobalVariable.RoomDto.SetRoom(roomDto);
+                OnRoomPushInBar = true;
+                OnRoomPushInGame = true;
                 if (!SceneManager.GetSceneByName("BarScene").isLoaded)
                 {
                     SceneManager.LoadScene("BarScene");
@@ -54,13 +57,14 @@ namespace Utils
             {
                 GlobalVariable.Players.RemoveAll(_ => true);
                 GlobalVariable.Players.AddRange(players);
-                OnPlayersPush = true;
+                OnPlayersPushInBar = true;
+                OnPlayersPushInGame = true;
             }); 
 
             _hubConnection.On("PushGame", (GameDto game) =>
             {
-                GlobalVariable.Game.SetGame(game);
-                OnGamePush = true;
+                GlobalVariable.GameDto.SetGame(game);
+                OnGamePushInGame = true;
                 if (!SceneManager.GetSceneByName("GameScene").isLoaded)
                 {
                     SceneManager.LoadScene("GameScene");
@@ -90,27 +94,27 @@ namespace Utils
 
         public static async Task LeaveRoom()
         {
-            await _hubConnection.InvokeAsync("LeaveRoom", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("LeaveRoom", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task PlayerReady()
         {
-            await _hubConnection.InvokeAsync("PlayerReady", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("PlayerReady", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task StartGame()
         {
-            await _hubConnection.InvokeAsync("StartGame", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("StartGame", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task DrawCard(string playerWhereCardIsDrawingId)
         {
-            await _hubConnection.InvokeAsync("DrawCard", GlobalVariable.Room.Code, playerWhereCardIsDrawingId);
+            await _hubConnection.InvokeAsync("DrawCard", GlobalVariable.RoomDto.Code, playerWhereCardIsDrawingId);
         }
 
         public static async Task QuitMidGame()
         {
-            await _hubConnection.InvokeAsync("QuitMidGame", GlobalVariable.Room.Code);
+            await _hubConnection.InvokeAsync("QuitMidGame", GlobalVariable.RoomDto.Code);
         }
     }
 }

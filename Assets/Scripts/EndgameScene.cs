@@ -1,37 +1,37 @@
+using Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utils;
 
 public class EndgameScene : MonoBehaviour
 {
-    private const bool VICTORY = true;
-    private const bool CIAT = false;
-    [SerializeField] private Button ButtonReturnLobby, ButtonLeave;
-    [SerializeField] private Image ImageCiat, ImageCe;
+    [SerializeField] private Image ImageCiat,
+        ImageCe;
+
     [SerializeField] private Text TextVictoryDefeat;
+
     // Start is called before the first frame update
     void Start()
     {
-        TextVictoryDefeat.text = VICTORY ? "Victory!" : "Defeat...";
-        TextVictoryDefeat.color = CIAT ? Color.cyan : Color.red;
+        IRole winners = GlobalVariable.GameDto.Game.Winners;
 
-        ImageCiat.enabled = CIAT;    
-        ImageCe.enabled = !CIAT;
+        TextVictoryDefeat.text =
+            winners.Name == GlobalVariable.GameDto.PlayerMe.Role.Name ? "Victoire !" : "Défaite...";
+        TextVictoryDefeat.color = winners.Name == "Blue" ? Color.cyan : Color.red;
+
+        ImageCiat.enabled = winners.Name == "Blue";
+        ImageCe.enabled = winners.Name == "Red";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoToBar()
     {
-        //nothing to do here
+        SceneManager.LoadScene("Scenes/BarScene");
     }
 
-    public void GoToLobby()
+    public async void GoToHome()
     {
-        //nothing to do here
-    }
-
-    public void GoToHome()
-    {
+        await DuckCityHub.LeaveRoom();
         SceneManager.LoadScene("Scenes/HomeScene");
     }
 }
