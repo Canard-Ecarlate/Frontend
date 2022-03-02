@@ -57,6 +57,8 @@ public class GameScene : MonoBehaviour
 
     private bool IsInit;
 
+    private Random Rand = new Random();
+
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -230,7 +232,7 @@ public class GameScene : MonoBehaviour
     {
         if (key == "Yellow")
         {
-            key += new Random().Next(1, 5).ToString();
+            key += Rand.Next(1, 5).ToString();
         }
 
         i.sprite = Sprites["card" + key];
