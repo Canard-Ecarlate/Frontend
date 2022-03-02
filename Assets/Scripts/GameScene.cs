@@ -236,9 +236,9 @@ public class GameScene : MonoBehaviour
         i.sprite = Sprites["card" + key];
     }
 
-    private void StopShowingCard(Image i)
+    public void StopShowingCard()
     {
-        i.gameObject.SetActive(false);
+        DefaultCardOverlay.gameObject.SetActive(false);
     }
 
     public void ShowACard(Image i)
