@@ -27,6 +27,26 @@ public class BarScene : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
+        if (GlobalVariable.RoomDto.Id != "")
+        {
+            RoomCode.text = GlobalVariable.RoomDto.Code; 
+            RoomName.text = GlobalVariable.RoomDto.Name;
+        }
+
+        if (GlobalVariable.Players.Count != 0)
+        {
+            PlayerInWaitingRoomDto me = GlobalVariable.Players.Single(p => p.Id == GlobalVariable.User.Id);
+            NotReadyButton.gameObject.SetActive(!me.Ready);
+            ReadyButton.gameObject.SetActive(me.Ready);
+
+            int nbReady = GlobalVariable.Players.Count(p => p.Ready); 
+        
+            // Display Play button if everybody is ready
+            PlayButton.gameObject.SetActive(nbReady == GlobalVariable.RoomDto.RoomConfiguration.NbPlayers);
+        
+            // Display ducks
+            SetPlayerDucks(GlobalVariable.Players.Count);
+        }
     }
 
     // Update is called once per frame

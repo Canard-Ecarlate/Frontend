@@ -68,6 +68,10 @@ public class GameScene : MonoBehaviour
         if (DuckCityHub.OnGamePushInGame)
         {
             DuckCityHub.OnGamePushInGame = false;
+            if (GlobalVariable.GameDto.Game.IsGameEnded)
+            {
+                goToEndgame();
+            }
             if (!IsInit)
             {
                 IsInit = true;
@@ -479,7 +483,6 @@ public class GameScene : MonoBehaviour
     private void UpdateInterface()
     {
         Game game = GlobalVariable.GameDto.Game;
-        
         if (IsMyCardsAndRoleShown)
         {
             ShowMe();
@@ -489,11 +492,6 @@ public class GameScene : MonoBehaviour
             HideMe();
         }
         
-        if (game.Winners != null)
-        {
-            goToEndgame();
-        }
-
         int nbDrawForFinish =
             (game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound +
             (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);

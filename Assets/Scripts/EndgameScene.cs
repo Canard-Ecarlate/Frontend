@@ -6,30 +6,32 @@ using Utils;
 
 public class EndgameScene : MonoBehaviour
 {
-    private const bool VICTORY = true;
-    private const bool CIAT = false;
-    [SerializeField] private Button ButtonReturnLobby, ButtonLeave;
-    [SerializeField] private Image ImageCiat, ImageCe;
+    [SerializeField] private Image ImageCiat,
+        ImageCe;
+
     [SerializeField] private Text TextVictoryDefeat;
+
     // Start is called before the first frame update
     void Start()
     {
         IRole winners = GlobalVariable.GameDto.Game.Winners;
 
-        TextVictoryDefeat.text = winners.Name==GlobalVariable.GameDto.PlayerMe.Role.Name ? "Victoire !" : "Défaite...";
-        TextVictoryDefeat.color = winners.Name=="Blue" ? Color.cyan : Color.red;
+        TextVictoryDefeat.text =
+            winners.Name == GlobalVariable.GameDto.PlayerMe.Role.Name ? "Victoire !" : "Défaite...";
+        TextVictoryDefeat.color = winners.Name == "Blue" ? Color.cyan : Color.red;
 
-        ImageCiat.enabled = winners.Name=="Blue";    
-        ImageCe.enabled = winners.Name=="Red";
+        ImageCiat.enabled = winners.Name == "Blue";
+        ImageCe.enabled = winners.Name == "Red";
     }
 
-    public void GoToLobby()
+    public void GoToBar()
     {
         SceneManager.LoadScene("Scenes/BarScene");
     }
 
-    public void GoToHome()
+    public async void GoToHome()
     {
+        await DuckCityHub.LeaveRoom();
         SceneManager.LoadScene("Scenes/HomeScene");
     }
 }
