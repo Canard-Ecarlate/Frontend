@@ -56,6 +56,8 @@ public class GameScene : MonoBehaviour
 
     private readonly Dictionary<string, Sprite> Sprites = new Dictionary<string, Sprite>();
 
+    private bool IsInit = false;
+
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -63,34 +65,33 @@ public class GameScene : MonoBehaviour
 
     private void Update()
     {
-        if (DuckCityHub.OnRoomPushInGame)
+        if (DuckCityHub.OnGamePushInGame && !IsInit)
         {
-            DuckCityHub.OnRoomPushInGame = false; 
-            int nbPlayers = GlobalVariable.RoomDto.RoomConfiguration.NbPlayers;
+            IsInit = true;
+            GameDto gameDto = GlobalVariable.GameDto; 
+            int nbPlayers = gameDto.OtherPlayers.Count()+1;
             InitPlayersPosition(nbPlayers);
             PullsEnd.text = (nbPlayers * 4).ToString();
-            LoadSprites(nbPlayers);
-        }
-        if (DuckCityHub.OnPlayersPushInGame)
-        {
+            
             int i = 0;
-            foreach (PlayerInWaitingRoomDto player in GlobalVariable.Players)
+            foreach (OtherPlayerDto player in gameDto.OtherPlayers)
             {
-                PlayersId.Add(i, player.Id);
+                PlayersId.Add(i, player.PlayerId);
 
                 Image playerImg = PlayersPositions[i];
 
                 Text playerName = (Text) playerImg.transform.Find("playerName").gameObject.GetComponent(typeof(Text));
 
-                playerName.text = player.Name;
+                playerName.text = player.PlayerName;
                 i++;
             }
-            DuckCityHub.OnPlayersPushInGame = false;
+            
+            LoadSprites(nbPlayers);
         }
-        if (DuckCityHub.OnGamePushInGame && GlobalVariable.Players.Count != 0)
+        if (DuckCityHub.OnGamePushInGame)
         {
-            UpdateInterface(); 
             DuckCityHub.OnGamePushInGame = false;
+            UpdateInterface();
         }
     }
 
@@ -493,7 +494,7 @@ public class GameScene : MonoBehaviour
 
         int nextPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == game.CurrentPlayerId).Key;
         Antenna.sprite = Sprites[LaserPerPlayer[nextPlayerNumber]];
-        string nextPlayerName = GlobalVariable.Players.FirstOrDefault(x => x.Id == game.CurrentPlayerId)?.Name;
+        string nextPlayerName = game.CurrentPlayerName;
         AnnounceEffect("C'est à " + nextPlayerName + " de piocher !");
 
         foreach (OtherPlayerDto otherPlayer in GlobalVariable.GameDto.OtherPlayers)
