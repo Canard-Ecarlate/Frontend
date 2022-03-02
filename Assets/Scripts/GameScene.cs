@@ -534,4 +534,10 @@ public class GameScene : MonoBehaviour
             otherPlayerButton.interactable = (otherPlayer.NbCardsInHand != 0);
         }
     }
+
+    public async void QuitMidGame()
+    {
+        await DuckCityHub.QuitMidGame();
+        SceneManager.LoadScene("Scenes/HomeScene");
+    }
 }
