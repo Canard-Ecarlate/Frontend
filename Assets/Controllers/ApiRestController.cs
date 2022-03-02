@@ -1,8 +1,10 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Models;
 using Newtonsoft.Json;
+using UnityEngine;
 using Utils;
 
 namespace Controllers
@@ -10,7 +12,7 @@ namespace Controllers
     public static class ApiRestController
     {
         private static readonly HttpClient HttpClient = new HttpClient();
-        private static readonly string UrlApi = "https://localhost:7223/api";
+        private static readonly string UrlApi = "https://dotnet.canardecarlate.fr/api";
 
         private static HttpResponseMessage PostAsync(string endUrl, string jsonContent)
         {

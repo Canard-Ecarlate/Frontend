@@ -23,11 +23,12 @@ namespace Utils
         public static void StartHub(string containerId)
         {
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7143/",
+                .WithUrl("https://game.canardecarlate.fr/",
                     options =>
                     {
                         options.Headers.Add("Authorization",
                             new AuthenticationHeaderValue("Bearer", DataSave.LoadDataString("token")).ToString());
+                        options.Headers.Add("ContainerId", GlobalVariable.User.ContainerId);
                     })
                 .WithAutomaticReconnect()
                 .Build();

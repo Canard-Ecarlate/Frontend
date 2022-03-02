@@ -30,7 +30,7 @@ public class LoginSignupScene : MonoBehaviour
         string token = DataSave.LoadDataString("token");
         if (token != "")
         {
-            string response = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://localhost:7223/api/Authentication/CheckToken", token);
+            string response = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://dotnet.canardecarlate.fr/api/Authentication/CheckToken", token);
             Debug.Log("Auto connect : " + response);
             GlobalVariable.User.ChangeUser(JsonConvert.DeserializeObject<User>(response));
             GlobalVariable.User.Token = token;
@@ -57,7 +57,7 @@ public class LoginSignupScene : MonoBehaviour
 
         string response =
             GlobalVariable.WebCommunicatorControler.AppelWebAuthentification(
-                "https://localhost:7223/api/Authentication/Login", pseudo, password);
+                "https://dotnet.canardecarlate.fr/api/Authentication/Login", pseudo, password);
         try
         {
             GlobalVariable.User.ChangeUser(JsonConvert.DeserializeObject<User>(response));
@@ -96,7 +96,7 @@ public class LoginSignupScene : MonoBehaviour
         string confirm = InputConfirm.text;
 
         string response = GlobalVariable.WebCommunicatorControler.AppelWebRegistration(
-            "https://localhost:7223/api/Authentication/Signup", pseudo, email, password, confirm);
+            "https://dotnet.canardecarlate.fr/api/Authentication/Signup", pseudo, email, password, confirm);
 
         try
         {
