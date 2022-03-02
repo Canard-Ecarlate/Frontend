@@ -56,7 +56,7 @@ public class GameScene : MonoBehaviour
 
     private readonly Dictionary<string, Sprite> Sprites = new Dictionary<string, Sprite>();
 
-    private bool IsInit = false;
+    private bool IsInit;
 
     void Start()
     {
@@ -65,34 +65,47 @@ public class GameScene : MonoBehaviour
 
     private void Update()
     {
-        if (DuckCityHub.OnGamePushInGame && !IsInit)
-        {
-            IsInit = true;
-            GameDto gameDto = GlobalVariable.GameDto; 
-            int nbPlayers = gameDto.OtherPlayers.Count()+1;
-            InitPlayersPosition(nbPlayers);
-            PullsEnd.text = (nbPlayers * 4).ToString();
-            
-            int i = 0;
-            foreach (OtherPlayerDto player in gameDto.OtherPlayers)
-            {
-                PlayersId.Add(i, player.PlayerId);
-
-                Image playerImg = PlayersPositions[i];
-
-                Text playerName = (Text) playerImg.transform.Find("playerName").gameObject.GetComponent(typeof(Text));
-
-                playerName.text = player.PlayerName;
-                i++;
-            }
-            
-            LoadSprites(nbPlayers);
-        }
         if (DuckCityHub.OnGamePushInGame)
         {
             DuckCityHub.OnGamePushInGame = false;
-            UpdateInterface();
+            if (!IsInit)
+            {
+                IsInit = true;
+                InitInterface();
+            }
+            else
+            {
+                UpdateInterface();
+            }
         }
+    }
+
+    private void InitInterface()
+    {
+        GameDto gameDto = GlobalVariable.GameDto; 
+        int nbPlayers = gameDto.OtherPlayers.Count()+1; 
+        LoadSprites(nbPlayers);
+        
+        InitPlayersPosition(nbPlayers);
+        PullsEnd.text = (nbPlayers * 4).ToString();
+        
+        PlayersId.Add(0, GlobalVariable.User.Id);
+        int i = 1;
+        foreach (OtherPlayerDto player in gameDto.OtherPlayers)
+        {
+            PlayersId.Add(i, player.PlayerId);
+
+            Image playerImg = PlayersPositions[i];
+
+            Text playerName = (Text) playerImg.transform.Find("playerName").gameObject.GetComponent(typeof(Text));
+
+            playerName.text = player.PlayerName;
+            i++;
+        }
+        
+        DisplayInfoText();
+        
+        DisplayCardsInOtherPlayersHands();
     }
 
     public void ShowMe()
@@ -242,7 +255,7 @@ public class GameScene : MonoBehaviour
         StopShowingCard(DefaultCardOverlay);
     }
 
-    public void AnnounceEffect(string s)
+    private void AnnounceEffect(string s)
     {
         EffectText.text = s;
     }
@@ -259,7 +272,7 @@ public class GameScene : MonoBehaviour
         SceneManager.LoadScene("Scenes/EndgameScene");
     }
 
-    private void LoadSprites(int nbPlayers)
+    private async void LoadSprites(int nbPlayers)
     {
         string[] rolePaths = {
             GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_role.png",
@@ -274,8 +287,9 @@ public class GameScene : MonoBehaviour
             roleHandle.Completed += obj =>
             {
                 string key = "role_" + i1;
-                LoadSprite(obj, key);
+                LoadOneSprite(obj, key);
             };
+            await roleHandle.Task;
         }
 
         string eyePath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Cadran_" + nbPlayers +
@@ -284,16 +298,18 @@ public class GameScene : MonoBehaviour
         eyeHandle.Completed += obj =>
         {
             string key = "eye";
-            LoadSprite(obj, key);
+            LoadOneSprite(obj, key);
         };
+        await eyeHandle.Task;
 
         string biberon0Path=GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" + nbPlayers + "_00.png";
         AsyncOperationHandle<Sprite> biberon0Handle = Addressables.LoadAssetAsync<Sprite>(biberon0Path);
         biberon0Handle.Completed += obj =>
         {
             string key = "biberon_0";
-            LoadSprite(obj, key);
+            LoadOneSprite(obj, key);
         };
+        await biberon0Handle.Task;
 
         for (int i = 1; i <= nbPlayers; i++)
         {
@@ -308,21 +324,24 @@ public class GameScene : MonoBehaviour
             arrowHandle.Completed += obj =>
             {
                 string key = "arrow_" + i1;
-                LoadSprite(obj, key);
+                LoadOneSprite(obj, key);
             };
+            await arrowHandle.Task;
             AsyncOperationHandle<Sprite> biberonHandle = Addressables.LoadAssetAsync<Sprite>(biberonPath);
             biberonHandle.Completed += obj =>
             {
                 string key = "biberon_" + i1;
-                LoadSprite(obj, key);
+                LoadOneSprite(obj, key);
             };
+            await biberonHandle.Task;
         }
 
         foreach (string v in LaserPerPlayer.Values)
         {
             string laserPath = GlobalVariable.SpritePathBase + "HUD/Bomb/Lasers/graphisme_bombe_" + v + "_v1.png";
             AsyncOperationHandle<Sprite> laserHandle = Addressables.LoadAssetAsync<Sprite>(laserPath);
-            laserHandle.Completed += obj => { LoadSprite(obj, v); };
+            laserHandle.Completed += obj => { LoadOneSprite(obj, v); };
+            await laserHandle.Task;
         }
 
         Dictionary<string, string> dictCards = new Dictionary<string, string>
@@ -339,18 +358,19 @@ public class GameScene : MonoBehaviour
         foreach (var kv in dictCards)
         {
             AsyncOperationHandle<Sprite> cardHandle = Addressables.LoadAssetAsync<Sprite>(kv.Value);
-            cardHandle.Completed += obj => { LoadSprite(obj, kv.Key); };
+            cardHandle.Completed += obj => { LoadOneSprite(obj, kv.Key); };
+            await cardHandle.Task;
         }
 
-        InitInterface("players");
+        InitFirstSprites("players");
     }
 
-    private void LoadSprite(AsyncOperationHandle<Sprite> handleToCheck, string key)
+    private void LoadOneSprite(AsyncOperationHandle<Sprite> handleToCheck, string key)
     {
         if (handleToCheck.Status == AsyncOperationStatus.Succeeded)
         {
             Sprites.Add(key, handleToCheck.Result);
-            InitInterface(key);
+            InitFirstSprites(key);
         }
     }
 
@@ -428,7 +448,7 @@ public class GameScene : MonoBehaviour
         }
     }
 
-    private void InitInterface(string key)
+    private void InitFirstSprites(string key)
     {
         switch (key)
         {
@@ -438,8 +458,8 @@ public class GameScene : MonoBehaviour
             case "eye":
                 EyeBase.sprite = Sprites["eye"];
                 break;
-            case "pointer_1":
-                Arrow.sprite = Sprites["pointer_1"];
+            case "arrow_1":
+                Arrow.sprite = Sprites["arrow_1"];
                 break;
             case "biberon_0":
                 Biberon.sprite = Sprites["biberon_0"];
@@ -494,9 +514,19 @@ public class GameScene : MonoBehaviour
 
         int nextPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == game.CurrentPlayerId).Key;
         Antenna.sprite = Sprites[LaserPerPlayer[nextPlayerNumber]];
-        string nextPlayerName = game.CurrentPlayerName;
+        
+        DisplayInfoText();
+        DisplayCardsInOtherPlayersHands();
+    }
+    
+    private void DisplayInfoText()
+    {
+        string nextPlayerName = GlobalVariable.GameDto.Game.CurrentPlayerName;
         AnnounceEffect("C'est à " + nextPlayerName + " de piocher !");
+    }
 
+    private void DisplayCardsInOtherPlayersHands()
+    {
         foreach (OtherPlayerDto otherPlayer in GlobalVariable.GameDto.OtherPlayers)
         {
             int otherPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == otherPlayer.PlayerId).Key;
