@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Models;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -56,8 +55,8 @@ public class GameScene : MonoBehaviour
     private readonly Dictionary<string, Sprite> Sprites = new Dictionary<string, Sprite>();
 
     private bool IsInit;
-
-    private Random Rand = new Random();
+    private readonly Random Random = new Random();
+    private bool IsMyCardsAndRoleShown;
 
     void Start()
     {
@@ -83,36 +82,43 @@ public class GameScene : MonoBehaviour
 
     private void InitInterface()
     {
-        GameDto gameDto = GlobalVariable.GameDto; 
-        int nbPlayers = gameDto.OtherPlayers.Count()+1; 
-        LoadSprites(nbPlayers);
-        
+        GameDto gameDto = GlobalVariable.GameDto;
+        Game game = gameDto.Game;
+        int nbPlayers = gameDto.OtherPlayers.Count() + 1;
         InitPlayersPosition(nbPlayers);
-        PullsEnd.text = (nbPlayers * 4).ToString();
         
+        // Players
+        foreach (Image playerImage in PlayersPositions.Values)
+        {
+            playerImage.gameObject.SetActive(true);
+        }
+        
+        // Affectation des id de joueurs à une position 
         PlayersId.Add(0, GlobalVariable.User.Id);
         int i = 1;
         foreach (OtherPlayerDto player in gameDto.OtherPlayers)
         {
             PlayersId.Add(i, player.PlayerId);
-
             Image playerImg = PlayersPositions[i];
-
             Text playerName = (Text) playerImg.transform.Find("playerName").gameObject.GetComponent(typeof(Text));
-
             playerName.text = player.PlayerName;
             i++;
         }
         
-        DisplayInfoText();
+        LoadSprites(nbPlayers);
         
+        int nbDrawForFinish = (game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound + (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
+        PullsEnd.text = nbDrawForFinish.ToString();
+
+        DisplayInfoText();
         DisplayCardsInOtherPlayersHands();
     }
 
     public void ShowMe()
     {
+        IsMyCardsAndRoleShown = true;
         IRole role = GlobalVariable.GameDto.PlayerMe.Role;
-        int me = role.Name == "Blue" ? 1: 2;
+        int me = role.Name == "Blue" ? 1 : 2;
         GameRole.sprite = Sprites["role_" + me];
         List<ICard> cards = GlobalVariable.GameDto.PlayerMe.CardsInHand.ToList();
         if (cards.Count > 0)
@@ -171,6 +177,7 @@ public class GameScene : MonoBehaviour
 
     public void HideMe()
     {
+        IsMyCardsAndRoleShown = false;
         GameRole.sprite = Sprites["role_0"];
 
         List<ICard> cards = GlobalVariable.GameDto.PlayerMe.CardsInHand.ToList();
@@ -232,7 +239,7 @@ public class GameScene : MonoBehaviour
     {
         if (key == "Yellow")
         {
-            key += Rand.Next(1, 5).ToString();
+            key += Random.Next(1, 5).ToString();
         }
 
         i.sprite = Sprites["card" + key];
@@ -264,108 +271,6 @@ public class GameScene : MonoBehaviour
     private void goToEndgame()
     {
         SceneManager.LoadScene("Scenes/EndgameScene");
-    }
-
-    private async void LoadSprites(int nbPlayers)
-    {
-        string[] rolePaths = {
-            GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_role.png",
-            GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_good.png",
-            GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_bad.png"
-        };
-
-        for (int i = 0; i < rolePaths.Length; i++)
-        {
-            AsyncOperationHandle<Sprite> roleHandle = Addressables.LoadAssetAsync<Sprite>(rolePaths[i]);
-            int i1 = i;
-            roleHandle.Completed += obj =>
-            {
-                string key = "role_" + i1;
-                LoadOneSprite(obj, key);
-            };
-            await roleHandle.Task;
-        }
-
-        string eyePath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Cadran_" + nbPlayers +
-                         "J_02.png";
-        AsyncOperationHandle<Sprite> eyeHandle = Addressables.LoadAssetAsync<Sprite>(eyePath);
-        eyeHandle.Completed += obj =>
-        {
-            string key = "eye";
-            LoadOneSprite(obj, key);
-        };
-        await eyeHandle.Task;
-
-        string biberon0Path=GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" + nbPlayers + "_00.png";
-        AsyncOperationHandle<Sprite> biberon0Handle = Addressables.LoadAssetAsync<Sprite>(biberon0Path);
-        biberon0Handle.Completed += obj =>
-        {
-            string key = "biberon_0";
-            LoadOneSprite(obj, key);
-        };
-        await biberon0Handle.Task;
-
-        for (int i = 1; i <= nbPlayers; i++)
-        {
-            string arrowPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" +
-                                 nbPlayers + "_0" + i + ".png";
-            string biberonPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" +
-                                 nbPlayers + "_0" + i + ".png";
-
-            int i1 = i;
-
-            AsyncOperationHandle<Sprite> arrowHandle = Addressables.LoadAssetAsync<Sprite>(arrowPath);
-            arrowHandle.Completed += obj =>
-            {
-                string key = "arrow_" + i1;
-                LoadOneSprite(obj, key);
-            };
-            await arrowHandle.Task;
-            AsyncOperationHandle<Sprite> biberonHandle = Addressables.LoadAssetAsync<Sprite>(biberonPath);
-            biberonHandle.Completed += obj =>
-            {
-                string key = "biberon_" + i1;
-                LoadOneSprite(obj, key);
-            };
-            await biberonHandle.Task;
-        }
-
-        foreach (string v in LaserPerPlayer.Values)
-        {
-            string laserPath = GlobalVariable.SpritePathBase + "HUD/Bomb/Lasers/graphisme_bombe_" + v + "_v1.png";
-            AsyncOperationHandle<Sprite> laserHandle = Addressables.LoadAssetAsync<Sprite>(laserPath);
-            laserHandle.Completed += obj => { LoadOneSprite(obj, v); };
-            await laserHandle.Task;
-        }
-
-        Dictionary<string, string> dictCards = new Dictionary<string, string>
-        {
-            {"cardDefault", GlobalVariable.SpritePathBase + "Cards/Back.png"},
-            {"cardBomb", GlobalVariable.SpritePathBase + "Cards/DETONNATEUR.png"},
-            {"cardGreen", GlobalVariable.SpritePathBase + "Cards/LIQUIDE.png"},
-            {"cardYellow1", GlobalVariable.SpritePathBase + "Cards/NULL_01.png"},
-            {"cardYellow2", GlobalVariable.SpritePathBase + "Cards/NULL_02.png"},
-            {"cardYellow3", GlobalVariable.SpritePathBase + "Cards/NULL_03.png"},
-            {"cardYellow4", GlobalVariable.SpritePathBase + "Cards/NULL_04.png"}
-        };
-
-        foreach (var kv in dictCards)
-        {
-            AsyncOperationHandle<Sprite> cardHandle = Addressables.LoadAssetAsync<Sprite>(kv.Value);
-            cardHandle.Completed += obj => { LoadOneSprite(obj, kv.Key); };
-            await cardHandle.Task;
-        }
-
-        InitFirstSprites("players");
-    }
-
-    private void LoadOneSprite(AsyncOperationHandle<Sprite> handleToCheck, string key)
-    {
-        if (handleToCheck.Status == AsyncOperationStatus.Succeeded)
-        {
-            Sprites.Add(key, handleToCheck.Result);
-            InitFirstSprites(key);
-        }
     }
 
     private void InitPlayersPosition(int nbPlayers)
@@ -442,77 +347,177 @@ public class GameScene : MonoBehaviour
         }
     }
 
-    private void InitFirstSprites(string key)
+    private void LoadSprites(int nbPlayers)
     {
-        switch (key)
+        Game game = GlobalVariable.GameDto.Game;
+        
+        // Roles
+        string[] rolePaths =
         {
-            case "role_0":
-                GameRole.sprite = Sprites["role_0"];
-                break;
-            case "eye":
-                EyeBase.sprite = Sprites["eye"];
-                break;
-            case "arrow_1":
-                Arrow.sprite = Sprites["arrow_1"];
-                break;
-            case "biberon_0":
-                Biberon.sprite = Sprites["biberon_0"];
-                break;
-            case "cardDefault":
-                PreviousCardOne.sprite = Sprites["cardDefault"];
-                Card1.sprite = Sprites["cardDefault"];
-                Card2.sprite = Sprites["cardDefault"];
-                Card3.sprite = Sprites["cardDefault"];
-                Card4.sprite = Sprites["cardDefault"];
-                Card5.sprite = Sprites["cardDefault"];
-                break;
-            case "players":
-                foreach (Image v in PlayersPositions.Values)
+            GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_role.png",
+            GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_good.png",
+            GlobalVariable.SpritePathBase + "Ducks/Base_Duck/Canard_bad.png"
+        };
+        for (int i = 0; i < rolePaths.Length; i++)
+        {
+            AsyncOperationHandle<Sprite> roleHandle = Addressables.LoadAssetAsync<Sprite>(rolePaths[i]);
+            int i1 = i;
+            roleHandle.Completed += obj =>
+            {
+                if (obj.Status == AsyncOperationStatus.Succeeded)
                 {
-                    v.gameObject.SetActive(true);
+                    Sprites.Add("role_" + i1, obj.Result);
                 }
-                break;
-            default:
-                // nothing to do here
-                break;
+            };
+        }
+
+        // Eye
+        string eyePath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Cadran_" + nbPlayers +
+                         "J_02.png";
+        AsyncOperationHandle<Sprite> eyeHandle = Addressables.LoadAssetAsync<Sprite>(eyePath);
+        eyeHandle.Completed += obj =>
+        {
+            if (obj.Status == AsyncOperationStatus.Succeeded)
+            {
+                Sprites.Add("eye", obj.Result);
+                EyeBase.sprite = obj.Result;
+            }
+        };
+
+        // Bottle
+        for (int i = 0; i <= nbPlayers; i++)
+        {
+            string biberonPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Biberon_0" +
+                                 nbPlayers + "_0" + i + ".png";
+            int i1 = i;
+            AsyncOperationHandle<Sprite> biberonHandle = Addressables.LoadAssetAsync<Sprite>(biberonPath);
+            biberonHandle.Completed += obj =>
+            {
+                if (obj.Status == AsyncOperationStatus.Succeeded)
+                {
+                    Sprites.Add("biberon_" + i1, obj.Result);
+                    if (i1 == game.NbGreenDrawn)
+                    {
+                        Biberon.sprite = obj.Result;
+                    }
+                }
+            };
+        }
+
+        // Arrow
+        for (int i = 1; i <= nbPlayers; i++)
+        {
+            string arrowPath = GlobalVariable.SpritePathBase + "HUD/Bomb/" + nbPlayers + "_joueurs/Fleches_0" +
+                               nbPlayers + "_0" + i + ".png";
+            int i1 = i;
+
+            AsyncOperationHandle<Sprite> arrowHandle = Addressables.LoadAssetAsync<Sprite>(arrowPath);
+            arrowHandle.Completed += obj =>
+            {
+                if (obj.Status == AsyncOperationStatus.Succeeded)
+                {
+                    Sprites.Add("arrow_" + i1, obj.Result);
+                    if (i1 == game.NbDrawnDuringRound + 1)
+                    {
+                        Arrow.sprite = obj.Result;
+                    }
+                }
+            };
+        }
+
+        // Laser
+        foreach (string laserKey in LaserPerPlayer.Values)
+        {
+            string laserPath = GlobalVariable.SpritePathBase + "HUD/Bomb/Lasers/graphisme_bombe_" + laserKey +
+                               "_v1.png";
+            AsyncOperationHandle<Sprite> laserHandle = Addressables.LoadAssetAsync<Sprite>(laserPath);
+            laserHandle.Completed += obj =>
+            {
+                if (obj.Status == AsyncOperationStatus.Succeeded)
+                {
+                    Sprites.Add(laserKey, obj.Result);
+                    int nextPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == game.CurrentPlayerId).Key;
+                    if (laserKey == LaserPerPlayer[nextPlayerNumber])
+                    {
+                        Antenna.sprite = obj.Result;
+                    }
+                }
+            };
+        }
+
+        // Cards
+        Dictionary<string, string> dictCards = new Dictionary<string, string>
+        {
+            {"cardDefault", GlobalVariable.SpritePathBase + "Cards/Back.png"},
+            {"cardBomb", GlobalVariable.SpritePathBase + "Cards/DETONNATEUR.png"},
+            {"cardGreen", GlobalVariable.SpritePathBase + "Cards/LIQUIDE.png"},
+            {"cardYellow1", GlobalVariable.SpritePathBase + "Cards/NULL_01.png"},
+            {"cardYellow2", GlobalVariable.SpritePathBase + "Cards/NULL_02.png"},
+            {"cardYellow3", GlobalVariable.SpritePathBase + "Cards/NULL_03.png"},
+            {"cardYellow4", GlobalVariable.SpritePathBase + "Cards/NULL_04.png"}
+        };
+
+        foreach (KeyValuePair<string, string> kv in dictCards)
+        {
+            AsyncOperationHandle<Sprite> cardHandle = Addressables.LoadAssetAsync<Sprite>(kv.Value);
+            cardHandle.Completed += obj =>
+            {
+                if (obj.Status == AsyncOperationStatus.Succeeded)
+                {
+                    Sprites.Add(kv.Key, obj.Result);
+                    
+                    // Previous card
+                    if (game.PreviousDrawnCard != null && kv.Key.Contains(game.PreviousDrawnCard.Name))
+                    {
+                        PreviousCardOne.sprite = obj.Result;
+                    }
+                }
+            };
         }
     }
 
     private void UpdateInterface()
     {
         Game game = GlobalVariable.GameDto.Game;
-
-        if (game.Winners!=null)
+        
+        if (IsMyCardsAndRoleShown)
+        {
+            ShowMe();
+        }
+        else
+        {
+            HideMe();
+        }
+        
+        if (game.Winners != null)
         {
             goToEndgame();
         }
-        
+
         int nbDrawForFinish =
             (game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound +
             (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
         PullsEnd.text = nbDrawForFinish.ToString();
 
-        if (game.PreviousDrawnCard != null)
-        {
-            PreviousCardOne.sprite = Sprites[game.PreviousDrawnCard.Name];
-        }
-        else
-        {
-            PreviousCardOne.sprite = Sprites["cardDefault"]; 
-        }
+        SetCard(PreviousCardOne, game.PreviousDrawnCard.Name); 
 
         int arrowInt = game.NbDrawnDuringRound + 1;
         Arrow.sprite = Sprites["arrow_" + arrowInt];
 
         Biberon.sprite = Sprites["biberon_" + game.NbGreenDrawn];
 
-        int nextPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == game.CurrentPlayerId).Key;
-        Antenna.sprite = Sprites[LaserPerPlayer[nextPlayerNumber]];
-        
+        DisplayAntenna();
         DisplayInfoText();
         DisplayCardsInOtherPlayersHands();
     }
-    
+
+    private void DisplayAntenna()
+    {
+        int nextPlayerNumber =
+            PlayersId.FirstOrDefault(x => x.Value == GlobalVariable.GameDto.Game.CurrentPlayerId).Key;
+        Antenna.sprite = Sprites[LaserPerPlayer[nextPlayerNumber]];
+    }
+
     private void DisplayInfoText()
     {
         string nextPlayerName = GlobalVariable.GameDto.Game.CurrentPlayerName;
@@ -524,10 +529,8 @@ public class GameScene : MonoBehaviour
         foreach (OtherPlayerDto otherPlayer in GlobalVariable.GameDto.OtherPlayers)
         {
             int otherPlayerNumber = PlayersId.FirstOrDefault(x => x.Value == otherPlayer.PlayerId).Key;
-            Image otherPlayerimg = PlayersPositions[otherPlayerNumber];
-
-            Image otherPlayerCards =
-                (Image) otherPlayerimg.transform.Find("playerCards").gameObject.GetComponent(typeof(Image));
+            Image otherPlayerImg = PlayersPositions[otherPlayerNumber];
+            Image otherPlayerCards = (Image) otherPlayerImg.transform.Find("playerCards").gameObject.GetComponent(typeof(Image));
             otherPlayerCards.gameObject.SetActive(otherPlayer.NbCardsInHand != 0);
             Image otherPlayerPosition = PlayersPositions[otherPlayerNumber];
             Button otherPlayerButton = (Button) otherPlayerPosition.gameObject.GetComponent(typeof(Button));
