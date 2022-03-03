@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Controllers;
 using Models;
 using UnityEngine;
@@ -13,11 +14,22 @@ public class FolderScene : MonoBehaviour
 
     [SerializeField] private InputField RoomName, RoomCode;
 
+    private string ContainerId;
+
     // Start is called before the first frame update
     void Start()
     {
         RoomNameText.horizontalOverflow = HorizontalWrapMode.Wrap;
         Screen.orientation = ScreenOrientation.Portrait;
+    }
+
+    void Update()
+    {
+        if (DuckCityHub.IsConnectedCreate)
+        {
+            DuckCityHub.IsConnectedCreate = false;
+            CreateRoomCallback();
+        }
     }
 
     // Beginning of Transitions section
@@ -59,15 +71,28 @@ public class FolderScene : MonoBehaviour
         }
     }
 
-    public async void CreateRoom()
+    public void CreateRoom()
     {
         GameContainer container = ApiRestController.FindContainerIdForCreateRoom(new RoomCreationApiDto(RoomName.text));
         try
         {
-            DuckCityHub.StartHub(container.Id);
+            ContainerId = container.Id;
+            DuckCityHub.StartHub(container.Id,CreateRoomCallback);
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error when creating room : "+ e.Message);
+            throw;
+        }
+    }
+    
+    private async Task CreateRoomCallback()
+    {
+        try
+        {
             await DuckCityHub.CreateRoom(new RoomCreationDto
             {
-                ContainerId = container.Id,
+                ContainerId = ContainerId,
                 IsPrivate = true,
                 NbPlayers = int.Parse(NbPlayers.text),
                 RoomName = RoomName.text
@@ -81,7 +106,7 @@ public class FolderScene : MonoBehaviour
     }
     
     // Beginning of Private section
-    public async void JoinRoom()
+    public void JoinRoom()
     {
         GameContainer container = ApiRestController.FindContainerIdForJoinRoom(new UserAndRoomDto(RoomCode.text));
         if (container == null)
@@ -89,7 +114,11 @@ public class FolderScene : MonoBehaviour
             Debug.Log("Room not found");
             return;
         }
-        DuckCityHub.StartHub(container.Id);
+        DuckCityHub.StartHub(container.Id, JoinRoomCallback);
+    }
+    
+    private async Task JoinRoomCallback()
+    {
         try
         {
             await DuckCityHub.JoinRoom(RoomCode.text);

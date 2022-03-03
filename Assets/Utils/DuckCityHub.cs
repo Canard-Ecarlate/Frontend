@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using BestHTTP.SignalRCore;
+using BestHTTP.SignalRCore.Authentication;
 using BestHTTP.SignalRCore.Encoders;
 //using Microsoft.AspNetCore.SignalR.Client;
 using Models;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -14,7 +16,7 @@ namespace Utils
 {
     public static class DuckCityHub
     {
-        private static HubConnection _hubConnection;
+        public static HubConnection _hubConnection;
 
         public static bool OnRoomPushInBar { get; set; }
         public static bool OnRoomPushInGame { get; set; }
@@ -22,13 +24,27 @@ namespace Utils
         public static bool OnPlayersPushInGame { get; set; }
         public static bool OnGamePushInGame { get; set; }
 
-        public static async void StartHub(string containerId)
+        public static bool IsConnectedCreate { get; set; }
+
+        public static void StartHub(string containerId, Func<Task> callback)
         {
+            HubOptions options = new HubOptions();
+            options.SkipNegotiation = true;
             _hubConnection = new HubConnection(new Uri("https://game.canardecarlate.fr"),
-                new JsonProtocol(new LitJsonEncoder()));
+                new JsonProtocol(new LitJsonEncoder()),options);
+            _hubConnection.AuthenticationProvider = new HubAuthProvider(_hubConnection, containerId);
+            _hubConnection.OnConnected += obj =>
+            {
+                //IsConnectedCreate = true;
+                callback();
+                Debug.Log("connecté");
+            };
+            _hubConnection.OnError += (obj,error) =>
+            {
+                Debug.Log("Error");
+                Debug.Log(error);
+            };
             /*_hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7143/",
-            _hubConnection = new HubConnectionBuilder()
                 .WithUrl("https://game.canardecarlate.fr/",
                     options =>
                     {
@@ -81,7 +97,7 @@ namespace Utils
             try
             {
                 _hubConnection.StartConnect();
-                await _hubConnection.StartAsync();
+                //await _hubConnection.StartAsync();
                 Debug.Log("Start hub connection in container (id : " + containerId + " fake)");
             }
             catch (Exception ex)
