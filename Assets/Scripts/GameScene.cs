@@ -522,6 +522,7 @@ public class GameScene : MonoBehaviour
             .GetComponent(typeof(Canvas));
         Image imgEye = (Image) canvasPlayers.transform.Find("eye").gameObject.GetComponent(typeof(Image));
         Sprites.Add("eye", imgEye.sprite);
+        EyeBase.sprite = imgEye.sprite;
 
         // Bottle
         for (int i = 0; i <= nbPlayers; i++)
@@ -563,6 +564,8 @@ public class GameScene : MonoBehaviour
             Image imgCard = (Image) CanvasSprites.transform.Find(key).gameObject.GetComponent(typeof(Image));
             Sprites.Add(key,imgCard.sprite);
         }
+        
+        DisplayAntenna();
     }
     
 
