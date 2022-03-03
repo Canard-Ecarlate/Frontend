@@ -68,7 +68,7 @@ public class LoginSignupScene : MonoBehaviour
             }
             else
             {
-                DuckCityHub.StartHub(GlobalVariable.User.ContainerId);
+                DuckCityHub.StartHub(GlobalVariable.User.ContainerId, () => null);
             }
         }
         catch (JsonReaderException e)

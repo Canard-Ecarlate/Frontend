@@ -57,6 +57,10 @@ public class GameScene : MonoBehaviour
     private bool IsInit;
     private readonly Random Random = new Random();
     private bool IsMyCardsAndRoleShown;
+    private bool DisplayShowMe;
+    private bool DisplayHideMe;
+
+    [SerializeField] private Canvas CanvasSprites;
 
     void Start()
     {
@@ -82,7 +86,29 @@ public class GameScene : MonoBehaviour
                 UpdateInterface();
             }
         }
+
+        if (DisplayShowMe)
+        {
+            DisplayShowMe = false;
+            ShowMe();
+        }
+
+        if (DisplayHideMe)
+        {
+            DisplayHideMe = false;
+            HideMe();
+        }
     }
+
+    public void ShowMeOnClick()
+    {
+        DisplayShowMe = true;
+    } 
+
+    public void HideMeOnClick()
+    {
+        DisplayHideMe = true;
+    } 
 
     private void InitInterface()
     {
@@ -109,7 +135,7 @@ public class GameScene : MonoBehaviour
             i++;
         }
         
-        LoadSprites(nbPlayers);
+        LoadSpritesDegueulasse(nbPlayers);
         
         int nbDrawForFinish = ((game.NbTotalRound - game.RoundNb) * game.NbCardsToDrawByRound) + (game.NbCardsToDrawByRound - game.NbDrawnDuringRound);
         PullsEnd.text = nbDrawForFinish.ToString();
@@ -479,6 +505,69 @@ public class GameScene : MonoBehaviour
             };
         }
     }
+    
+    private void LoadSpritesDegueulasse(int nbPlayers)
+    {
+        Game game = GlobalVariable.GameDto.Game;
+        
+        // Roles
+        for (int i = 0; i < 3; i++)
+        {
+            Image img = (Image) CanvasSprites.transform.Find("role_"+i).gameObject.GetComponent(typeof(Image));
+            Sprites.Add("role_" + i, img.sprite);
+        }
+
+        // Eye
+        Canvas canvasPlayers = (Canvas) CanvasSprites.transform.Find("Canvas_" + nbPlayers).gameObject
+            .GetComponent(typeof(Canvas));
+        Image imgEye = (Image) canvasPlayers.transform.Find("eye").gameObject.GetComponent(typeof(Image));
+        Sprites.Add("eye", imgEye.sprite);
+        EyeBase.sprite = imgEye.sprite;
+
+        // Bottle
+        for (int i = 0; i <= nbPlayers; i++)
+        {
+            Image imgBib = (Image) canvasPlayers.transform.Find("biberon_"+i).gameObject.GetComponent(typeof(Image));
+            Sprites.Add("biberon_"+i,imgBib.sprite);
+        }
+
+        // Arrow
+        for (int i = 1; i <= nbPlayers; i++)
+        {
+            Image imgArr = (Image) canvasPlayers.transform.Find("arrow_"+i).gameObject.GetComponent(typeof(Image));
+            Sprites.Add("arrow_"+i,imgArr.sprite);
+        }
+
+        // Laser
+        Canvas canvasLasers = (Canvas) CanvasSprites.transform.Find("Canvas_Lasers").gameObject
+            .GetComponent(typeof(Canvas));
+        foreach (string laserKey in LaserPerPlayer.Values)
+        {
+            Image imgLas = (Image) canvasLasers.transform.Find(laserKey).gameObject.GetComponent(typeof(Image));
+            Sprites.Add(laserKey,imgLas.sprite);
+        }
+
+        // Cards
+        Dictionary<string, string> dictCards = new Dictionary<string, string>
+        {
+            {"cardDefault", GlobalVariable.SpritePathBase + "Cards/Back.png"},
+            {"cardBomb", GlobalVariable.SpritePathBase + "Cards/DETONNATEUR.png"},
+            {"cardGreen", GlobalVariable.SpritePathBase + "Cards/LIQUIDE.png"},
+            {"cardYellow1", GlobalVariable.SpritePathBase + "Cards/NULL_01.png"},
+            {"cardYellow2", GlobalVariable.SpritePathBase + "Cards/NULL_02.png"},
+            {"cardYellow3", GlobalVariable.SpritePathBase + "Cards/NULL_03.png"},
+            {"cardYellow4", GlobalVariable.SpritePathBase + "Cards/NULL_04.png"}
+        };
+
+        foreach (string key in dictCards.Keys)
+        {
+            Image imgCard = (Image) CanvasSprites.transform.Find(key).gameObject.GetComponent(typeof(Image));
+            Sprites.Add(key,imgCard.sprite);
+        }
+        
+        DisplayAntenna();
+    }
+    
 
     private void UpdateInterface()
     {

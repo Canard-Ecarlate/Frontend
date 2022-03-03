@@ -5,6 +5,6 @@ namespace Models
     public class PlayerMeDto
     {
         public IRole Role { get; set; }
-        public IEnumerable<ICard> CardsInHand { get; set; }
+        public List<ICard> CardsInHand { get; set; }
     }
 }
