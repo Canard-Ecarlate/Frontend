@@ -57,6 +57,8 @@ public class GameScene : MonoBehaviour
     private bool IsInit;
     private readonly Random Random = new Random();
     private bool IsMyCardsAndRoleShown;
+    private bool DisplayShowMe;
+    private bool DisplayHideMe;
 
     void Start()
     {
@@ -82,7 +84,29 @@ public class GameScene : MonoBehaviour
                 UpdateInterface();
             }
         }
+
+        if (DisplayShowMe)
+        {
+            DisplayShowMe = false;
+            ShowMe();
+        }
+
+        if (DisplayHideMe)
+        {
+            DisplayHideMe = false;
+            HideMe();
+        }
     }
+
+    public void ShowMeOnClic()
+    {
+        DisplayShowMe = true;
+    } 
+
+    public void HideMeOnClic()
+    {
+        DisplayHideMe = true;
+    } 
 
     private void InitInterface()
     {

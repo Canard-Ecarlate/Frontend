@@ -5644,7 +5644,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2135730982}
         m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
-        m_MethodName: ShowMe
+        m_MethodName: ShowMeOnClic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6265,7 +6265,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2135730982}
         m_TargetAssemblyTypeName: GameScene, Assembly-CSharp
-        m_MethodName: HideMe
+        m_MethodName: HideMeOnClic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
