@@ -28,7 +28,7 @@ public class LoginSignupScene : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         string token = DataSave.LoadDataString("token");
-        if (token != "")
+        /*if (token != "")
         {
             string response = GlobalVariable.WebCommunicatorControler.AppelWebCheckToken("https://dotnet.canardecarlate.fr/api/Authentication/CheckToken", token);
             Debug.Log("Auto connect : " + response);
@@ -42,7 +42,7 @@ public class LoginSignupScene : MonoBehaviour
             {
                 DuckCityHub.StartHub(GlobalVariable.User.ContainerId);
             }
-        }
+        }*/
 
         GoToLogin();
         TryEnableButtons();
