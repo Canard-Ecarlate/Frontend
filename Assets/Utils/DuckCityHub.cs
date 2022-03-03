@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR.Client;
+using BestHTTP.SignalRCore;
+using BestHTTP.SignalRCore.Encoders;
+//using Microsoft.AspNetCore.SignalR.Client;
 using Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +24,10 @@ namespace Utils
 
         public static async void StartHub(string containerId)
         {
+            _hubConnection = new HubConnection(new Uri("https://game.canardecarlate.fr"),
+                new JsonProtocol(new LitJsonEncoder()));
+            /*_hubConnection = new HubConnectionBuilder()
+                .WithUrl("https://localhost:7143/",
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl("https://game.canardecarlate.fr/",
                     options =>
@@ -31,19 +37,19 @@ namespace Utils
                         options.Headers.Add("ContainerId", containerId);
                     })
                 .WithAutomaticReconnect()
-                .Build();
-            _hubConnection.Reconnecting += error =>
+                .Build();*/
+            /*_hubConnection.OnReconnecting += error =>
             {
-                Debug.Assert(_hubConnection.State == HubConnectionState.Reconnecting);
-                return Task.CompletedTask;
-            };
-            _hubConnection.Closed += async _ =>
+                //Debug.Assert(_hubConnection.State == HubConnectionState.Reconnecting);
+                //return Task.CompletedTask;
+            };*/
+            /*_hubConnection.onClosed += async _ =>
             {
                 await Task.Delay(Random.Range(0, 5) * 1000).ConfigureAwait(false);
                 await _hubConnection.StartAsync(); 
-            };
+            };*/
 
-            _hubConnection.On("PushRoom", (RoomDto roomDto) =>
+            _hubConnection.On<RoomDto>("PushRoom", (roomDto) =>
             {
                 GlobalVariable.RoomDto.SetRoom(roomDto);
                 OnRoomPushInBar = true;
@@ -54,7 +60,7 @@ namespace Utils
                 }
             });
 
-            _hubConnection.On("PushPlayers", (List<PlayerInWaitingRoomDto> players) =>
+            _hubConnection.On<List<PlayerInWaitingRoomDto>>("PushPlayers", (players) =>
             {
                 GlobalVariable.Players.RemoveAll(_ => true);
                 GlobalVariable.Players.AddRange(players);
@@ -62,7 +68,7 @@ namespace Utils
                 OnPlayersPushInGame = true;
             }); 
 
-            _hubConnection.On("PushGame", (GameDto game) =>
+            _hubConnection.On<GameDto>("PushGame", (game) =>
             {
                 GlobalVariable.GameDto.SetGame(game);
                 OnGamePushInGame = true;
@@ -74,6 +80,7 @@ namespace Utils
 
             try
             {
+                _hubConnection.StartConnect();
                 await _hubConnection.StartAsync();
                 Debug.Log("Start hub connection in container (id : " + containerId + " fake)");
             }
@@ -85,37 +92,37 @@ namespace Utils
 
         public static async Task CreateRoom(RoomCreationDto roomCreationDto)
         {
-            await _hubConnection.InvokeAsync("CreateRoom", roomCreationDto);
+            await _hubConnection.InvokeAsync<RoomCreationDto>("CreateRoom", roomCreationDto);
         }
 
         public static async Task JoinRoom(string roomCode)
         {
-            await _hubConnection.InvokeAsync("JoinRoom", roomCode);
+            await _hubConnection.InvokeAsync<string>("JoinRoom", roomCode);
         }
 
         public static async Task LeaveRoom()
         {
-            await _hubConnection.InvokeAsync("LeaveRoom", GlobalVariable.RoomDto.Code);
+            await _hubConnection.InvokeAsync<string>("LeaveRoom", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task PlayerReady()
         {
-            await _hubConnection.InvokeAsync("PlayerReady", GlobalVariable.RoomDto.Code);
+            await _hubConnection.InvokeAsync<string>("PlayerReady", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task StartGame()
         {
-            await _hubConnection.InvokeAsync("StartGame", GlobalVariable.RoomDto.Code);
+            await _hubConnection.InvokeAsync<string>("StartGame", GlobalVariable.RoomDto.Code);
         }
 
         public static async Task DrawCard(string playerWhereCardIsDrawingId)
         {
-            await _hubConnection.InvokeAsync("DrawCard", GlobalVariable.RoomDto.Code, playerWhereCardIsDrawingId);
+            await _hubConnection.InvokeAsync<string>("DrawCard", GlobalVariable.RoomDto.Code, playerWhereCardIsDrawingId);
         }
 
         public static async Task QuitMidGame()
         {
-            await _hubConnection.InvokeAsync("QuitMidGame", GlobalVariable.RoomDto.Code);
+            await _hubConnection.InvokeAsync<string>("QuitMidGame", GlobalVariable.RoomDto.Code);
         }
     }
 }
